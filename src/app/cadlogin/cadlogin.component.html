@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Economica:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;600;700;800&display=swap" rel="stylesheet">
+    <title>Universidade Lytex</title>
+</head>
+<body>
+    <header class="header">
+        <div class="faixa">
+            <h1>ACESSO ADMINISTRATIVO</h1>
+        </div>
+    </header>
+    <nav>
+        <a href="acessoadm.html">HOME |</a>
+        <a href="#">CURSOS |</a>
+        <a href="#">RELATÓRIOS |</a>
+        <a href="Cadlogin.html">CADASTRO DE LOGIN |</a>
+        <a href="criacurso.html">ADICIONAR CURSOS |</a>
+        <a href="#">VENDA DE CURSOS |</a>
+        <a href="loginadm.html">SAIR</a>
+    </nav>
+    <header class="header">
+        <div class="underline">
+        </div>
+    </header>
+    <main>
+          <form [ProjectGroup]="project" (submit)="create()" class="wrapper">
+            <h2>Identificação</h2>
+                <input type="text" placeholder="Nome" name="name" required="">
+                <input type="number" placeholder="Login" name="number" required="">
+                <input type="password" placeholder="Senha" name="password" required="">
+            <h2>Setor</h2>
+                <input type="radio" name="rd" id="rd1"><label for="rd1">Administrativo</label>
+                <input type="radio" name="rd" id="rd2"><label for="rd2">Vendas</label>
+                <input type="radio" name="rd" id="rd3"><label for="rd3">Financeiro</label>
+            <h2>Permissões</h2>
+                <input type="checkbox" name="cb" id="cb1"><label for="cb1">Cursos</label>
+                <input type="checkbox" name="cb" id="cb2"><label for="cb2">Relatórios</label>
+                <input type="checkbox" name="cb" id="cb3"><label for="cb3">Cadastro de logins</label>
+                <input type="checkbox" name="cb" id="cb4"><label for="cb4">Venda de cursos</label>
+            <br>
+          </form>
+          <button type="submit" onclick="MensagemEnviada();" class="btn btn-submit mt5 spacing-4" value="ENVIAR">CADASTRAR</button><p class="submit"></p>
+    </main>
+</body>
+</html>

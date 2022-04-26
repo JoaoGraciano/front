@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ACESSO ADMINISTRATIVO</title>
+</head>
+<body>
+    <header class="header">
+        <h1>ACESSO ADMINISTRATIVO</h1>
+    </header>
+    <div class="sombra">
+    <main class="login">
+      <form [formGroup]="user" (submit)="signIn()">
+        <div class="form-group">
+          <input
+            type="text"
+            formControlName="email"
+            name="email"
+            class="form-control"
+            placeholder="Email"
+            required
+            autofocus
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="password"
+            formControlName="password"
+            name="password"
+            class="form-control"
+            placeholder="Password"
+            required
+          />
+        </div>
+        <button class="btn btn-success btn-block">Login</button>
+      </form>
+    </main>
+</div>
+</body>
+</html>
