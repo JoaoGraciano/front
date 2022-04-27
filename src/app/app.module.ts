@@ -10,13 +10,22 @@ import { LoginComponent } from './login/login.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { FormsModule , ReactiveFormsModule} from '@angular/forms';
 import { CadloginComponent } from './cadlogin/cadlogin.component';
+import { FormularioComponent } from './formulario/formulario.component';
+import { AddcursoComponent } from './addcurso/addcurso.component';
+import { VendasComponent } from './vendas/vendas.component';
+import { AuthGuard } from './auth.guard';
+import { TokenInterceptorService } from './services/token-interceptor.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     IndexComponent,
-    CadloginComponent
+    CadloginComponent,
+    FormularioComponent,
+    AddcursoComponent,
+    VendasComponent
+
   ],
   imports: [
     BrowserModule,
@@ -27,7 +36,14 @@ import { CadloginComponent } from './cadlogin/cadlogin.component';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

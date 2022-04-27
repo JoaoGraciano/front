@@ -9,7 +9,7 @@ export class TaskService {
   constructor(private http: HttpClient) {}
 
   getTasks() {
-    return this.http.get<any>(this.URL + "/all");
+    return this.http.get<any>(this.URL + "/");
   }
 
   getPrivateProject() {
@@ -20,11 +20,11 @@ export class TaskService {
     return this.http.get<any>(this.URL + "/" + id);
   }
 
-  createProject(project) {
+  createProject(project: any) {
     return this.http.post(this.URL, project);
   }
 
-  updateProject(project) {
+  updateProject(project: any) {
     const url = `${this.URL}/${project._id}`;
 
     console.log(project);

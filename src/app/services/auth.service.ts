@@ -12,11 +12,18 @@ interface IUser{
   providedIn: "root",
 })
 export class AuthService {
+  getTasks() {
+    throw new Error('Method not implemented.');
+  }
   private URL = "http://localhost:8080/auth";
   constructor(private http: HttpClient, private router: Router) {}
 
   signUpUser(user:IUser) {
     return this.http.post<any>(this.URL + "/register", user);
+  }
+
+  cadCurse(user:IUser) {
+    return this.http.post<any>(this.URL + "/cadastro", user);
   }
 
   signInUser(user:IUser) {

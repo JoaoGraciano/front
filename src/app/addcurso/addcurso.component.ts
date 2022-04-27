@@ -6,11 +6,11 @@ import { TaskService } from "src/app/services/task.service";
 import { HttpErrorResponse } from "@angular/common/http";
 
 @Component({
-  selector: 'app-cadlogin',
-  templateUrl: './cadlogin.component.html',
-  styleUrls: ['./cadlogin.component.scss']
+  selector: 'app-addcurso',
+  templateUrl: './addcurso.component.html',
+  styleUrls: ['./addcurso.component.scss']
 })
-export class CadloginComponent implements OnInit {
+export class AddcursoComponent implements OnInit {
 
   project: FormGroup;
   submitted=false;
@@ -18,21 +18,22 @@ export class CadloginComponent implements OnInit {
   constructor(private fBuilder: FormBuilder, private authService: AuthService, private router: Router) {
 
     this.project = this.fBuilder.group({
-      name: [""],
-      email: [""],
-      password: [""],
+      curso: [""],
+      grau: [""],
+      duracao: [""],
+      valor: [""],
+      descricao: [""],
     });
+  }
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
   }
 
   create() {
     this.submitted = true;
     if (this.project.status === "INVALID") return;
-    this.authService.signUpUser(this.project.value).subscribe((response) => {
+    this.authService.cadCurse(this.project.value).subscribe((response) => {
       this.router.navigate([""]);
     });
   }
-
-  ngOnInit(): void {
-  }
-
 }

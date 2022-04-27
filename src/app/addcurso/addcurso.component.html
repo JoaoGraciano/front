@@ -1,0 +1,30 @@
+<body>
+  <header class="header">
+      <div class="faixa">
+          <h1>ACESSO ADMINISTRATIVO</h1>
+      </div>
+  </header>
+  <nav>
+    <a href="#">HOME |</a>
+    <a href="/cursos">CURSOS |</a>
+    <a href="/formulario">RELATÓRIOS |</a>
+    <a href="/cadlogin">CADASTRO DE LOGIN |</a>
+    <a href="/addcurso">ADICIONAR CURSOS |</a>
+    <a href="/vendas">VENDA DE CURSOS |</a>
+    <a href="/sair">SAIR</a>
+  </nav>
+  <header class="header">
+      <div class="underline">
+      </div>
+  </header>
+  <body>
+    <form [formGroup]="project" (submit)="create()" action="submit">
+        <h1>CADASTRO DE CURSO</h1>
+          <input type="txt" formControlName="curso" placeholder="NOME DO CURSO" name="nomeCurso" required="">
+          <input type="txt" formControlName="grau" placeholder="GRÁU ACADEMICO" name="txtGrau" required="">
+          <input type="txt" formControlName="duracao" placeholder="DURAÇÃO DO CURSO" name="txtGrau" required="">
+          <input type="num" formControlName="valor" name="valorCurso" id="valor" placeholder="VAlOR DO CURSO"><br>
+          <textarea type="text" formControlName="descricao" name="text" rows="5"  size="30" id="text"  placeholder="DESCRIÇÃO DO CURSO"></textarea> <br>
+           <button type="submit" (click)="create();" class="btn btn-submit mt5 spacing-4" value="ENVIAR">CADASTRAR</button>
+    </form>
+</body>

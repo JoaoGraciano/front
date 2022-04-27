@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Economica:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;600;700;800&display=swap" rel="stylesheet">
-    <title>Universidade Lytex</title>
-</head>
+
 <body>
     <header class="header">
         <div class="faixa">
@@ -17,24 +6,24 @@
         </div>
     </header>
     <nav>
-        <a href="acessoadm.html">HOME |</a>
-        <a href="#">CURSOS |</a>
-        <a href="#">RELATÓRIOS |</a>
-        <a href="Cadlogin.html">CADASTRO DE LOGIN |</a>
-        <a href="criacurso.html">ADICIONAR CURSOS |</a>
-        <a href="#">VENDA DE CURSOS |</a>
-        <a href="loginadm.html">SAIR</a>
+        <a href="#">HOME |</a>
+        <a href="/cursos">CURSOS |</a>
+        <a href="/formulario">RELATÓRIOS |</a>
+        <a href="/cadlogin">CADASTRO DE LOGIN |</a>
+        <a href="/addcurso">ADICIONAR CURSOS |</a>
+        <a href="/vendas">VENDA DE CURSOS |</a>
+        <a href="/sair">SAIR</a>
     </nav>
     <header class="header">
         <div class="underline">
         </div>
     </header>
     <main>
-          <form [ProjectGroup]="project" (submit)="create()" class="wrapper">
+          <form [formGroup]="project" (submit)="create()" class="wrapper">
             <h2>Identificação</h2>
-                <input type="text" placeholder="Nome" name="name" required="">
-                <input type="number" placeholder="Login" name="number" required="">
-                <input type="password" placeholder="Senha" name="password" required="">
+                <input type="text" formControlName="name" placeholder="Nome" name="name" required="">
+                <input type="email" formControlName="email" placeholder="email" name="email" required="">
+                <input type="password" formControlName="password" placeholder="Senha" name="password" required="">
             <h2>Setor</h2>
                 <input type="radio" name="rd" id="rd1"><label for="rd1">Administrativo</label>
                 <input type="radio" name="rd" id="rd2"><label for="rd2">Vendas</label>
@@ -46,7 +35,7 @@
                 <input type="checkbox" name="cb" id="cb4"><label for="cb4">Venda de cursos</label>
             <br>
           </form>
-          <button type="submit" onclick="MensagemEnviada();" class="btn btn-submit mt5 spacing-4" value="ENVIAR">CADASTRAR</button><p class="submit"></p>
+          <button type="submit" (click)="create();" class="btn btn-submit mt5 spacing-4" value="ENVIAR">CADASTRAR</button><p class="submit"></p>
     </main>
 </body>
-</html>
+

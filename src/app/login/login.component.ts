@@ -16,7 +16,6 @@ export class LoginComponent implements OnInit {
   constructor(private fBuilder: FormBuilder, private authService: AuthService, private router: Router) {
 
     this.user = this.fBuilder.group({
-      name: [""],
       email: [""],
       password: [""],
     });
@@ -26,6 +25,7 @@ export class LoginComponent implements OnInit {
   }
 
   signIn() {
+    console.log(this.user.value);
     this.authService.signInUser(this.user.value).subscribe(
       (res) => {
         console.log(res);

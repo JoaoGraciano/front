@@ -1,0 +1,37 @@
+<body>
+  <header class="header">
+      <div class="faixa">
+          <h1>ACESSO ADMINISTRATIVO</h1>
+      </div>
+  </header>
+  <nav>
+    <a href="#">HOME |</a>
+    <a href="/cursos">CURSOS |</a>
+    <a href="/formulario">RELATÓRIOS |</a>
+    <a href="/cadlogin">CADASTRO DE LOGIN |</a>
+    <a href="/addcurso">ADICIONAR CURSOS |</a>
+    <a href="/vendas">VENDA DE CURSOS |</a>
+    <a href="/sair">SAIR</a>
+  </nav>
+  <header class="header">
+      <div class="underline">
+      </div>
+  </header>
+  <div class="row">
+    <div class="col-md-4" *ngFor="let project of projects">
+        <div class="card">
+            <div class="card-body">
+                <h3>{{project.addcurso}}</h3>
+                <p>{{project.curso}}</p>
+                <p>{{project.grau}}</p>
+                <p>{{project.duacao}}</p>
+                <p>{{project.valor}}</p>
+                <p>{{project.descricao}}</p>
+            </div>
+            <div class="card-footer"  *ngFor="let task of project.addcurso">
+                {{task.title}}
+            </div>
+        </div>
+    </div>
+</div>
+</body>
