@@ -28,8 +28,8 @@
                 <p>Idade: {{project.idade}}</p>
                 <p>Curso: {{project.curso}}</p>
                 <p>Valor pago: {{project.valor}}</p>
-                <p>Vendido por: {{project.user?.name}}</p>
-                <p>Email vendedor: {{project.user?.email}}</p>
+                <p>Vendido por: {{project?.user?.name}}</p>
+                <p>Email vendedor: {{project?.user?.email}}</p>
             </div>
             <div class="card-footer"  *ngFor="let task of project.addcurso">
                 {{task.title}}
