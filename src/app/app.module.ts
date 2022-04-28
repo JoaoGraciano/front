@@ -15,6 +15,7 @@ import { AddcursoComponent } from './addcurso/addcurso.component';
 import { VendasComponent } from './vendas/vendas.component';
 import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { PagamentoComponent } from './pagamento/pagamento.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     CadloginComponent,
     FormularioComponent,
     AddcursoComponent,
-    VendasComponent
+    VendasComponent,
+    PagamentoComponent
 
   ],
   imports: [

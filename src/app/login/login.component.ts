@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
       (res) => {
         console.log(res);
         localStorage.setItem("token", res.token);
+        localStorage.setItem("user", JSON.stringify(res.user));
         this.router.navigate(["/cadlogin"]);
       },
       (err) => console.log(err)

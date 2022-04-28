@@ -17,16 +17,20 @@
       <div class="underline">
       </div>
   </header>
-  <div class="row">
+  <div class="row container">
     <div class="col-md-4" *ngFor="let project of projects">
         <div class="card">
             <div class="card-body">
-                <h3>{{project.addcurso}}</h3>
+                <h3>Curso</h3>
+                <p>{{project.addcurso}}</p>
                 <p>{{project.curso}}</p>
                 <p>{{project.grau}}</p>
                 <p>{{project.duacao}}</p>
                 <p>{{project.valor}}</p>
                 <p>{{project.descricao}}</p>
+
+                <button (click)="vendas()">Vender</button>
+
             </div>
             <div class="card-footer"  *ngFor="let task of project.addcurso">
                 {{task.title}}
@@ -35,3 +39,5 @@
     </div>
 </div>
 </body>
+
+

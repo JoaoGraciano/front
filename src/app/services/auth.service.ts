@@ -26,6 +26,10 @@ export class AuthService {
     return this.http.post<any>(this.URL + "/cadastro", user);
   }
 
+  venda(user:IUser) {
+    return this.http.post<any>(this.URL + "/venda", user);
+  }
+
   signInUser(user:IUser) {
     return this.http.post<any>(this.URL + "/authenticate", user);
   }

@@ -1,3 +1,6 @@
+import { CursosComponent } from './cursos/cursos.component';
+import { FormularioComponent } from './formulario/formulario.component';
+import { PagamentoComponent } from './pagamento/pagamento.component';
 import { VendasComponent } from './vendas/vendas.component';
 import { AddcursoComponent } from './addcurso/addcurso.component';
 import { CadloginComponent } from './cadlogin/cadlogin.component';
@@ -13,6 +16,9 @@ const routes: Routes = [
   { path: 'cadlogin', component: CadloginComponent },
   { path: 'addcurso', component: AddcursoComponent },
   { path: 'vendas', component: VendasComponent, canActivate: [AuthGuard] },
+  { path: 'pagamento', component: PagamentoComponent},
+  { path: 'formulario', component:FormularioComponent},
+  { path: 'cursos', component: CursosComponent},
 ];
 
 @NgModule({

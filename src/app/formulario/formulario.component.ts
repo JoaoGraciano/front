@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from "../services/auth.service";
+import { TaskService } from "../services/task.service";
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-formulario',
@@ -7,9 +11,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormularioComponent implements OnInit {
 
-  constructor() { }
+  projects:any = [];
+  constructor(private taskService: TaskService, private router: Router) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.taskService.getVenda().subscribe(
+      (res) => {
+        console.log(res);
+
+        this.projects = res.projects;
+      },
+      (err) => console.log(err)
+    );
+
+    
+
   }
-
 }

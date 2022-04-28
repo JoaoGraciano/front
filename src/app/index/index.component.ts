@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 })
 export class IndexComponent implements OnInit {
 
+  projects:any = [];
+
   constructor(private router: Router) { }
 
   login(){
@@ -16,5 +18,7 @@ export class IndexComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+
 
 }

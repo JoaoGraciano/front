@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../services/auth.service";
 import { TaskService } from "../services/task.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-vendas',
@@ -10,7 +11,11 @@ import { TaskService } from "../services/task.service";
 export class VendasComponent implements OnInit {
 
   projects:any = [];
-  constructor(private taskService: TaskService) {}
+  constructor(private taskService: TaskService, private router: Router) {}
+
+  vendas(){
+    this.router.navigate(['/pagamento']);
+  }
 
   ngOnInit() {
     this.taskService.getTasks().subscribe(
