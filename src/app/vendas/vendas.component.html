@@ -25,13 +25,14 @@
                 <p>{{project.addcurso}}</p>
                 <p>{{project.curso}}</p>
                 <p>{{project.grau}}</p>
-                <p>{{project.duacao}}</p>
+                <p>{{project.duracao}}</p>
                 <p>{{project.valor}}</p>
                 <p>{{project.descricao}}</p>
+                {{project._id}}
 
-                <button (click)="vendas()">Vender</button>
+                <button (click) ="vendas()">Vender</button>
 
-                <button (click)="delete()">Deletar</button>
+                <button (click)="deletar(project)">Deletar</button>
 
                 <button (click)="vendas()">Atualizar</button>
 

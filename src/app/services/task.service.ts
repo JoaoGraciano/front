@@ -9,7 +9,7 @@ export class TaskService {
   constructor(private http: HttpClient) {}
 
   getTasks() {
-    return this.http.get<any>(this.URL + "/");
+    return this.http.get(this.URL + "/");
   }
 
   getVenda() {
