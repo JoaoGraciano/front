@@ -25,11 +25,10 @@ export class PagamentoComponent implements OnInit {
       curso: [""],
       valor: [""],
       user: [""],
-      email: [""],
     });
   }
   ngOnInit(): void {
-    this.projects.get('user').val(JSON.stringify(localStorage.getItem('user')));
+    this.projects.get('user').subscibe(JSON.stringify(localStorage.getItem('user')));
   }
 
 
@@ -37,7 +36,6 @@ export class PagamentoComponent implements OnInit {
   create() {
     this.submitted = true;
     if (this.project.status === "INVALID") return;
-
 
     this.authService.venda(this.project.value).subscribe((response) => {
       this.router.navigate(["/vendas"]);
