@@ -16,6 +16,7 @@ import { VendasComponent } from './vendas/vendas.component';
 import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { PagamentoComponent } from './pagamento/pagamento.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { PagamentoComponent } from './pagamento/pagamento.component';
     FormularioComponent,
     AddcursoComponent,
     VendasComponent,
-    PagamentoComponent
+    PagamentoComponent,
+    HomeComponent
 
   ],
   imports: [

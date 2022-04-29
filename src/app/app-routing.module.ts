@@ -1,3 +1,4 @@
+import { HomeComponent } from './home/home.component';
 import { CursosComponent } from './cursos/cursos.component';
 import { FormularioComponent } from './formulario/formulario.component';
 import { PagamentoComponent } from './pagamento/pagamento.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'pagamento', component: PagamentoComponent},
   { path: 'formulario', component:FormularioComponent},
   { path: 'cursos', component: CursosComponent},
+  { path: 'home', component:HomeComponent}
 ];
 
 @NgModule({

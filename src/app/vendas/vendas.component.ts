@@ -17,6 +17,10 @@ export class VendasComponent implements OnInit {
     this.router.navigate(['/pagamento']);
   }
 
+  delete(){
+    
+  }
+
   ngOnInit() {
     this.taskService.getTasks().subscribe(
       (res) => {
