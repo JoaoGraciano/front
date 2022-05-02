@@ -17,6 +17,16 @@ import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { PagamentoComponent } from './pagamento/pagamento.component';
 import { HomeComponent } from './home/home.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -28,8 +38,7 @@ import { HomeComponent } from './home/home.component';
     AddcursoComponent,
     VendasComponent,
     PagamentoComponent,
-    HomeComponent
-
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +47,14 @@ import { HomeComponent } from './home/home.component';
     IndexModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatListModule,
+    MatSidenavModule,
+    CommonModule,
   ],
   providers: [
     AuthGuard,
@@ -48,6 +64,8 @@ import { HomeComponent } from './home/home.component';
       multi: true
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  exports : [ VendasComponent],
 })
 export class AppModule { }

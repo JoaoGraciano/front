@@ -5,11 +5,16 @@ import { HttpClient } from "@angular/common/http";
   providedIn: "root",
 })
 export class TaskService {
+
   private URL = "http://localhost:8080/projects";
   constructor(private http: HttpClient) {}
 
   getTasks() {
     return this.http.get(this.URL + "/");
+  }
+
+  getUpdate(project: any) {
+    return this.http.get<any>(this.URL + "/update");
   }
 
   getVenda() {

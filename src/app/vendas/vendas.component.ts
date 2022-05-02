@@ -33,7 +33,15 @@ export class VendasComponent implements OnInit {
     console.log(item._id)
     this.taskService.deleteProject(item._id).subscribe((res) => {
       console.log(res)
+      this.router.navigate(['/vendas']);
     })
+  }
+
+  update(project: any) {
+    console.log(project)
+    this.taskService.getUpdate(project);
+
+    this.router.navigate(['/addcurso']);
   }
 
 }

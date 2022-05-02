@@ -1,3 +1,17 @@
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<!-- <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"> -->
+<script src="../node_modules/core-js/client/shim.min.js"></script>
+<script src="../node_modules/zone.js/dist/zone.js"></script>
+<script src="../node_modules/reflect-metadata/Reflect.js"></script>
+<script src="../node_modules/systemjs/dist/system.src.js"></script>
+<script src="../systemjs.config.js"></script>
+<script>
+  System.import('app').catch(function(err){ console.error(err); });
+</script>
+
+
+
 <body>
   <header class="header">
       <div class="faixa">
@@ -17,32 +31,31 @@
       <div class="underline">
       </div>
   </header>
-  <div class="row container">
-    <div class="col-md-4" *ngFor="let project of projects">
-        <div class="card">
-            <div class="card-body">
-                <h3>Curso</h3>
-                <p>{{project.addcurso}}</p>
-                <p>{{project.curso}}</p>
-                <p>{{project.grau}}</p>
-                <p>{{project.duracao}}</p>
-                <p>{{project.valor}}</p>
-                <p>{{project.descricao}}</p>
-                {{project._id}}
-
-                <button (click) ="vendas()">Vender</button>
-
-                <button (click)="deletar(project)">Deletar</button>
-
-                <button (click)="vendas()">Atualizar</button>
-
-            </div>
-            <div class="card-footer"  *ngFor="let task of project.addcurso">
-                {{task.title}}
-            </div>
+<body>
+    <div>
+      <table class="table table-striped table-hover" *ngFor="let project of projects">
+        <thead>
+          <th>Curso</th>
+          <th>Grau</th>
+          <th>Duração</th>
+          <th>Valor</th>
+          <th>Descrição</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{project.curso}}</td>
+            <td>{{project.grau}}</td>
+            <td>{{project.duracao}}</td>
+            <td>{{project.valor}}</td>
+            <td>{{project.descricao}}</td>
+          </tr>
+        <div>
+          <button (click)="deletar(project)">Deletar</button>
+          <button (click)="update(project)">Atualizar</button>
         </div>
+        </tbody>
+      </table>
     </div>
-</div>
+      <button (click) ="vendas()">Vender</button>
 </body>
-
 
