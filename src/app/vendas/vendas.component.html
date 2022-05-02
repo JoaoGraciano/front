@@ -1,22 +1,11 @@
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta http-equiv="x-ua-compatible" content="ie=edge">
-<!-- <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"> -->
-<script src="../node_modules/core-js/client/shim.min.js"></script>
-<script src="../node_modules/zone.js/dist/zone.js"></script>
-<script src="../node_modules/reflect-metadata/Reflect.js"></script>
-<script src="../node_modules/systemjs/dist/system.src.js"></script>
-<script src="../systemjs.config.js"></script>
-<script>
-  System.import('app').catch(function(err){ console.error(err); });
-</script>
-
-
+<script src="./venda.js"></script>
 
 <body>
   <header class="header">
       <div class="faixa">
           <h1>ACESSO ADMINISTRATIVO</h1>
       </div>
+      <script src="./venda.js"></script>
   </header>
   <nav>
     <a href="/home">HOME |</a>
@@ -52,10 +41,26 @@
         <div>
           <button (click)="deletar(project)">Deletar</button>
           <button (click)="update(project)">Atualizar</button>
+          <button>Adicionar a venda</button>
         </div>
         </tbody>
       </table>
     </div>
+    <section>
+      <h2>Carrinho</h2>
+      <div>
+        <strong>Curso</strong>
+        &lt;&gt;
+        <strong>Preço</strong>
+        &lt;&gt;
+        <strong>Quantidade</strong>
+        <input type="num">
+        <button class="remove" >Remover</button>
+      </div>
+      <div>
+        <strong><p>Total</p></strong>
+      </div>
+
+    </section>
       <button (click) ="vendas()">Vender</button>
 </body>
-

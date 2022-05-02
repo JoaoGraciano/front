@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from "@angular/router";
   selector: 'app-vendas',
   templateUrl: './vendas.component.html',
   styleUrls: ['./vendas.component.scss']
+
 })
 export class VendasComponent implements OnInit {
 
@@ -28,6 +29,7 @@ export class VendasComponent implements OnInit {
       (err) => console.log(err)
     );
   }
+  
 
   deletar(item: any) {
     console.log(item._id)
