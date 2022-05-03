@@ -1,3 +1,4 @@
+import { FaleconoscoComponent } from './faleconosco/faleconosco.component';
 import { HomeComponent } from './home/home.component';
 import { CursosComponent } from './cursos/cursos.component';
 import { FormularioComponent } from './formulario/formulario.component';
@@ -10,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
+import { LeadComponent } from './lead/lead.component';
 
 const routes: Routes = [
   { path: '', component: IndexComponent },
@@ -20,7 +22,9 @@ const routes: Routes = [
   { path: 'pagamento', component: PagamentoComponent},
   { path: 'formulario', component:FormularioComponent},
   { path: 'cursos', component: CursosComponent},
-  { path: 'home', component:HomeComponent}
+  { path: 'home', component:HomeComponent},
+  { path: 'faleconosco', component:FaleconoscoComponent},
+  { path: 'lead', component:LeadComponent}
 ];
 
 @NgModule({

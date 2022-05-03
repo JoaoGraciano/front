@@ -7,6 +7,7 @@ import { HttpClient } from "@angular/common/http";
 export class TaskService {
 
   private URL = "http://localhost:8080/projects";
+  static data: any;
   constructor(private http: HttpClient) {}
 
   getTasks() {
@@ -19,6 +20,10 @@ export class TaskService {
 
   getVenda() {
     return this.http.get<any>(this.URL + "/venda");
+  }
+
+  getContato() {
+    return this.http.get<any>(this.URL + "/contato");
   }
 
   getPrivateProject() {

@@ -32,6 +32,11 @@ export class CadloginComponent implements OnInit {
     });
   }
 
+  Relatorio() {
+    this.submitted = true;
+    this.router.navigate(["/formulario"]);
+  }
+
   ngOnInit(): void {
   }
 

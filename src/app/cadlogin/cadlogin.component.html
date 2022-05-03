@@ -6,12 +6,18 @@
         </div>
     </header>
     <nav>
-        <a href="/home">HOME |</a>
-        <a href="/cursos">CURSOS |</a>
-        <a href="/formulario">RELATÓRIOS |</a>
-        <a href="/cadlogin">CADASTRO DE LOGIN |</a>
-        <a href="/addcurso">ADICIONAR CURSOS |</a>
-        <a href="/vendas">VENDA DE CURSOS |</a>
+        <a href="/home">HOME</a>
+        <button class="menu" mat-button [matMenuTriggerFor]="menu">Administrativo</button>
+        <mat-menu #menu="matMenu">
+           <button mat-menu-item ref="/formulario">Relatórios</button>
+           <button mat-menu-item><a href="/cadlogin">Cadastro de login</a></button>
+           <button mat-menu-item><a href="/addcurso">Adicionar cursos</a></button>
+        </mat-menu>
+        <button class="menu" mat-button [matMenuTriggerFor]="vendedor">Vendedor</button>
+        <mat-menu #vendedor="matMenu">
+           <button mat-menu-item><a href="/cursos">Cursos</a></button>
+           <button mat-menu-item><a href="/vendas">Venda de cursos</a></button>
+        </mat-menu>
         <a href="/sair">SAIR</a>
     </nav>
     <header class="header">

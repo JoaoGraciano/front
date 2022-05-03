@@ -1,0 +1,10 @@
+<body>
+  <form method="submit" [formGroup]="project" (submit)="MensagemEnviada()">
+    <h1 style="font-family: Economica, Arial, Helvetica, sans-serif;">FALE CONOSCO</h1>
+    <input type="E-mail" formControlName="email" placeholder="E-mail" name="txtemail" required="">
+    <input type="Nome" formControlName="nome" placeholder="Nome" name="txtnome" required="">
+    <input type="tel" formControlName="telefone" name="phone" id="telephone" class="input phone input-validate required error placeholder" placeholder="Número para contato" autocomplete="off">
+    <textarea type="text" formControlName="duvidas" name="text" rows="5"  size="30" id="text"  placeholder="Digite aqui"></textarea>
+    <button type="submit" class="btn btn-submit mt5 spacing-4" value="ENVIAR">Enviar mensagem</button><p class="submit">
+  </form>
+</body>

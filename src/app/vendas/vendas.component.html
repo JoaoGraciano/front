@@ -8,44 +8,64 @@
       <script src="./venda.js"></script>
   </header>
   <nav>
-    <a href="/home">HOME |</a>
-    <a href="/cursos">CURSOS |</a>
-    <a href="/formulario">RELATÓRIOS |</a>
-    <a href="/cadlogin">CADASTRO DE LOGIN |</a>
-    <a href="/addcurso">ADICIONAR CURSOS |</a>
-    <a href="/vendas">VENDA DE CURSOS |</a>
+    <a href="/home">HOME</a>
+    <button class="menu" mat-button [matMenuTriggerFor]="menu">Administrativo</button>
+    <mat-menu #menu="matMenu">
+       <button mat-menu-item><a href="/formulario">Relatórios</a></button>
+       <button mat-menu-item><a href="/cadlogin">Cadastro de login</a></button>
+       <button mat-menu-item><a href="/addcurso">Adicionar cursos</a></button>
+    </mat-menu>
+    <button class="menu" mat-button [matMenuTriggerFor]="vendedor">Vendedor</button>
+    <mat-menu #vendedor="matMenu">
+       <button mat-menu-item><a href="/cursos">Cursos</a></button>
+       <button mat-menu-item><a href="/vendas">Venda de cursos</a></button>
+    </mat-menu>
     <a href="/sair">SAIR</a>
-  </nav>
+</nav>
   <header class="header">
       <div class="underline">
       </div>
   </header>
 <body>
-    <div>
-      <table class="table table-striped table-hover" *ngFor="let project of projects">
-        <thead>
-          <th>Curso</th>
-          <th>Grau</th>
-          <th>Duração</th>
-          <th>Valor</th>
-          <th>Descrição</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td>{{project.curso}}</td>
-            <td>{{project.grau}}</td>
-            <td>{{project.duracao}}</td>
-            <td>{{project.valor}}</td>
-            <td>{{project.descricao}}</td>
-          </tr>
+
+    <table mat-table
+       [dataSource]="projects" multiTemplateDataRows
+       class="mat-elevation-z8">
+
+  <ng-container matColumnDef="{{column}}" *ngFor="let column of displayedColumns">
+    <th mat-header-cell *matHeaderCellDef> {{column}}  </th>
+    <td mat-cell *matCellDef="let project">
+        <div class="example-element-position"> {{project[column]}} </div>
+    </td>
+  </ng-container>
+
+
+  <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+  <ng-container matColumnDef="expandedDetail">
+    <td mat-cell *matCellDef="let project" [attr.colspan]="displayedColumns.length">
+      <div class="example-element-detail"
+           [@detailExpand]="project == dataSource ? 'expanded' : 'collapsed'">
+        <div class="example-element-description">
+          {{project.descricao}}
+        </div>
         <div>
           <button (click)="deletar(project)">Deletar</button>
           <button (click)="update(project)">Atualizar</button>
           <button>Adicionar a venda</button>
         </div>
-        </tbody>
-      </table>
-    </div>
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let project; columns: displayedColumns;"
+      class="example-element-row"
+      [class.example-expanded-row]="dataSource === project"
+      (click)="dataSource = dataSource === project ? null : project">
+  </tr>
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+</table>
+
     <section>
       <h2>Carrinho</h2>
       <div>
@@ -60,7 +80,7 @@
       <div>
         <strong><p>Total</p></strong>
       </div>
-
-    </section>
       <button (click) ="vendas()">Vender</button>
+    </section>
+
 </body>

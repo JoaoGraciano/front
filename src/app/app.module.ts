@@ -1,3 +1,4 @@
+import { FaleconoscoComponent } from './faleconosco/faleconosco.component';
 import { CursosModule } from './cursos/cursos.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -26,6 +27,13 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { LeadComponent } from './lead/lead.component';
+
+import {MaterialExampleModule} from '../material.module';
+import {MatNativeDateModule} from '@angular/material/core';
+
+
+
 
 @NgModule({
   declarations: [
@@ -38,6 +46,8 @@ import { CommonModule } from '@angular/common';
     VendasComponent,
     PagamentoComponent,
     HomeComponent,
+    FaleconoscoComponent,
+    LeadComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,6 +64,13 @@ import { CommonModule } from '@angular/common';
     MatListModule,
     MatSidenavModule,
     CommonModule,
+    BrowserAnimationsModule,
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    MatNativeDateModule,
+    MaterialExampleModule,
+    ReactiveFormsModule,
   ],
   providers: [
     AuthGuard,
@@ -63,7 +80,7 @@ import { CommonModule } from '@angular/common';
       multi: true
     }
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent, VendasComponent, LeadComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports : [ VendasComponent],
 })

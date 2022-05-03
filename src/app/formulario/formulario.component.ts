@@ -2,8 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../services/auth.service";
 import { TaskService } from "../services/task.service";
 import { Router } from '@angular/router';
-import html2canvas from 'html2canvas';
-import jspdf from 'jspdf';
+
+export interface PeriodicElement {
+  nome: string;
+  cidade: number;
+  cpf: number;
+  idade: string;
+  curso: string;
+  valor: number;
+  user: object;
+}
 
 
 @Component({
@@ -13,7 +21,10 @@ import jspdf from 'jspdf';
 })
 export class FormularioComponent implements OnInit {
 
+  displayedColumns: string[] = ['nome', 'cidade', 'cpf', 'idade', 'curso', 'valor', 'user'];
   projects:any = [];
+  dataSource = TaskService;
+
   constructor(private taskService: TaskService, private router: Router) {}
 
   ngOnInit() {

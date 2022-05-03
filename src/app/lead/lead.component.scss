@@ -60,63 +60,6 @@ main
     text-align: center;
     display: block;
     justify-items: auto;
-
-}
-
-
-.card-body
-{
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  padding: 16px;
-  text-align: center;
-  background-image: #3bd1d9;
-}
-
-.card{
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
-  width: 350px;
-  height: auto;
-}
-
-p
-{
-    font-family: Economica, Arial, Helvetica, sans-serif;
-    font-size: 20px;
-    padding-right: 10px;
-    padding-bottom: 10px;
-}
-
-h2
-{
-    font-family: Economica, Arial, Helvetica, sans-serif;
-    color: rgb(0, 0, 0);
-    font-size: 30px;
-    padding: none;
-    font-weight:bolder;
-    margin: none;
-}
-
-.container{
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat( auto-fit, minmax(350px, 1fr) );
-
-  gap: 10px;
-}
-
-.card{
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
-  height: auto;
-}
-
-.card-body
-{
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  padding: 16px;
-  text-align: center;
-  background-image: #3bd1d9;
 }
 
 table {
