@@ -30,7 +30,16 @@
           <input type="num" formControlName="cpf" placeholder="CPF" name="CPF" required="">
           <input type="txt" formControlName="cidade" placeholder="Cidade" name="txtGrau" required="">
           <input type="txt" formControlName="idade" placeholder="Idade" name="txtGrau" required="">
-          <input type="txt" formControlName="curso" name="nomeCurso" id="Curso" placeholder="Curso">
+          <!-- <input type="txt" formControlName="curso" name="nomeCurso" id="Curso" placeholder="Curso"> -->
+          <mat-form-field appearance="fill">
+            <mat-label>Toppings</mat-label>
+            <mat-select [dataSource]="projects" multiple>
+              <mat-select-trigger>
+                {{project.value ? project.value[0] : ''}}
+              </mat-select-trigger>
+              <mat-option *ngFor="let project of projects" [value]="project">{{project.curso}}</mat-option>
+            </mat-select>
+          </mat-form-field>
           <input type="num" formControlName="valor" name="valorCurso" id="valor" placeholder="Valor pago">
            <button type="submit" class="btn btn-submit mt5 spacing-4" value="ENVIAR">VENDER</button>
     </form>

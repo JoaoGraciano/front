@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import {SelectionModel} from '@angular/cdk/collections';
 import {MatTableDataSource} from '@angular/material/table';
 
-export interface PeriodicElement {
+export interface LeadComponent {
   position: number;
   nome: string;
   email: string;
@@ -21,8 +21,8 @@ export class LeadComponent implements OnInit {
 
   displayedColumns: string[] = ['email', 'nome', 'telefone', 'duvidas'];
   projects:any = [];
-  dataSource = new MatTableDataSource<PeriodicElement>(this.projects);
-  selection = new SelectionModel<PeriodicElement>(true, []);
+  dataSource = TaskService;
+  selection = new SelectionModel<LeadComponent>(true, []);
 
   isAllSelected() {
     const numSelected = this.selection.selected.length;
@@ -41,7 +41,7 @@ export class LeadComponent implements OnInit {
   }
 
   /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: PeriodicElement): string {
+  checkboxLabel(row?: LeadComponent): string {
     if (!row) {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }

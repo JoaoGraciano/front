@@ -18,13 +18,14 @@ export interface PeriodicElement {
   selector: 'app-formulario',
   templateUrl: './formulario.component.html',
   styleUrls: ['./formulario.component.scss']
+
 })
 export class FormularioComponent implements OnInit {
 
   displayedColumns: string[] = ['nome', 'cidade', 'cpf', 'idade', 'curso', 'valor', 'user'];
   projects:any = [];
   dataSource = TaskService;
-
+  search : String ="";
   constructor(private taskService: TaskService, private router: Router) {}
 
   ngOnInit() {

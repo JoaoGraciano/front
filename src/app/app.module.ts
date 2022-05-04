@@ -1,3 +1,4 @@
+import { SelectionModel } from '@angular/cdk/collections';
 import { FaleconoscoComponent } from './faleconosco/faleconosco.component';
 import { CursosModule } from './cursos/cursos.module';
 import { NgModule } from '@angular/core';
@@ -32,6 +33,7 @@ import { LeadComponent } from './lead/lead.component';
 import {MaterialExampleModule} from '../material.module';
 import {MatNativeDateModule} from '@angular/material/core';
 
+// import {TableSelectionExample} from './table-selection-example';
 
 
 

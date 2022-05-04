@@ -22,6 +22,10 @@ export class TaskService {
     return this.http.get<any>(this.URL + "/venda");
   }
 
+  getCadastro() {
+    return this.http.get<any>(this.URL + "/Cad");
+  }
+
   getContato() {
     return this.http.get<any>(this.URL + "/contato");
   }
