@@ -14,6 +14,7 @@ export interface PeriodicElement {
   user: object;
 }
 
+
 @Component({
   selector: 'app-formulario',
   templateUrl: './formulario.component.html',
@@ -24,7 +25,7 @@ export class FormularioComponent implements OnInit {
 
   displayedColumns: string[] = ['nome', 'cidade', 'cpf', 'idade', 'curso', 'valor'];
   projects:any = [];
-  dataSource = new MatTableDataSource(this.projects);
+  dataSource = new MatTableDataSource<any>();
 
   constructor(private taskService: TaskService, private router: Router) {}
 
@@ -33,8 +34,7 @@ export class FormularioComponent implements OnInit {
     this.taskService.getVenda().subscribe(
       (res) => {
         console.log(res);
-
-        this.projects = res.projects;
+        this.dataSource.data = res.projects;
       },
       (err) => console.log(err)
     );

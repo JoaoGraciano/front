@@ -30,7 +30,7 @@
   <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
 </mat-form-field>
 
-<table mat-table [dataSource]="projects" class="mat-elevation-z8"  >
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8"  >
 
   <ng-container matColumnDef="nome" | searchFilter:searchValue >
     <th mat-header-cell *matHeaderCellDef> No. </th>
