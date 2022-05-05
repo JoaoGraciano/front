@@ -25,15 +25,16 @@
         </div>
     </header>
     <main>
-          <form [formGroup]="project" (submit)="create()" class="wrapper">
+          <form [formGroup]="project" (submit)="create()"   class="wrapper">
             <h2>Identificação</h2>
                 <input type="text" formControlName="name" placeholder="Nome" name="name" required="">
                 <input type="email" formControlName="email" placeholder="email" name="email" required="">
                 <input type="password" formControlName="password" placeholder="Senha" name="password" required="">
             <h2>Setor</h2>
-                <input type="radio" name="rd" id="rd1"><label for="rd1">Administrativo</label>
-                <input type="radio" name="rd" id="rd2"><label for="rd2">Vendas</label>
-                <input type="radio" name="rd" id="rd3"><label for="rd3">Financeiro</label>
+                <input type="radio" formControlName="adm" name="rd" id="rd1"><label for="rd1">Administrativo</label>
+                <input type="radio" formControlName="venda" name="rd" id="rd2"><label for="rd2">Vendas</label>
+                <input type="radio" formControlName="finan" name="rd" id="rd3"><label for="rd3">Financeiro</label>
+
             <h2>Permissões</h2>
                 <input type="checkbox" name="cb" id="cb1"><label for="cb1">Cursos</label>
                 <input type="checkbox" name="cb" id="cb2"><label for="cb2">Relatórios</label>

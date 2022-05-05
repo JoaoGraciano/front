@@ -11,7 +11,7 @@ import { TaskService } from "../services/task.service";
 })
 export class PagamentoComponent implements OnInit {
 
-
+  displayedColumns: string[] = ['curso', 'valor'];
   projects:any = [];
   project: FormGroup;
   submitted=false;

@@ -32,9 +32,6 @@ export class VendasComponent implements OnInit {
   projects:any = [];
   constructor(private taskService: TaskService, private router: Router) {}
 
-  vendas(){
-    this.router.navigate(['/pagamento']);
-  }
 
   ngOnInit() {
 
@@ -48,6 +45,12 @@ export class VendasComponent implements OnInit {
     );
   }
 
+  vendas(project: any) {
+    console.log(project)
+    this.taskService.getDadosCurso(project);
+
+    this.router.navigate(['/pagamento']);
+  }
 
   deletar(item: any) {
     console.log(item._id)

@@ -33,6 +33,10 @@ import { LeadComponent } from './lead/lead.component';
 import {MaterialExampleModule} from '../material.module';
 import {MatNativeDateModule} from '@angular/material/core';
 
+import { Ng2OrderModule } from 'ng2-order-pipe';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 // import {TableSelectionExample} from './table-selection-example';
 
 
@@ -73,6 +77,11 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatNativeDateModule,
     MaterialExampleModule,
     ReactiveFormsModule,
+    Ng2OrderModule,
+    Ng2SearchPipeModule,
+    NgxPaginationModule,
+
+
   ],
   providers: [
     AuthGuard,

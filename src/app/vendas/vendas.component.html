@@ -51,6 +51,7 @@
         <div>
           <button (click)="deletar(project)">Deletar</button>
           <button (click)="update(project)">Atualizar</button>
+          <button (click)="vendas(project)">Vender</button>
           <button>Adicionar a venda</button>
         </div>
       </div>
@@ -65,22 +66,4 @@
   </tr>
   <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
 </table>
-
-    <section>
-      <h2>Carrinho</h2>
-      <div>
-        <strong>Curso</strong>
-        &lt;&gt;
-        <strong>Preço</strong>
-        &lt;&gt;
-        <strong>Quantidade</strong>
-        <input type="num">
-        <button class="remove" >Remover</button>
-      </div>
-      <div>
-        <strong><p>Total</p></strong>
-      </div>
-      <button (click) ="vendas()">Vender</button>
-    </section>
-
 </body>

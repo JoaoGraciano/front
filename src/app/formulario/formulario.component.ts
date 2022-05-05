@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../services/auth.service";
 import { TaskService } from "../services/task.service";
 import { Router } from '@angular/router';
+import { MatTableDataSource } from '@angular/material/table';
 
 export interface PeriodicElement {
   nome: string;
@@ -13,7 +14,6 @@ export interface PeriodicElement {
   user: object;
 }
 
-
 @Component({
   selector: 'app-formulario',
   templateUrl: './formulario.component.html',
@@ -22,10 +22,10 @@ export interface PeriodicElement {
 })
 export class FormularioComponent implements OnInit {
 
-  displayedColumns: string[] = ['nome', 'cidade', 'cpf', 'idade', 'curso', 'valor', 'user'];
+  displayedColumns: string[] = ['nome', 'cidade', 'cpf', 'idade', 'curso', 'valor'];
   projects:any = [];
-  dataSource = TaskService;
-  search : String ="";
+  dataSource = new MatTableDataSource(this.projects);
+
   constructor(private taskService: TaskService, private router: Router) {}
 
   ngOnInit() {
@@ -39,6 +39,15 @@ export class FormularioComponent implements OnInit {
       (err) => console.log(err)
     );
 
+
   }
+
+  applyFilter($event: Event){
+    console.log($event,'1')
+    const filterValue = ($event.target as HTMLInputElement).value;
+    console.log(filterValue,'2');
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
 }
 

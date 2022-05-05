@@ -8,6 +8,7 @@ export class TaskService {
 
   private URL = "http://localhost:8080/projects";
   static data: any;
+  static filter: string;
   constructor(private http: HttpClient) {}
 
   getTasks() {
@@ -20,6 +21,10 @@ export class TaskService {
 
   getVenda() {
     return this.http.get<any>(this.URL + "/venda");
+  }
+
+  getDadosCurso(project: any) {
+    return this.http.get<any>(this.URL + "/update");
   }
 
   getCadastro() {

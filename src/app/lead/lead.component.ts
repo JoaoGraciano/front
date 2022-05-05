@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TaskService } from "../services/task.service";
 import { Router } from '@angular/router';
 import {SelectionModel} from '@angular/cdk/collections';
-import {MatTableDataSource} from '@angular/material/table';
+
 
 export interface LeadComponent {
   position: number;
@@ -19,17 +19,16 @@ export interface LeadComponent {
 })
 export class LeadComponent implements OnInit {
 
-  displayedColumns: string[] = ['email', 'nome', 'telefone', 'duvidas'];
+  displayedColumns: string[] = ['select','email', 'nome', 'telefone', 'duvidas', 'encerrar'];
   projects:any = [];
   dataSource = TaskService;
   selection = new SelectionModel<LeadComponent>(true, []);
 
   isAllSelected() {
-    const numSelected = this.selection.selected.length;
-    const numRows = this.dataSource.data.length;
+    const numSelected = this.selection.selected;
+    const numRows = this.dataSource.data;
     return numSelected === numRows;
   }
-
 
   masterToggle() {
     if (this.isAllSelected()) {
@@ -40,25 +39,18 @@ export class LeadComponent implements OnInit {
     this.selection.select(...this.dataSource.data);
   }
 
-  /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: LeadComponent): string {
-    if (!row) {
-      return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
-    }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
-  }
 
   constructor(private taskService: TaskService, private router: Router) { }
 
   ngOnInit(): void {
 
         this.taskService.getContato().subscribe(
-      (res) => {
+      (res: { projects: any; }) => {
         console.log(res);
 
         this.projects = res.projects;
       },
-      (err) => console.log(err)
+      (err: any) => console.log(err)
     );
 
   }
