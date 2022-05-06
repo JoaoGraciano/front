@@ -54,5 +54,29 @@ export class LeadComponent implements OnInit {
       this.router.navigate(['/lead']);
     })
   }
+
+  home(){
+    this.router.navigate(['/home']);
+  }
+
+  relatorios(){
+    this.router.navigate(['/formulario']);
+  }
+
+  cadlogin(){
+    this.router.navigate(['/cadlogin']);
+  }
+
+  addcurso(){
+    this.router.navigate(['/addcurso']);
+  }
+
+  lead(){
+    this.router.navigate(['/lead']);
+  }
+
+  vendas(){
+    this.router.navigate(['/vendas']);
+  }
 }
 
