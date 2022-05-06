@@ -6,20 +6,21 @@
         </div>
     </header>
     <nav>
-        <a href="/home">HOME</a>
-        <button class="menu" mat-button [matMenuTriggerFor]="menu">Administrativo</button>
-        <mat-menu #menu="matMenu">
-           <button mat-menu-item ref="/formulario">Relatórios</button>
-           <button mat-menu-item><a href="/cadlogin">Cadastro de login</a></button>
-           <button mat-menu-item><a href="/addcurso">Adicionar cursos</a></button>
-        </mat-menu>
-        <button class="menu" mat-button [matMenuTriggerFor]="vendedor">Vendedor</button>
-        <mat-menu #vendedor="matMenu">
-           <button mat-menu-item><a href="/cursos">Cursos</a></button>
-           <button mat-menu-item><a href="/vendas">Venda de cursos</a></button>
-        </mat-menu>
-        <a href="/sair">SAIR</a>
-    </nav>
+      <button class="menu" mat-button href="/index">Home</button>
+      <button class="menu" mat-button [matMenuTriggerFor]="menu">Administrativo</button>
+      <mat-menu #menu="matMenu">
+         <button mat-menu-item><a href="/formulario">Relatórios</a></button>
+         <button mat-menu-item><a href="/cadlogin">Cadastro de login</a></button>
+         <button mat-menu-item><a href="/addcurso">Adicionar cursos</a></button>
+         <button mat-menu-item><a href="/lead">Lead</a></button>
+      </mat-menu>
+      <button class="menu" mat-button [matMenuTriggerFor]="vendedor">Vendedor</button>
+      <mat-menu #vendedor="matMenu">
+         <button mat-menu-item><a href="/cursos">Cursos</a></button>
+         <button mat-menu-item><a href="/vendas">Venda de cursos</a></button>
+      </mat-menu>
+      <button class="menu" mat-button href="/sair">Sair</button>
+  </nav>
     <header class="header">
         <div class="underline">
         </div>
@@ -31,18 +32,12 @@
                 <input type="email" formControlName="email" placeholder="email" name="email" required="">
                 <input type="password" formControlName="password" placeholder="Senha" name="password" required="">
             <h2>Setor</h2>
+            <div>
                 <input type="radio" formControlName="adm" name="rd" id="rd1"><label for="rd1">Administrativo</label>
                 <input type="radio" formControlName="venda" name="rd" id="rd2"><label for="rd2">Vendas</label>
-                <input type="radio" formControlName="finan" name="rd" id="rd3"><label for="rd3">Financeiro</label>
-
-            <h2>Permissões</h2>
-                <input type="checkbox" name="cb" id="cb1"><label for="cb1">Cursos</label>
-                <input type="checkbox" name="cb" id="cb2"><label for="cb2">Relatórios</label>
-                <input type="checkbox" name="cb" id="cb3"><label for="cb3">Cadastro de logins</label>
-                <input type="checkbox" name="cb" id="cb4"><label for="cb4">Venda de cursos</label>
-            <br>
+                <button type="submit" class="btn btn-submit mt5 spacing-4" value="ENVIAR">CADASTRAR</button><p class="submit"></p>
+              </div>
           </form>
-          <button type="submit" class="btn btn-submit mt5 spacing-4" value="ENVIAR">CADASTRAR</button><p class="submit"></p>
     </main>
 </body>
 

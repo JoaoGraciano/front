@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TaskService } from "../services/task.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 export interface PeriodicElement {
@@ -28,8 +29,11 @@ export interface PeriodicElement {
 export class VendasComponent implements OnInit {
 
   displayedColumns: string[] = ['curso', 'grau', 'duracao', 'valor'];
-  dataSource = TaskService;
   projects:any = [];
+  dataSource = new MatTableDataSource<any>();
+
+
+
   constructor(private taskService: TaskService, private router: Router) {}
 
 
@@ -38,8 +42,7 @@ export class VendasComponent implements OnInit {
     this.taskService.getTasks().subscribe(
       (res: any) => {
         console.log(res);
-        this.projects = res.projects;
-        console.log(this.projects);
+        this.dataSource.data = res.projects;
       },
       (err) => console.log(err)
     );
@@ -65,6 +68,14 @@ export class VendasComponent implements OnInit {
     this.taskService.getUpdate(project);
 
     this.router.navigate(['/addcurso']);
+  }
+
+  applyFilter($event: Event){
+    console.log($event,'1')
+    const filterValue = ($event.target as HTMLInputElement).value;
+    console.log(filterValue,'2');
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.dataSource.filter = filterValue.trim().toUpperCase();
   }
 
 }

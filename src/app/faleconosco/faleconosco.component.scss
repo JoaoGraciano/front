@@ -1,8 +1,15 @@
 body
 {
-    /* background-image: linear-gradient(to right, #3bd1d9, #2784b9, #053897, #2784b9, #3bd1d9); */
-    background-image: linear-gradient(to left,#053897, #2784b9, #3bd1d9, #2784b9, #053897 );
     font-family: Economica, Arial, Helvetica, sans-serif;
+}
+
+div {
+  float: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display:flexbox;
 }
 
 form

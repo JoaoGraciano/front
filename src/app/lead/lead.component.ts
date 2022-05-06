@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TaskService } from "../services/task.service";
 import { Router } from '@angular/router';
 import {SelectionModel} from '@angular/cdk/collections';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 export interface LeadComponent {
@@ -19,35 +20,19 @@ export interface LeadComponent {
 })
 export class LeadComponent implements OnInit {
 
-  displayedColumns: string[] = ['select','email', 'nome', 'telefone', 'duvidas', 'encerrar'];
+  displayedColumns: string[] = ['email', 'nome', 'telefone', 'duvidas', 'encerrar', 'editar', 'deletar'];
   projects:any = [];
-  dataSource = TaskService;
+  dataSource = new MatTableDataSource<any>();
   selection = new SelectionModel<LeadComponent>(true, []);
-
-  isAllSelected() {
-    const numSelected = this.selection.selected;
-    const numRows = this.dataSource.data;
-    return numSelected === numRows;
-  }
-
-  masterToggle() {
-    if (this.isAllSelected()) {
-      this.selection.clear();
-      return;
-    }
-
-    this.selection.select(...this.dataSource.data);
-  }
-
 
   constructor(private taskService: TaskService, private router: Router) { }
 
   ngOnInit(): void {
 
-        this.taskService.getContato().subscribe(
-      (res: { projects: any; }) => {
+      this.taskService.getContato().subscribe(
+        (res: { projects: any; }) => {
         console.log(res);
-
+        this.dataSource.data = res.projects;
         this.projects = res.projects;
       },
       (err: any) => console.log(err)
@@ -55,5 +40,19 @@ export class LeadComponent implements OnInit {
 
   }
 
+  applyFilter($event: Event){
+    console.log($event,'1')
+    const filterValue = ($event.target as HTMLInputElement).value;
+    console.log(filterValue,'2');
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  deletar(item: any) {
+    console.log(item._id)
+    this.taskService.deleteLead(item._id).subscribe((res) => {
+      console.log(res)
+      this.router.navigate(['/lead']);
+    })
+  }
 }
 

@@ -91,7 +91,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
       multi: true
     }
   ],
-  bootstrap: [AppComponent, VendasComponent, LeadComponent],
+  bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports : [ VendasComponent],
 })

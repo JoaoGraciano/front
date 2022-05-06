@@ -35,6 +35,8 @@ export class FormularioComponent implements OnInit {
       (res) => {
         console.log(res);
         this.dataSource.data = res.projects;
+        this.projects = res.projects;
+        console.log(this.projects);
       },
       (err) => console.log(err)
     );

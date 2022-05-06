@@ -12,11 +12,6 @@ body {
     font-family: Economica, Arial, Helvetica, sans-serif;
 }
 
-a
-{
-    text-decoration: none;
-}
-
 .faixa
 {
     background-image: linear-gradient(to right, #3bd1d9, #2784b9, #053897);
@@ -28,21 +23,26 @@ a
 h1
 {
     font-family: League Spartan, Arial, Helvetica, sans-serif;
-    padding-top: 15px;
+    font-weight: bold;
+    padding-top: 35px;
     text-align: right;
     color: white;
 }
 
-.menu
+nav, a
 {
-    font-size: 16px;
-    font-family: Economica, Arial, Helvetica, sans-serif;
-    // background-color: white;
+    font-weight: bold;
+    background-color: white;
     padding-top: 40px;
     padding-bottom: 10px;
     font-size: 20px;
     padding-right: 10px;
     text-decoration: none;
+}
+
+nav > button
+{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .underline
@@ -54,25 +54,45 @@ h1
     color: transparent;
 }
 
-main
+form
 {
-    padding-top: 30px;
+    width: 100%;
+    max-width: 300px;
+    margin: 50px auto;
 
-    text-align: center;
-    display: block;
-    justify-items: auto;
+    position:relative;
 
+    border-radius: 15px;
+    background:#fafafa;
+    border: #415aaa;
+    border-style: groove;
+    min-height: 200px;
+    padding: 20px;
+    margin: none;
+
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 }
 
-input[type=text], input[type=number], input[type=password]
+form > div {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+input[type=text], input[type=number], input[type=password], input[type=email]
 {
     background-color: rgb(255, 255, 255);
-    border:black;
     border-radius: 30px;
+    border: #415aaa;
+    border-style: groove;
     color: black;
     padding: 15px 30px;
     text-decoration: none;
     cursor:auto;
+    margin-bottom:10px;
+    text-align: center;
 }
 
   /* Basic styles checkbox */

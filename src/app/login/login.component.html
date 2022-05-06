@@ -11,7 +11,7 @@
     </header>
     <div class="sombra">
     <main class="login">
-      <form [formGroup]="user" (submit)="signIn()">
+      <!-- <form [formGroup]="user" (submit)="signIn()">
         <div class="form-group">
           <input
             type="text"
@@ -34,7 +34,31 @@
           />
         </div>
         <button class="btn btn-success btn-block">Login</button>
-      </form>
+      </form> -->
+      <form action="/dashboard.html" class="loginForm" [formGroup]="user" (submit)="signIn()">
+            <input
+            type="text"
+            formControlName="email"
+            id="username"
+            name="email"
+            class="input"
+            placeholder="Email"
+            required
+            autofocus/>
+            <span class="error-message"></span>
+        <br>
+            <input
+            type="password"
+            id="password"
+            formControlName="password"
+            name="password"
+            class="input"
+            placeholder="Password"
+            require/>
+            <span class="error-message"></span>
+        <br>
+        <button class="button" type="submit">Login</button>
+    </form>
     </main>
 </div>
 </body>

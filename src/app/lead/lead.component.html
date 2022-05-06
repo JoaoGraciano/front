@@ -5,36 +5,34 @@
       </div>
   </header>
   <nav>
-      <a href="/home">HOME</a>
-      <button class="menu" mat-button [matMenuTriggerFor]="menu">Administrativo</button>
-      <mat-menu #menu="matMenu">
-         <button mat-menu-item ref="/formulario">Relatórios</button>
-         <button mat-menu-item><a href="/cadlogin">Cadastro de login</a></button>
-         <button mat-menu-item><a href="/addcurso">Adicionar cursos</a></button>
-      </mat-menu>
-      <button class="menu" mat-button [matMenuTriggerFor]="vendedor">Vendedor</button>
-      <mat-menu #vendedor="matMenu">
-         <button mat-menu-item><a href="/cursos">Cursos</a></button>
-         <button mat-menu-item><a href="/vendas">Venda de cursos</a></button>
-      </mat-menu>
-      <a href="/sair">SAIR</a>
-  </nav>
+    <button class="menu" mat-button href="/home">Home</button>
+    <button class="menu" mat-button [matMenuTriggerFor]="menu">Administrativo</button>
+    <mat-menu #menu="matMenu">
+       <button mat-menu-item><a href="/formulario">Relatórios</a></button>
+       <button mat-menu-item><a href="/cadlogin">Cadastro de login</a></button>
+       <button mat-menu-item><a href="/addcurso">Adicionar cursos</a></button>
+       <button mat-menu-item><a href="/lead">Lead</a></button>
+    </mat-menu>
+    <button class="menu" mat-button [matMenuTriggerFor]="vendedor">Vendedor</button>
+    <mat-menu #vendedor="matMenu">
+       <button mat-menu-item><a href="/cursos">Cursos</a></button>
+       <button mat-menu-item><a href="/vendas">Venda de cursos</a></button>
+    </mat-menu>
+    <button class="menu" mat-button href="/sair">Sair</button>
+</nav>
   <header class="header">
       <div class="underline">
       </div>
   </header>
+  <div>
+  <mat-form-field appearance="standard">
+    <mat-label>Search</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+  </mat-form-field>
 
-  <table mat-table [dataSource]="projects" class="mat-elevation-z8">
-
-    <ng-container matColumnDef="select">
-      <th mat-header-cell *matHeaderCellDef></th>
-      <td mat-cell *matCellDef="let row">
-        <mat-checkbox (click)="$event.stopPropagation()"
-                      (change)="$event ? selection.toggle(row) : null"
-                      [checked]="selection.isSelected(row)" id="check">
-        </mat-checkbox>
-      </td>
-    </ng-container>
+    <button  mat-raised-button href="/faleconosco"> Cadastrar Lead</button>
+  </div>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
     <ng-container matColumnDef="email">
       <th mat-header-cell *matHeaderCellDef> Email </th>
@@ -61,13 +59,31 @@
     <ng-container matColumnDef="encerrar">
       <th mat-header-cell *matHeaderCellDef> Encerrar lead </th>
       <td mat-cell *matCellDef="let projects">
-        <button onchange="document.getElementById('check').disable = !this.checked;">Encerrar Lead</button>
+        <button mat-raised-button onchange="document.getElementById('check').disable = !this.checked;">Encerrar Lead</button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="editar">
+      <th mat-header-cell *matHeaderCellDef> Editar </th>
+      <td mat-cell *matCellDef="let projects">
+        <button mat-raised-button onchange="document.getElementById('check').disable = !this.checked;">Editar</button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="deletar">
+      <th mat-header-cell *matHeaderCellDef> Deletar </th>
+      <td mat-cell *matCellDef="let projects">
+        <button mat-raised-button (click)="deletar(projects)">Deletar</button>
       </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"
         (click)="selection.toggle(row)">
+    </tr>
+
+    <tr class="mat-row">
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
     </tr>
 
   </table>
