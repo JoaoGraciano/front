@@ -7,7 +7,6 @@ import { TaskService } from "../services/task.service";
 import {SelectionModel} from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { EmailValidator } from '@angular/forms';
 
 
 
@@ -24,7 +23,7 @@ export interface CadloginComponent {
 })
 export class CadloginComponent implements OnInit {
 
-  displayedColumns: string[] = ['name', 'email', 'password'];
+  displayedColumns: string[] = ['name', 'email', 'password', 'editar', 'deletar'];
   projects:any = [];
   dataSource = new MatTableDataSource<any>();
   selection = new SelectionModel<CadloginComponent>(true, []);
@@ -41,16 +40,18 @@ export class CadloginComponent implements OnInit {
     });
   }
 
-  create() {
-    this.submitted = true;
-    if (this.project.status === "INVALID") return;
-    this.authService.signUpUser(this.project.value).subscribe((response) => {
-      this.router.navigate([""]);
-    });
-  }
+  // create() {
+  //   this.submitted = true;
+  //   if (this.project.status === "INVALID") return;
+  //   this.authService.signUpUser(this.project.value).subscribe((response) => {
+  //     this.router.navigate([""]);
+  //   });
+  // }
 
-  deletar(){
-
+  deletar(item: any) {
+    this.taskService.deleteUser(item._id).subscribe((res) => {
+      window.location.reload();
+    })
   }
 
   applyFilter($event: Event){
@@ -66,7 +67,7 @@ export class CadloginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.taskService.getContato().subscribe(
+    this.taskService.getSignUpUser().subscribe(
       (res: { projects: any; }) => {
       console.log(res);
       this.dataSource.data = res.projects;
@@ -79,9 +80,9 @@ export class CadloginComponent implements OnInit {
   openDialog(): any {
     const dialogRef = this.dialog.open(cadastrologin, {
       width: '250px',
-      data: {name: this.name, email: this.email, cidade: this.password},
+      data: {name: this.name, email: this.email, password: this.password},
     });
-    
+
   }
 
 }
@@ -89,8 +90,8 @@ export class CadloginComponent implements OnInit {
 @Component({
   selector: 'app-cadastrologin',
   templateUrl: './cadastrologin.component.html',
+  styleUrls: ['./cadlogin.component.scss']
 })
-
 export class cadastrologin {
 
   projects:any = [];
@@ -119,9 +120,9 @@ export class cadastrologin {
 
   createOrUpdate() {
     if (this.submitted = true) {
-      this.project.status === "INVALID"
-      this.authService.cadContato(this.project.value).subscribe((response) => {
-        window.location.reload();
+        this.project.status === "INVALID"
+        this.authService.signUpUser(this.project.value).subscribe((response) => {
+          window.location.reload();
       })
 
     } else {

@@ -15,6 +15,10 @@ export class TaskService {
     return this.http.get(this.URL + "/");
   }
 
+  getSignUpUser() {
+    return this.http.get<any>(this.URL + "/user");
+  }
+
   getUpdate(project: any) {
     return this.http.get<any>(this.URL + "/update");
   }
@@ -61,6 +65,10 @@ export class TaskService {
   }
 
   deleteLead(id: string) {
-    return this.http.delete(`${this.URL}/${id}`);
+    return this.http.delete(`${this.URL}/contato/${id}`);
+  }
+
+  deleteUser(id: string) {
+    return this.http.delete(`${this.URL}/user/${id}`);
   }
 }

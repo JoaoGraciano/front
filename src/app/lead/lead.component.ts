@@ -26,7 +26,7 @@ export class LeadComponent implements OnInit {
   projects:any = [];
   dataSource = new MatTableDataSource<any>();
   selection = new SelectionModel<LeadComponent>(true, []);
-  
+
 
   constructor(private taskService: TaskService, private router: Router, public dialog: MatDialog) { }
 
@@ -57,7 +57,7 @@ export class LeadComponent implements OnInit {
     })
   }
 
-  
+
 
   home(){
     this.router.navigate(['/home']);
@@ -86,9 +86,9 @@ export class LeadComponent implements OnInit {
   openDialog(): any {
     const dialogRef = this.dialog.open(CadastroComponent, {
       width: '250px',
-      data: {name: this.nome, email: this.email, cidade: this.cidade, telefone: this.telefone},
+      data: {nome: this.nome, email: this.email, cidade: this.cidade, telefone: this.telefone},
     });
-    
+
   }
 }
 
@@ -133,8 +133,8 @@ export class CadastroComponent {
 
     } else {
       console.log(this.project)
-      this.authService.updatelead(this.project).subscribe((response) => {
-        this.router.navigate(["/lead"]);
+      this.authService.updatelead(this.project).subscribe((response)  => { console.log(this.project)
+        window.location.reload();
       })
 }
   }

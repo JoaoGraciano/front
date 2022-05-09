@@ -47,6 +47,15 @@ export class AuthService {
     return this.http.put(url, project);
   }
 
+  updateUser(project: any) {
+    const url = `${this.URL}/${project._id}`;
+
+    console.log(project);
+    delete project._id;
+
+    return this.http.put(url, project);
+  }
+
   findOneUser() {
     return this.http.get<any>(this.URL + "/one");
   }

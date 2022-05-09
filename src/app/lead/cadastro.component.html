@@ -4,26 +4,27 @@
         <mat-form-field appearance="fill">
             <mat-label>Email</mat-label>
             <!-- <input matInput [(ngModel)]="data.nome"> -->
-            <input matInput [(ngModel)]="data.nome" type="E-mail" formControlName="email" placeholder="E-mail" name="txtemail" required="">
+            <input matInput [(ngModel)]="data.nome" type="E-mail" formControlName="email" placeholder="E-mail" name="txtemail" require>
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Nome</mat-label>
             <!-- <input matInput [(ngModel)]="data.email"> -->
-            <input matInput [(ngModel)]="data.email" type="Nome" formControlName="nome" placeholder="Nome" name="txtnome" required="">
+            <input matInput [(ngModel)]="data.email" type="Nome" formControlName="nome" placeholder="Nome" name="txtnome" require>
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Telefone</mat-label>
             <!-- <input matInput [(ngModel)]="data.telefone"> -->
-            <input matInput [(ngModel)]="data.telefone" type="tel" formControlName="telefone" name="phone" id="telephone" class="input phone input-validate required error placeholder" placeholder="Número para contato" autocomplete="off">
+            <input matInput [(ngModel)]="data.telefone" type="tel" formControlName="telefone" name="phone" id="telephone" class="input phone input-validate required error placeholder" placeholder="Número para contato" autocomplete="off" require>
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Cidade</mat-label>
             <!-- <input matInput [(ngModel)]="data.email"> -->
-            <input matInput [(ngModel)]="data.cidade" type="text" formControlName="cidade" placeholder="Cidade" name="txtnome" required="">
+            <input matInput [(ngModel)]="data.cidade" type="text" formControlName="cidade" placeholder="Cidade" name="txtnome" require>
         </mat-form-field>
-    </div>
+
         <div mat-dialog-actions>
-            <button mat-button (click)="onNoClick()">Cancelar</button>
-            <button mat-button mat-dialog-close class="submit" type="submit" class="btn btn-submit mt5 spacing-4" value="ENVIAR" cdkFocusInitial>Ok</button>
+            <button mat-button mat-dialog-close (click)="onNoClick()">Cancelar</button>
+            <button mat-button class="submit" type="submit" class="btn btn-submit mt5 spacing-4" value="ENVIAR" cdkFocusInitial>Ok</button>
         </div>
+      </div>
 </form>

@@ -26,6 +26,7 @@ const routes: Routes = [
   { path: 'faleconosco', component:FaleconoscoComponent},
   { path: 'lead', component:LeadComponent},
   { path: 'cadastro', component:CadastroComponent},
+  { path: 'cadastrologin', component:cadastrologin},
 ];
 
 @NgModule({

@@ -32,6 +32,7 @@ import { LeadComponent } from './lead/lead.component';
 import { CadastroComponent } from './lead/lead.component';
 import { cadastrologin } from './cadlogin/cadlogin.component';
 
+
 import {MaterialExampleModule} from '../material.module';
 import {MatNativeDateModule} from '@angular/material/core';
 
@@ -59,6 +60,7 @@ import { importType } from '@angular/compiler/src/output/output_ast';
     LeadComponent,
     CadastroComponent,
     CadloginComponent,
+    cadastrologin,
   ],
   imports: [
     BrowserModule,
@@ -85,6 +87,8 @@ import { importType } from '@angular/compiler/src/output/output_ast';
     Ng2OrderModule,
     Ng2SearchPipeModule,
     NgxPaginationModule,
+    MatFormFieldModule,
+
 
 
   ],
