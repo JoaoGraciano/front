@@ -52,8 +52,7 @@ export class TaskService {
   }
 
   updatelead(project: any) {
-    const url = `${this.URL}/${project._id}`;
-
+    const url = `${this.URL}/lead/${project._id}`;
     console.log(project);
     delete project._id;
 

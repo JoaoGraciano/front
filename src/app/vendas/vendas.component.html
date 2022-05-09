@@ -1,11 +1,8 @@
-<script src="./venda.js"></script>
-
 <body>
   <header class="header">
       <div class="faixa">
           <h1>ACESSO ADMINISTRATIVO</h1>
       </div>
-      <script src="./venda.js"></script>
   </header>
   <nav>
     <button class="menu" mat-button href="/home">Home</button>
@@ -34,7 +31,6 @@
     <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
   </mat-form-field>
 
-
     <table mat-table
        [dataSource]="dataSource" multiTemplateDataRows
        class="mat-elevation-z8" >
@@ -51,7 +47,7 @@
   <ng-container matColumnDef="expandedDetail">
     <td mat-cell *matCellDef="let projects" [attr.colspan]="displayedColumns.length">
       <div class="example-element-detail"
-           [@detailExpand]="dataSource == projects ? 'expanded' : 'collapsed'">
+           [@detailExpand]="dataSource !== projects ? 'expanded' : 'collapsed'">
         <div class="example-element-description">
           {{projects.descricao}}
         </div>

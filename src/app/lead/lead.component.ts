@@ -83,11 +83,12 @@ export class LeadComponent implements OnInit {
     this.router.navigate(['/vendas']);
   }
 
-  openDialog(): any {
+  openDialog(project: any) {
     const dialogRef = this.dialog.open(CadastroComponent, {
       width: '250px',
       data: {nome: this.nome, email: this.email, cidade: this.cidade, telefone: this.telefone},
     });
+    console.log(project)
 
   }
 }
@@ -124,16 +125,18 @@ export class CadastroComponent {
     this.dialogRef.close();
   }
 
-  createOrUpdate() {
+  createOrUpdate(project: any) {
     if (this.submitted = true) {
+      console.log(project, '231')
       this.project.status === "INVALID"
+      console.log('22')
       this.authService.cadContato(this.project.value).subscribe((response) => {
         window.location.reload();
       })
 
     } else {
-      console.log(this.project)
-      this.authService.updatelead(this.project).subscribe((response)  => { console.log(this.project)
+      console.log(project, '232')
+      this.taskService.updatelead(this.project).subscribe((response)  => {
         window.location.reload();
       })
 }

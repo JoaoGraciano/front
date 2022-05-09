@@ -4,21 +4,25 @@
         <mat-form-field appearance="fill">
             <mat-label>Email</mat-label>
 
-            <input matInput [(ngModel)]="data.email" type="E-mail" formControlName="email" placeholder="E-mail" name="txtemail" required="">
+            <input matInput type="E-mail" formControlName="email" placeholder="E-mail" name="txtemail" required="">
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Nome</mat-label>
 
-            <input matInput [(ngModel)]="data.name" type="Nome" formControlName="name" placeholder="Nome" name="txtnome" required="">
+            <input matInput type="Nome" formControlName="name" placeholder="Nome" name="txtnome" required="">
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Senha</mat-label>
 
-            <input matInput [(ngModel)]="data.password" formControlName="telefone" name="phone" id="telephone" class="input phone input-validate required error placeholder" placeholder="Número para contato" autocomplete="off">
+            <input matInput type="password" formControlName="password" name="phone" id="telephone" class="input phone input-validate required error placeholder" placeholder="Número para contato" autocomplete="off">
         </mat-form-field>
+          <mat-radio-group formControlName="permissao">
+          <mat-radio-button value="true">ADMIN</mat-radio-button>
+            <mat-radio-button value="false">USER</mat-radio-button>
+          </mat-radio-group>
+
+
+        <button mat-button mat-dialog-close (click)="onNoClick()">Cancelar</button>
+        <button mat-button class="submit" type="submit" class="btn btn-submit mt5 spacing-4" value="ENVIAR" cdkFocusInitial>Cadastrar</button>
     </div>
-        <div mat-dialog-actions>
-            <button mat-button (click)="onNoClick()">Cancelar</button>
-            <button mat-button mat-dialog-close class="submit" type="submit" class="btn btn-submit mt5 spacing-4" value="ENVIAR" cdkFocusInitial>Cadastrar</button>
-        </div>
 </form>

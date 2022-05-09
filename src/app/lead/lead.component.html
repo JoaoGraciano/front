@@ -30,7 +30,7 @@
     <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
   </mat-form-field>
 
-    <button mat-raised-button (click)="openDialog()">Cadastrar Lead</button>
+    <button mat-raised-button (click)="openDialog(projects)">Cadastrar Lead</button>
   </div>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
@@ -38,7 +38,6 @@
       <th mat-header-cell *matHeaderCellDef> Email </th>
       <td mat-cell *matCellDef="let projects"> {{projects.email}} </td>
     </ng-container>
-
 
     <ng-container matColumnDef="nome">
       <th mat-header-cell *matHeaderCellDef> Nome </th>
@@ -66,7 +65,7 @@
     <ng-container matColumnDef="editar">
       <th mat-header-cell *matHeaderCellDef> Editar </th>
       <td mat-cell *matCellDef="let projects">
-        <button mat-raised-button (click)="openDialog()">Editar</button>
+        <button mat-raised-button (click)="openDialog(projects)">Editar</button>
       </td>
     </ng-container>
 

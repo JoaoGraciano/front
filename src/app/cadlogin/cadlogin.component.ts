@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from "@angular/router";
 import { AuthService } from "src/app/services/auth.service";
@@ -7,6 +7,7 @@ import { TaskService } from "../services/task.service";
 import {SelectionModel} from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 
 
 
@@ -100,6 +101,7 @@ export class cadastrologin {
 
   project: FormGroup;
   submitted=false;
+
 
   constructor(private taskService: TaskService, public dialog: MatDialog, public dialogRef: MatDialogRef<cadastrologin>, @Inject(MAT_DIALOG_DATA) public data: CadloginComponent, private fBuilder: FormBuilder,
   private authService: AuthService, private router: Router) {

@@ -54,47 +54,6 @@ nav > button
     color: transparent;
 }
 
-// form
-// {
-//     width: 100%;
-//     max-width: 300px;
-//     margin: 50px auto;
-
-//     position:relative;
-
-//     border-radius: 15px;
-//     background:#fafafa;
-//     border: #415aaa;
-//     border-style: groove;
-//     min-height: 200px;
-//     padding: 20px;
-//     margin: none;
-
-//     align-items: center;
-//     display: flex;
-//     flex-direction: column;
-// }
-
-form > div {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-}
-
-input[type=text], input[type=number], input[type=password], input[type=email]
-{
-    background-color: rgb(255, 255, 255);
-    border-radius: 30px;
-    border: #415aaa;
-    border-style: groove;
-    color: black;
-    padding: 15px 30px;
-    text-decoration: none;
-    cursor:auto;
-    margin-bottom:10px;
-    text-align: center;
-}
-
   /* Basic styles checkbox */
   input[type="checkbox"],
   input[type="radio"] {
@@ -173,20 +132,22 @@ input[type="radio"] + label::before {
     border-radius: 50%;
   }
 
-.btn-submit
-{
-    margin-top: 30px;
-    background-color: #1a2c74;
-    border: none;
-    border-radius: 30px;
-    color: white;
-    padding: 15px 40px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-}
-
 table {
   width: 100%;
+}
+
+div > button{
+  padding-top: 15px;
+}
+
+
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+  align-items: flex-start;
+}
+
+.example-radio-button {
+  margin: 5px;
 }
