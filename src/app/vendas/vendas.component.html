@@ -77,4 +77,11 @@
     <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
   </tr>
 </table>
+
+<ul>
+  <li *ngFor="let clickedRow of clickedRows">
+    {{clickedRow.curso}}
+    {{clickedRow.valor}}
+  </li>
+</ul>
 </body>

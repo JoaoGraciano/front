@@ -29,6 +29,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LeadComponent } from './lead/lead.component';
+import { CadastroComponent } from './lead/lead.component';
+import { cadastrologin } from './cadlogin/cadlogin.component';
 
 import {MaterialExampleModule} from '../material.module';
 import {MatNativeDateModule} from '@angular/material/core';
@@ -36,6 +38,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { importType } from '@angular/compiler/src/output/output_ast';
 
 // import {TableSelectionExample} from './table-selection-example';
 
@@ -54,6 +57,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     HomeComponent,
     FaleconoscoComponent,
     LeadComponent,
+    CadastroComponent,
+    CadloginComponent,
   ],
   imports: [
     BrowserModule,

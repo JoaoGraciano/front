@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { TaskService } from "../services/task.service";
 import { Router } from '@angular/router';
 import {SelectionModel} from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { FormGroup, FormBuilder, EmailValidator } from '@angular/forms';
+import { AuthService } from "src/app/services/auth.service";
 
 
 export interface LeadComponent {
-  position: number;
   nome: string;
   email: string;
-  duvidas: string;
+  cidade: string;
   telefone: number;
 }
 
@@ -20,12 +22,13 @@ export interface LeadComponent {
 })
 export class LeadComponent implements OnInit {
 
-  displayedColumns: string[] = ['email', 'nome', 'telefone', 'duvidas', 'encerrar', 'editar', 'deletar'];
+  displayedColumns: string[] = ['email', 'nome', 'telefone', 'cidade', 'encerrar', 'editar', 'deletar'];
   projects:any = [];
   dataSource = new MatTableDataSource<any>();
   selection = new SelectionModel<LeadComponent>(true, []);
+  
 
-  constructor(private taskService: TaskService, private router: Router) { }
+  constructor(private taskService: TaskService, private router: Router, public dialog: MatDialog) { }
 
   ngOnInit(): void {
 
@@ -48,12 +51,13 @@ export class LeadComponent implements OnInit {
   }
 
   deletar(item: any) {
-    console.log(item._id)
     this.taskService.deleteLead(item._id).subscribe((res) => {
-      console.log(res)
-      this.router.navigate(['/lead']);
+      window.location.reload();
+      // this.router.navigate(['/lead']);
     })
   }
+
+  
 
   home(){
     this.router.navigate(['/home']);
@@ -78,5 +82,60 @@ export class LeadComponent implements OnInit {
   vendas(){
     this.router.navigate(['/vendas']);
   }
+
+  openDialog(): any {
+    const dialogRef = this.dialog.open(CadastroComponent, {
+      width: '250px',
+      data: {name: this.nome, email: this.email, cidade: this.cidade, telefone: this.telefone},
+    });
+    
+  }
 }
 
+@Component({
+  selector: 'app-cadastro',
+  templateUrl: './cadastro.component.html',
+})
+export class CadastroComponent {
+
+  displayedColumns: string[] = ['email', 'nome', 'telefone', 'cidade', 'encerrar', 'editar', 'deletar'];
+  projects:any = [];
+  dataSource = new MatTableDataSource<any>();
+  selection = new SelectionModel<LeadComponent>(true, []);
+
+  project: FormGroup;
+  submitted=false;
+
+  constructor(private taskService: TaskService, public dialog: MatDialog, public dialogRef: MatDialogRef<CadastroComponent>, @Inject(MAT_DIALOG_DATA) public data: LeadComponent, private fBuilder: FormBuilder,
+  private authService: AuthService, private router: Router) {
+    this.project = this.fBuilder.group({
+      email: [""],
+      nome: [""],
+      telefone: [""],
+      cidade: [""],
+    });
+
+  }
+
+  ngOnInit(): void {
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  createOrUpdate() {
+    if (this.submitted = true) {
+      this.project.status === "INVALID"
+      this.authService.cadContato(this.project.value).subscribe((response) => {
+        window.location.reload();
+      })
+
+    } else {
+      console.log(this.project)
+      this.authService.updatelead(this.project).subscribe((response) => {
+        this.router.navigate(["/lead"]);
+      })
+}
+  }
+}

@@ -31,6 +31,7 @@ export class VendasComponent implements OnInit {
   displayedColumns: string[] = ['curso', 'grau', 'duracao', 'valor'];
   projects:any = [];
   dataSource = new MatTableDataSource<any>();
+  clickedRows = new Set<PeriodicElement>();
 
 
 

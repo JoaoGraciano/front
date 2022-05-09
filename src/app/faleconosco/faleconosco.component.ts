@@ -18,14 +18,14 @@ export class FaleconoscoComponent implements OnInit {
       email: [""],
       nome: [""],
       telefone: [""],
-      duvidas: [""],
+      cidade: [""],
     });
   }
 
   ngOnInit(): void {
   }
 
-  MensagemEnviada() {
+  createOrUpdate() {
     this.submitted = true;
     if (this.project.status === "INVALID") return;
     this.authService.cadContato(this.project.value).subscribe((response) => {

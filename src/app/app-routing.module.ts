@@ -5,13 +5,13 @@ import { FormularioComponent } from './formulario/formulario.component';
 import { PagamentoComponent } from './pagamento/pagamento.component';
 import { VendasComponent } from './vendas/vendas.component';
 import { AddcursoComponent } from './addcurso/addcurso.component';
-import { CadloginComponent } from './cadlogin/cadlogin.component';
+import { cadastrologin, CadloginComponent } from './cadlogin/cadlogin.component';
 import { IndexComponent } from './index/index.component';
 import { LoginComponent } from './login/login.component';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
-import { LeadComponent } from './lead/lead.component';
+import { CadastroComponent, LeadComponent } from './lead/lead.component';
 
 const routes: Routes = [
   { path: '', component: IndexComponent },
@@ -24,7 +24,8 @@ const routes: Routes = [
   { path: 'cursos', component: CursosComponent},
   { path: 'home', component:HomeComponent},
   { path: 'faleconosco', component:FaleconoscoComponent},
-  { path: 'lead', component:LeadComponent}
+  { path: 'lead', component:LeadComponent},
+  { path: 'cadastro', component:CadastroComponent},
 ];
 
 @NgModule({

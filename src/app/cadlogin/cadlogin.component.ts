@@ -1,9 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from "@angular/router";
 import { AuthService } from "src/app/services/auth.service";
-import { TaskService } from "src/app/services/task.service";
-import { HttpErrorResponse } from "@angular/common/http";
+
+import { TaskService } from "../services/task.service";
+import {SelectionModel} from '@angular/cdk/collections';
+import { MatTableDataSource } from '@angular/material/table';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { EmailValidator } from '@angular/forms';
+
+
+
+export interface CadloginComponent {
+  name: string;
+  email: string;
+  password: string;
+}
 
 @Component({
   selector: 'app-cadlogin',
@@ -12,10 +24,15 @@ import { HttpErrorResponse } from "@angular/common/http";
 })
 export class CadloginComponent implements OnInit {
 
+  displayedColumns: string[] = ['name', 'email', 'password'];
+  projects:any = [];
+  dataSource = new MatTableDataSource<any>();
+  selection = new SelectionModel<CadloginComponent>(true, []);
+
   project: FormGroup;
   submitted=false;
 
-  constructor(private fBuilder: FormBuilder, private authService: AuthService, private router: Router) {
+  constructor(private fBuilder: FormBuilder, private authService: AuthService, private router: Router, public dialog: MatDialog, private taskService: TaskService) {
 
     this.project = this.fBuilder.group({
       name: [""],
@@ -32,12 +49,86 @@ export class CadloginComponent implements OnInit {
     });
   }
 
+  deletar(){
+
+  }
+
+  applyFilter($event: Event){
+    console.log($event,'1')
+    const filterValue = ($event.target as HTMLInputElement).value;
+    console.log(filterValue,'2');
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
   Relatorio() {
     this.submitted = true;
     this.router.navigate(["/formulario"]);
   }
 
   ngOnInit(): void {
+    this.taskService.getContato().subscribe(
+      (res: { projects: any; }) => {
+      console.log(res);
+      this.dataSource.data = res.projects;
+      this.projects = res.projects;
+    },
+    (err: any) => console.log(err)
+  );
   }
 
+  openDialog(): any {
+    const dialogRef = this.dialog.open(cadastrologin, {
+      width: '250px',
+      data: {name: this.name, email: this.email, cidade: this.password},
+    });
+    
+  }
+
+}
+
+@Component({
+  selector: 'app-cadastrologin',
+  templateUrl: './cadastrologin.component.html',
+})
+
+export class cadastrologin {
+
+  projects:any = [];
+  dataSource = new MatTableDataSource<any>();
+  selection = new SelectionModel<CadloginComponent>(true, []);
+
+  project: FormGroup;
+  submitted=false;
+
+  constructor(private taskService: TaskService, public dialog: MatDialog, public dialogRef: MatDialogRef<cadastrologin>, @Inject(MAT_DIALOG_DATA) public data: CadloginComponent, private fBuilder: FormBuilder,
+  private authService: AuthService, private router: Router) {
+    this.project = this.fBuilder.group({
+      name: [""],
+      email: [""],
+      password: [""],
+    });
+
+  }
+
+  ngOnInit(): void {
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  createOrUpdate() {
+    if (this.submitted = true) {
+      this.project.status === "INVALID"
+      this.authService.cadContato(this.project.value).subscribe((response) => {
+        window.location.reload();
+      })
+
+    } else {
+      console.log(this.project)
+      this.authService.updatelead(this.project).subscribe((response) => {
+        this.router.navigate(["/lead"]);
+      })
+}
+  }
 }

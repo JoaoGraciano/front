@@ -47,7 +47,7 @@ export class TaskService {
     return this.http.post(this.URL, project);
   }
 
-  updateProject(project: any) {
+  updatelead(project: any) {
     const url = `${this.URL}/${project._id}`;
 
     console.log(project);
