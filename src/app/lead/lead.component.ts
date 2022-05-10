@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import {SelectionModel} from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { FormGroup, FormBuilder, EmailValidator } from '@angular/forms';
+import { FormGroup, FormBuilder, EmailValidator, Validators } from '@angular/forms';
 import { AuthService } from "src/app/services/auth.service";
 
 
@@ -26,27 +26,25 @@ export class LeadComponent implements OnInit {
   projects:any = [];
   dataSource = new MatTableDataSource<any>();
   selection = new SelectionModel<LeadComponent>(true, []);
+  isUpdated: any;
+  _id: any;
+
 
 
   constructor(private taskService: TaskService, private router: Router, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-
       this.taskService.getContato().subscribe(
         (res: { projects: any; }) => {
-        console.log(res);
         this.dataSource.data = res.projects;
         this.projects = res.projects;
       },
       (err: any) => console.log(err)
     );
-
   }
 
   applyFilter($event: Event){
-    console.log($event,'1')
     const filterValue = ($event.target as HTMLInputElement).value;
-    console.log(filterValue,'2');
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
@@ -83,13 +81,11 @@ export class LeadComponent implements OnInit {
     this.router.navigate(['/vendas']);
   }
 
-  openDialog(project: any) {
+  openDialog(project: any, isUpdated = false) {
     const dialogRef = this.dialog.open(CadastroComponent, {
       width: '250px',
-      data: {nome: this.nome, email: this.email, cidade: this.cidade, telefone: this.telefone},
+      data: {...project, isUpdated}
     });
-    console.log(project)
-
   }
 }
 
@@ -106,11 +102,13 @@ export class CadastroComponent {
 
   project: FormGroup;
   submitted=false;
+  isUpdated: any;
 
   constructor(private taskService: TaskService, public dialog: MatDialog, public dialogRef: MatDialogRef<CadastroComponent>, @Inject(MAT_DIALOG_DATA) public data: LeadComponent, private fBuilder: FormBuilder,
   private authService: AuthService, private router: Router) {
     this.project = this.fBuilder.group({
-      email: [""],
+      _id:[this.data._id],
+      email: ['', Validators.email],
       nome: [""],
       telefone: [""],
       cidade: [""],
@@ -119,6 +117,8 @@ export class CadastroComponent {
   }
 
   ngOnInit(): void {
+
+    console.log(this.data)
   }
 
   onNoClick(): void {
@@ -126,17 +126,14 @@ export class CadastroComponent {
   }
 
   createOrUpdate(project: any) {
-    if (this.submitted = true) {
-      console.log(project, '231')
-      this.project.status === "INVALID"
-      console.log('22')
+    this.submitted = true
+    if (!this.data.isUpdated) {
       this.authService.cadContato(this.project.value).subscribe((response) => {
         window.location.reload();
       })
 
     } else {
-      console.log(project, '232')
-      this.taskService.updatelead(this.project).subscribe((response)  => {
+      this.taskService.updatelead(this.project.value).subscribe((response)  => {
         window.location.reload();
       })
 }

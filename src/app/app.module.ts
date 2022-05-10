@@ -1,6 +1,5 @@
 import { SelectionModel } from '@angular/cdk/collections';
 import { FaleconoscoComponent } from './faleconosco/faleconosco.component';
-import { CursosModule } from './cursos/cursos.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -25,16 +24,19 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LeadComponent } from './lead/lead.component';
 import { CadastroComponent } from './lead/lead.component';
 import { cadastrologin } from './cadlogin/cadlogin.component';
-
-
+import { CursosComponent } from './cursos/cursos.component';
+import { CursodetalheComponent } from './cursos/curso-detalhe/curso-detalhe.component';
 import {MaterialExampleModule} from '../material.module';
 import {MatNativeDateModule} from '@angular/material/core';
+import { EditvendasComponent } from './vendas/vendas.component';
+import { MatDialog } from '@angular/material/dialog';
 
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
@@ -61,11 +63,14 @@ import { importType } from '@angular/compiler/src/output/output_ast';
     CadastroComponent,
     CadloginComponent,
     cadastrologin,
+    CursosComponent,
+    CursodetalheComponent,
+    EditvendasComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CursosModule,
     IndexModule,
     FormsModule,
     HttpClientModule,
@@ -88,8 +93,7 @@ import { importType } from '@angular/compiler/src/output/output_ast';
     Ng2SearchPipeModule,
     NgxPaginationModule,
     MatFormFieldModule,
-
-
+    MatDialogModule,
 
   ],
   providers: [

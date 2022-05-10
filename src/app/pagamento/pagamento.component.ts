@@ -35,7 +35,6 @@ export class PagamentoComponent implements OnInit {
     // },0)
     // console.log(nums)
     this.projects.get('user').subscibe(JSON.stringify(localStorage.getItem('user')));
-
     this.taskService.getCadastro().subscribe(
       (res) => {
         console.log(res);

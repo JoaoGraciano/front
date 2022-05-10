@@ -1,0 +1,34 @@
+<form mat-dialog-actions action="submit" [formGroup]="form" (submit)="createOrUpdate(form)">
+  <div mat-dialog-content>
+      <p>Editar curso</p>
+      <mat-form-field appearance="fill">
+          <mat-label>Curso</mat-label>
+
+        <input matInput  id="curso" type="text" formControlName="curso" placeholder="Curso" name="curso" require>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+          <mat-label>Grau</mat-label>
+
+          <input matInput  id="grau" type="text" formControlName="grau" placeholder="Grau" name="grau" require>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+          <mat-label>Duração</mat-label>
+
+          <input matInput  type="text" formControlName="duracao" name="duracao" id="duracao" class="input phone input-validate required error placeholder" placeholder="Duração" autocomplete="off" require>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+          <mat-label>Valor</mat-label>
+
+          <input matInput  type="number" formControlName="valor" placeholder="Valor" name="valor" require>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Descrição</mat-label>
+
+        <input matInput  type="text" formControlName="descricao" placeholder="Descrição" name="descricao" require>
+    </mat-form-field>
+      <div mat-dialog-actions>
+          <button mat-button mat-dialog-close (click)="onNoClick()">Cancelar</button>
+          <button mat-button class="submit" type="submit" class="btn btn-submit mt5 spacing-4" value="ENVIAR" cdkFocusInitial>Ok</button>
+      </div>
+    </div>
+</form>

@@ -42,6 +42,14 @@ export class AuthService {
     const url = `${this.URL}/${project._id}`;
 
     console.log(project);
+
+    return this.http.put(url, project);
+  }
+
+  updateCurso(project: any) {
+    const url = `${this.URL}/${project._id}`;
+
+    console.log(project);
     delete project._id;
 
     return this.http.put(url, project);

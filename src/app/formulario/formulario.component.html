@@ -33,37 +33,37 @@
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8"  >
 
   <ng-container matColumnDef="nome" | searchFilter:searchValue >
-    <th mat-header-cell *matHeaderCellDef> No. </th>
+    <th mat-header-cell *matHeaderCellDef> Nome </th>
     <td mat-cell *matCellDef="let projects"> {{projects.nome}} </td>
   </ng-container>
 
   <ng-container matColumnDef="cidade">
-    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <th mat-header-cell *matHeaderCellDef> Cidade </th>
     <td mat-cell *matCellDef="let projects"> {{projects.cidade}} </td>
   </ng-container>
 
   <ng-container matColumnDef="cpf">
-    <th mat-header-cell *matHeaderCellDef> Weight </th>
+    <th mat-header-cell *matHeaderCellDef> CPF </th>
     <td mat-cell *matCellDef="let projects"> {{projects.cpf}} </td>
   </ng-container>
 
   <ng-container matColumnDef="idade">
-    <th mat-header-cell *matHeaderCellDef> Symbol </th>
+    <th mat-header-cell *matHeaderCellDef> Idade </th>
     <td mat-cell *matCellDef="let projects"> {{projects.idade}} </td>
   </ng-container>
 
   <ng-container matColumnDef="curso">
-    <th mat-header-cell *matHeaderCellDef> Symbol </th>
+    <th mat-header-cell *matHeaderCellDef> Curso </th>
     <td mat-cell *matCellDef="let projects"> {{projects.curso}} </td>
   </ng-container>
 
   <ng-container matColumnDef="valor">
-    <th mat-header-cell *matHeaderCellDef> Symbol </th>
+    <th mat-header-cell *matHeaderCellDef> Valor </th>
     <td mat-cell *matCellDef="let projects"> {{projects.valor}} </td>
   </ng-container>
 
   <ng-container matColumnDef="user">
-    <th mat-header-cell *matHeaderCellDef> Symbol </th>
+    <th mat-header-cell *matHeaderCellDef> Dados do vendedor </th>
     <td mat-cell *matCellDef="let projects"> {{projects.user.name}} | E-mail: {{projects.user.email}} </td>
   </ng-container>
 
