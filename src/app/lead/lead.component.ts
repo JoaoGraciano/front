@@ -131,7 +131,6 @@ export class CadastroComponent {
       this.authService.cadContato(this.project.value).subscribe((response) => {
         window.location.reload();
       })
-
     } else {
       this.taskService.updatelead(this.project.value).subscribe((response)  => {
         window.location.reload();

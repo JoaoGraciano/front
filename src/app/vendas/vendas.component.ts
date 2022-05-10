@@ -67,13 +67,6 @@ export class VendasComponent implements OnInit {
     })
   }
 
-  // update(project: any) {
-  //   console.log(project)
-  //   this.taskService.getUpdate(project);
-
-  //   this.router.navigate(['/addcurso']);
-  // }
-
   applyFilter($event: Event){
     console.log($event,'1')
     const filterValue = ($event.target as HTMLInputElement).value;
