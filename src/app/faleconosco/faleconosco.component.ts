@@ -12,6 +12,7 @@ export class FaleconoscoComponent implements OnInit {
 
   project: FormGroup;
   submitted=false;
+  
 
   constructor(private fBuilder: FormBuilder, private authService: AuthService, private router: Router) {
     this.project = this.fBuilder.group({
