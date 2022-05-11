@@ -13,6 +13,8 @@ import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
 import { CadastroComponent, LeadComponent } from './lead/lead.component';
+import { AuthenticationService } from './services/authentication.service';
+
 
 const routes: Routes = [
   { path: '', component: IndexComponent },

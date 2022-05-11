@@ -49,7 +49,7 @@ export class PagamentoComponent implements OnInit {
     //  return acc+num.value
     // },0)
     // console.log(nums)
-    // this.projects.get('user').subscibe(JSON.stringify(localStorage.getItem('user')));
+    this.projects.get('user').subscibe(JSON.stringify(localStorage.getItem('user')));
     this.taskService.getCadastro().subscribe(
       (res) => {
         console.log(res);
