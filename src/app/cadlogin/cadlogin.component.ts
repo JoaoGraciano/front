@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject, Input } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, FormsModule } from '@angular/forms';
 import { Router } from "@angular/router";
 import { AuthService } from "src/app/services/auth.service";
 
@@ -29,12 +29,13 @@ export class CadloginComponent implements OnInit {
   dataSource = new MatTableDataSource<any>();
   selection = new SelectionModel<CadloginComponent>(true, []);
 
-  project: FormGroup;
+  form: FormGroup;
+  isUpdated: any;
   submitted=false;
 
   constructor(private fBuilder: FormBuilder, private authService: AuthService, private router: Router, public dialog: MatDialog, private taskService: TaskService) {
 
-    this.project = this.fBuilder.group({
+    this.form = this.fBuilder.group({
       name: [""],
       email: [""],
       password: [""],
@@ -69,20 +70,20 @@ export class CadloginComponent implements OnInit {
 
   ngOnInit(): void {
     this.taskService.getSignUpUser().subscribe(
-      (res: { projects: any; }) => {
-      console.log(res);
-      this.dataSource.data = res.projects;
-      this.projects = res.projects;
+      (res:any) => {
+        this.dataSource.data = res.projects;
+        this.projects = res.projects;
     },
     (err: any) => console.log(err)
   );
   }
 
-  openDialog(): any {
+  openDialog(form: any, isUpdated = false): any {
     const dialogRef = this.dialog.open(cadastrologin, {
       width: '250px',
-      data: {name: this.name, email: this.email, password: this.password},
+      data: {...this.projects, isUpdated}
     });
+    console.log(this.projects,'32')
 
   }
 
@@ -99,13 +100,14 @@ export class cadastrologin {
   dataSource = new MatTableDataSource<any>();
   selection = new SelectionModel<CadloginComponent>(true, []);
 
-  project: FormGroup;
+  form: FormGroup;
   submitted=false;
+  isUpdated: any;
 
-
-  constructor(private taskService: TaskService, public dialog: MatDialog, public dialogRef: MatDialogRef<cadastrologin>, @Inject(MAT_DIALOG_DATA) public data: CadloginComponent, private fBuilder: FormBuilder,
+  constructor(private taskService: TaskService, public dialog: MatDialog, public dialogRef: MatDialogRef<cadastrologin>, @Inject(MAT_DIALOG_DATA) public data: any, private fBuilder: FormBuilder,
   private authService: AuthService, private router: Router) {
-    this.project = this.fBuilder.group({
+    this.form = this.fBuilder.group({
+      _id:[this.data._id],
       name: [""],
       email: [""],
       password: [""],
@@ -114,24 +116,30 @@ export class cadastrologin {
   }
 
   ngOnInit(): void {
+    // if (this.data?.isUpdated) {
+    //   console.log(this.data,'1111')
+    //   this.form.get("name")?.patchValue(this.data.name)
+    //   this.form.get("email")?.patchValue(this.data.email)
+    //   this.form.get("password")?.patchValue(this.data.password)
+    // } else {
+    //   this.form.reset()
+    // }
   }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
-  createOrUpdate() {
-    if (this.submitted = true) {
-        this.project.status === "INVALID"
-        this.authService.signUpUser(this.project.value).subscribe((response) => {
+  createOrUpdate(form: any) {
+    this.submitted = true
+    if (!this.data.isUpdated) {
+        this.authService.signUpUser(this.form.value).subscribe((response) => {
           window.location.reload();
       })
-
     } else {
-      console.log(this.project)
-      this.authService.updatelead(this.project).subscribe((response) => {
-        this.router.navigate(["/lead"]);
+      this.taskService.getSignUpUser().subscribe((response) => {
+        window.location.reload();
       })
 }
-  }
+}
 }

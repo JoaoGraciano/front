@@ -51,6 +51,13 @@ export class TaskService {
     return this.http.post(this.URL, project);
   }
 
+  updateLogin(project: any) {
+    const url = `${this.URL}/updateUser/${project._id}`;
+    console.log(project);
+
+    return this.http.put(url, project);
+  }
+
   updatelead(project: any) {
     const url = `${this.URL}/lead/${project._id}`;
     console.log(project);

@@ -45,7 +45,7 @@
         <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
       </mat-form-field>
 
-        <button mat-raised-button (click)="openDialog()">Cadastrar funcionario</button>
+        <button mat-raised-button (click)="openDialog(form, false)">Cadastrar funcionario</button>
       </div>
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
@@ -62,7 +62,7 @@
 
         <ng-container matColumnDef="password">
           <th mat-header-cell *matHeaderCellDef> Permissão </th>
-          <td mat-cell *matCellDef="let projects">{{projects.password}}</td>
+          <td mat-cell *matCellDef="let projects"></td>
         </ng-container>
 
         <ng-container matColumnDef="encerrar">
@@ -75,7 +75,7 @@
         <ng-container matColumnDef="editar">
           <th mat-header-cell *matHeaderCellDef> Editar </th>
           <td mat-cell *matCellDef="let projects">
-            <button mat-raised-button (click)="openDialog()">Editar</button>
+            <button mat-raised-button (click)="openDialog(form, true)">Editar</button>
           </td>
         </ng-container>
 

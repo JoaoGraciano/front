@@ -103,7 +103,6 @@ export class EditvendasComponent {
   submitted=false;
   isUpdated: any;
   authService: any;
-  project: any;
 
   constructor(private taskService: TaskService, public dialog: MatDialog, public dialogRef: MatDialogRef<VendasComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private fBuilder: FormBuilder, private router: Router) {
     this.form = this.fBuilder.group({
@@ -118,7 +117,7 @@ export class EditvendasComponent {
 
   ngOnInit(): void {
     if (this.data?.isUpdated) {
-      console.log(this.data)
+      console.log(this.data,'1111')
       this.form.get("curso")?.patchValue(this.data.curso)
       this.form.get("grau")?.patchValue(this.data.grau)
       this.form.get("duracao")?.patchValue(this.data.duracao)
