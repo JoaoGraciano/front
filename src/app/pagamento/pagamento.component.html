@@ -35,39 +35,39 @@
            <button type="submit" class="btn btn-submit mt5 spacing-4" value="ENVIAR">VENDER</button>
     </form> -->
 
-    <form class="example-form">
+    <form [formGroup]="project" class="example-form">
 
-      <table class="example-full-width" cellspacing="0"><tr>
+      <table class="example-full-width" cellspacing="0" ><tr>
         <td><mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Nome</mat-label>
-          <input matInput>
+          <input formControlName="nome" matInput>
         </mat-form-field></td>
       </tr></table>
 
       <p>
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Cidade</mat-label>
-          <textarea matInput placeholder="Ex. 100 Main St" rows="1"  size="40" ></textarea>
+          <textarea formControlName="cidade" matInput placeholder="Ex. 100 Main St" rows="1"  size="40" ></textarea>
         </mat-form-field>
       </p>
       <table class="example-full-width" cellspacing="0"><tr>
         <td><mat-form-field class="example-full-width" appearance="fill">
           <mat-label>CPF</mat-label>
-          <input matInput placeholder="Ex. San Francisco">
+          <input formControlName="cpf" matInput placeholder="Ex. San Francisco">
         </mat-form-field></td>
         <td><mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Idade</mat-label>
-          <input matInput placeholder="Ex. California">
+          <input formControlName="idade" matInput placeholder="Ex. California">
         </mat-form-field></td>
-        <td><mat-form-field class="example-full-width" appearance="fill">
+        <!-- <td><mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Valor pago</mat-label>
           <input matInput #postalCode maxlength="8" placeholder="Ex. 94105">
           <mat-hint align="end"> / 8</mat-hint>
-        </mat-form-field></td>
+        </mat-form-field></td> -->
       </tr></table>
     </form>
 <div>
-    <table mat-table [dataSource]="projects" class="mat-elevation-z8 demo-table">
+    <table [formGroup]="project" mat-table [dataSource]="projects" class="mat-elevation-z8 demo-table">
 
       <ng-container matColumnDef="curso">
         <th mat-header-cell *matHeaderCellDef>Curso</th>
@@ -88,22 +88,23 @@
       ></tr>
     </table>
 
-    <ul>
-      <!-- <li *ngFor="let clickedRow of clickedRows">
+    <ul [formGroup]="project">
+      <!-- <li *ngFor="let clickedRow of clickedRows" formControlName="curso">
       {{clickedRow.curso}}
       </li> -->
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Total</mat-label>
-        <input matInput disabled value="{{valor_total | currency: 'BRL'}}">
+        <input  matInput disabled value="{{valor_total | currency: 'BRL'}}">
       </mat-form-field>
-      <mat-form-field class="example-full-width" appearance="fill">
+      <!-- <mat-form-field class="example-full-width" appearance="fill">
         <mat-label id="paidValue">Valor pago</mat-label>
-        <input matInput placeholder="Ex. R$1000.00">
+        <input formControlName="total_pago" matInput placeholder="Ex. R$1000.00">
       </mat-form-field>
       <mat-form-field  appearance="fill" class="example-full-width">
         <mat-label value="{{troco}}">Troco </mat-label>
         <input matInput disabled type="text">
-      </mat-form-field>
+      </mat-form-field> -->
+      <button mat-raised-button (click)="create()" class="btn btn-submit mt5 spacing-4" value="ENVIAR">VENDER</button>
     </ul>
   </div>
 </body>

@@ -67,6 +67,7 @@ import { importType } from '@angular/compiler/src/output/output_ast';
     CursodetalheComponent,
     EditvendasComponent,
 
+
   ],
   imports: [
     BrowserModule,

@@ -1,18 +1,18 @@
-// import { Injectable } from '@angular/core';
-// import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
-// import { User } from './user';
-// import { environment } from 'src/environments/environment';
+import { User } from './user';
+import { environment } from 'src/environments/environment';
 
-// @Injectable({ providedIn: 'root' })
-// export class UserService {
-//     constructor(private http: HttpClient) { }
+@Injectable({ providedIn: 'root' })
+export class UserService {
+    constructor(private http: HttpClient) { }
 
-//     getAll() {
-//         return this.http.get<User[]>(`${environment.apiUrl}/users`);
-//     }
+    getAll() {
+        return this.http.get<User[]>(`${environment.apiUrl}/users`);
+    }
 
-//     getById(id: number) {
-//         return this.http.get<User>(`${environment.apiUrl}/users/${id}`);
-//     }
-// }
+    getById(id: number) {
+        return this.http.get<User>(`${environment.apiUrl}/users/${id}`);
+    }
+}

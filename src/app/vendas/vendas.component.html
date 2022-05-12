@@ -53,8 +53,7 @@
         </div>
         <div>
           <button mat-raised-button (click)="deletar(projects)">Deletar</button>
-          <button mat-raised-button (click)="openDialog(projects)">Atualizar</button>
-          <button mat-raised-button (click)="vendas(projects)">Vender</button>
+          <button mat-raised-button (click)="openDialog(projects, true)">Atualizar</button>
           <button mat-raised-button>Adicionar a venda</button>
         </div>
       </div>
@@ -73,11 +72,6 @@
     <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
   </tr>
 </table>
+<button mat-raised-button (click)="vendas(projects)">Vender</button>
 
-<ul>
-  <li *ngFor="let clickedRow of clickedRows">
-    {{clickedRow.curso}}
-    {{clickedRow.valor}}
-  </li>
-</ul>
 </body>
