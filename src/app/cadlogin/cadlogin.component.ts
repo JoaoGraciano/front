@@ -81,10 +81,9 @@ export class CadloginComponent implements OnInit {
   openDialog(form: any, isUpdated = false): any {
     const dialogRef = this.dialog.open(cadastrologin, {
       width: '250px',
-      data: {...this.projects, isUpdated}
+      data: {... this.projects ,form, isUpdated}
     });
-    console.log(this.projects,'32')
-
+    console.log(form,'32')
   }
 
 }
@@ -116,14 +115,15 @@ export class cadastrologin {
   }
 
   ngOnInit(): void {
-    // if (this.data?.isUpdated) {
-    //   console.log(this.data,'1111')
-    //   this.form.get("name")?.patchValue(this.data.name)
-    //   this.form.get("email")?.patchValue(this.data.email)
-    //   this.form.get("password")?.patchValue(this.data.password)
-    // } else {
-    //   this.form.reset()
-    // }
+    if (this.data?.isUpdated) {
+      console.log(this.data,'1111')
+      console.log(this.projects,'231')
+      this.form.get("name")?.patchValue(this.data.name)
+      this.form.get("email")?.patchValue(this.data.email)
+      this.form.get("password")?.patchValue(this.data.password)
+    } else {
+      this.form.reset()
+    }
   }
 
   onNoClick(): void {
