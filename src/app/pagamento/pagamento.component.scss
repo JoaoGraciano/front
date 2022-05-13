@@ -72,7 +72,7 @@ form
     margin: 50px auto;
 
     position:relative;
-    
+
     background:#fafafa;
     border: #415aaa;
     border-style: groove;
@@ -113,4 +113,23 @@ tr.mat-footer-row {
 
 td {
   padding-right: 8px;
+}
+
+.demo-table {
+  width: 100%;
+}
+
+.mat-row .mat-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  cursor: pointer;
+}
+
+.mat-row:hover .mat-cell {
+  border-color: #2784b9;
+}
+
+.demo-row-is-clicked {
+  font-weight: bold;
+  background-image: linear-gradient(to left, #ffffff, #ffffff,#3bd1d9, #2784b9);
 }

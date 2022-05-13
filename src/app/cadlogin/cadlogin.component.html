@@ -12,12 +12,11 @@
          <button mat-menu-item><a href="/formulario">Relatórios</a></button>
          <button mat-menu-item><a href="/cadlogin">Cadastro de login</a></button>
          <button mat-menu-item><a href="/addcurso">Adicionar cursos</a></button>
-         <button mat-menu-item><a href="/lead">Lead</a></button>
       </mat-menu>
       <button class="menu" mat-button [matMenuTriggerFor]="vendedor">Vendedor</button>
       <mat-menu #vendedor="matMenu">
-         <button mat-menu-item><a href="/cursos">Cursos</a></button>
-         <button mat-menu-item><a href="/vendas">Venda de cursos</a></button>
+        <button mat-menu-item><a href="/lead">Lead</a></button>
+        <button mat-menu-item><a href="/vendas">Venda de cursos</a></button>
       </mat-menu>
       <button class="menu" mat-button href="/sair">Sair</button>
   </nav>

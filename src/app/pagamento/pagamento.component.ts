@@ -11,7 +11,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 
 export interface PeriodicElement {
   nome: string;
-  valorPago: number;
+  // valorPago: number;
   curso: string;
   valor: number;
   enabled: boolean;
@@ -35,12 +35,14 @@ export class PagamentoComponent implements OnInit {
   clickedRows = new Set<PeriodicElement>();
   valor_total = 0
   disableSelect = new FormControl(false);
-  troco = 0
-  paidValue = 0
+  troco = 0;
+  valorPago = 0;
   form: any;
   dialog: any;
   isUpdated: any;
   _id: any;
+  selectedCourses: PeriodicElement[] = [];
+  subtotal = 0;
 
 
 
@@ -53,17 +55,22 @@ export class PagamentoComponent implements OnInit {
       idade: [""],
       clickedRows: [""],
       valor_total: [""],
-      total_pago: 0,
-      troco: 0,
+      valorPago: [""],
+      troco: [""],
       user: [""],
     });
+    // this.form = new FormGroup({
+    //   valorPago: new FormControl({ value: 0 }),
+    //   troco: new FormControl({ value: 0, disabled: true }),
+    // });
   }
   ngOnInit() {
     this.taskService.getCadastro().subscribe(
       (res) => {
-        console.log(res);
+        // console.log(res);
 
         this.projects = res.projects;
+
       },
       (err) => console.log(err)
     );
@@ -79,39 +86,37 @@ export class PagamentoComponent implements OnInit {
     console.log(row)
     if (add) {
       row.enabled = true;
+      const array = Array.from(this.clickedRows);
+      const curso = array;
       this.valor_total += row.valor;
+      console.log(curso)
       this.clickedRows.add(row);
-      const set = new Set ([this.clickedRows])
-      const array = Array.from(set)
-      console.log(array)
-      console.log(this.clickedRows,'1')
     } else {
       row.enabled = false;
       this.clickedRows.delete(row);
       this.valor_total -= row.valor;
     }
-
+    this.project.patchValue({valor_total: this.valor_total})
   }
 
-  calculoTroco() {
-    let valor = this.form.get('valor')?.value as number;
-    let troco = valor -= this.valor_total;
-    this.form.patchValue({
-      troco: troco,
+  selectCourse($event: any) {
+    const valorPago = ($event.target as HTMLInputElement).value
+    this.selectedCourses = [...this.clickedRows];
+    // console.log(this.form.get('valorPago').value)
+
+    console.log(valorPago)
+    this.troco = parseInt(valorPago) - this.valor_total;
+    this.project.patchValue({
+      troco: this.troco,
     });
-    console.log(troco)
   }
-
 
   create() {
     this.submitted = true;
     if (this.project.status === "INVALID")
-    console.log(this.project,'1')
-    console.log(this.project.status,'2')
-    console.log(this.valor_total,'3')
-     console.log(this.clickedRows,'4')
     this.authService.venda(this.project.value).subscribe((response) => {
     });
+    console.log(this.project.value,'7')
   }
 }
 

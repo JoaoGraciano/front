@@ -11,11 +11,10 @@
        <button mat-menu-item><a href="/formulario">Relatórios</a></button>
        <button mat-menu-item><a href="/cadlogin">Cadastro de login</a></button>
        <button mat-menu-item><a href="/addcurso">Adicionar cursos</a></button>
-       <button mat-menu-item><a href="/lead">Lead</a></button>
     </mat-menu>
     <button class="menu" mat-button [matMenuTriggerFor]="vendedor">Vendedor</button>
     <mat-menu #vendedor="matMenu">
-       <button mat-menu-item><a href="/cursos">Cursos</a></button>
+      <button mat-menu-item><a href="/lead">Lead</a></button>
        <button mat-menu-item><a href="/vendas">Venda de cursos</a></button>
     </mat-menu>
     <button class="menu" mat-button href="/sair">Sair</button>
@@ -94,16 +93,16 @@
       </li> -->
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Total</mat-label>
-        <input  matInput disabled value="{{valor_total | currency: 'BRL'}}">
+        <input  matInput value="{{valor_total | currency: 'BRL'}}">
       </mat-form-field>
-      <!-- <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label id="paidValue">Valor pago</mat-label>
-        <input formControlName="total_pago" matInput placeholder="Ex. R$1000.00">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label id="valorPago">Valor pago</mat-label>
+        <input (keyup)="selectCourse($event)" formControlName="valorPago" value="{{valorPago| currency: 'BRL'}}" matInput placeholder="Ex. R$1000.00">
       </mat-form-field>
       <mat-form-field  appearance="fill" class="example-full-width">
-        <mat-label value="{{troco}}">Troco </mat-label>
-        <input matInput disabled type="text">
-      </mat-form-field> -->
+        <mat-label >Troco </mat-label>
+        <input matInput value="{{troco | currency: 'BRL'}}" formControlName="troco" type="text">
+      </mat-form-field>
       <button mat-raised-button (click)="create()" class="btn btn-submit mt5 spacing-4" value="ENVIAR">VENDER</button>
     </ul>
   </div>
