@@ -74,7 +74,7 @@ form
     position:relative;
 
     background:#fafafa;
-    border: #415aaa;
+    border: #3bd1d9;
     border-style: groove;
     min-height: 200px;
     padding: 20px;
@@ -130,6 +130,6 @@ td {
 }
 
 .demo-row-is-clicked {
-  font-weight: bold;
+  // font-weight: bold;
   background-image: linear-gradient(to left, #ffffff, #ffffff,#3bd1d9, #2784b9);
 }
