@@ -81,7 +81,6 @@ export class VendasComponent implements OnInit {
       width: '250px',
       data: {...project, isUpdated}
     });
-
   }
 }
 
