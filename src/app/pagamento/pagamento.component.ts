@@ -53,7 +53,7 @@ export class PagamentoComponent implements OnInit {
       cpf:[""],
       cidade: [""],
       idade: [""],
-      clickedRows: [""],
+      cursos: [""],
       valor_total: [""],
       valorPago: [""],
       troco: [""],
@@ -68,26 +68,20 @@ export class PagamentoComponent implements OnInit {
     this.taskService.getCadastro().subscribe(
       (res) => {
         // console.log(res);
-
         this.projects = res.projects;
-
       },
       (err) => console.log(err)
     );
     this.projects.get('user').subscibe(JSON.stringify(localStorage.getItem('user')));
   }
   // ----------------------------------------------------------------------------------------
-  // ----------------------------------------------------------------------------------------
-  // ----------------------------------------------------------------------------------------
-  // ----------------------------------------------------------------------------------------
-
 
   addAndRemoveClassRow(row: PeriodicElement, add = true) {
     console.log(row)
     if (add) {
-      row.enabled = true;
-      const array = Array.from(this.clickedRows);
+      let array = Array.from(this.clickedRows);
       const curso = array;
+      row.enabled = true;
       this.valor_total += row.valor;
       console.log(curso)
       this.clickedRows.add(row);
