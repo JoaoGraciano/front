@@ -144,12 +144,3 @@ export class EditvendasComponent {
 }
   }
   }
-
-
-  // {
-  //   this.submitted = true
-  //     this.taskService.updateCurso(this.form.value).subscribe((response)  => {
-  //       window.location.reload();
-  //     })
-
-  // }

@@ -12,6 +12,7 @@ export interface PeriodicElement {
   curso: string;
   valor: number;
   user: object;
+  createdAt: number;
 }
 
 
@@ -23,7 +24,7 @@ export interface PeriodicElement {
 })
 export class FormularioComponent implements OnInit {
 
-  displayedColumns: string[] = ['nome', 'cidade', 'cpf', 'idade', 'curso', 'valor'];
+  displayedColumns: string[] = ['nome', 'cidade', 'cpf', 'idade', 'curso', 'valor', 'user','createdAt'];
   projects:any = [];
   dataSource = new MatTableDataSource<any>();
 

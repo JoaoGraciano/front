@@ -3,22 +3,19 @@ import { FormGroup, FormBuilder, FormControl, EmailValidator, Validators  } from
 import { Router } from "@angular/router";
 import { AuthService } from "src/app/services/auth.service";
 import { TaskService } from "../services/task.service";
-import {SelectionModel} from '@angular/cdk/collections';
-import { MatTableDataSource } from '@angular/material/table';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 
 
 export interface PeriodicElement {
   nome: string;
-  // valorPago: number;
-  curso: string;
+  valorPago: number;
+  curso: Array<any>;
+  email: string;
   valor: number;
   enabled: boolean;
   clickedrows: string;
   valor_total: number;
 }
-
 
 @Component({
   selector: 'app-pagamento',
@@ -27,6 +24,7 @@ export interface PeriodicElement {
 })
 export class PagamentoComponent implements OnInit {
 
+  email = new FormControl('', [Validators.required, Validators.email]);
   displayedColumns: string[] = ['curso', 'valor'];
   projects:any = [];
   project: FormGroup;
@@ -54,6 +52,7 @@ export class PagamentoComponent implements OnInit {
       cidade: [""],
       idade: [""],
       cursos: [""],
+      email: [""],
       valor_total: [""],
       valorPago: [""],
       troco: [""],
@@ -79,11 +78,15 @@ export class PagamentoComponent implements OnInit {
   addAndRemoveClassRow(row: PeriodicElement, add = true) {
     console.log(row)
     if (add) {
-      let array = Array.from(this.clickedRows);
-      const curso = array;
+      // let array = Array.from(this.clickedRows);
+      // var curso = array;
+      const set = new Set (['cursos']);
+      Array.from(set);
+      console.log(set)
       row.enabled = true;
+      console.log(this.clickedRows)
       this.valor_total += row.valor;
-      console.log(curso)
+
       this.clickedRows.add(row);
     } else {
       row.enabled = false;
@@ -96,7 +99,6 @@ export class PagamentoComponent implements OnInit {
   selectCourse($event: any) {
     const valorPago = ($event.target as HTMLInputElement).value
     this.selectedCourses = [...this.clickedRows];
-    // console.log(this.form.get('valorPago').value)
 
     console.log(valorPago)
     this.troco = parseInt(valorPago) - this.valor_total;
@@ -106,11 +108,10 @@ export class PagamentoComponent implements OnInit {
   }
 
   create() {
-    this.submitted = true;
-    if (this.project.status === "INVALID")
+    if (this.submitted = true)
     this.authService.venda(this.project.value).subscribe((response) => {
-    });
-    console.log(this.project.value,'7')
+      // window.location.reload();
+    })
   }
 }
 

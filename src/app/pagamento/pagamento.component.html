@@ -34,27 +34,32 @@
         </mat-form-field></td>
       </tr></table>
 
-      <table>
+      <table class="example-full-width" cellspacing="0"> <tr> <td>
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Cidade</mat-label>
-          <textarea formControlName="cidade" matInput placeholder="Ex. 100 Main St" rows="1"  size="40" ></textarea>
-        </mat-form-field>
+          <input formControlName="cidade" matInput placeholder="Ex. 100 Main St" rows="1"  size="40">
+        </mat-form-field></td></tr>
       </table>
+
       <table class="example-full-width" cellspacing="0"><tr>
         <td><mat-form-field class="example-full-width" appearance="fill">
           <mat-label>CPF</mat-label>
-          <input formControlName="cpf" matInput placeholder="Ex. San Francisco">
+          <input formControlName="cpf" matInput placeholder="Ex. San Francisco" required>
         </mat-form-field></td>
-        <td><mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Idade</mat-label>
-          <input formControlName="idade" matInput placeholder="Ex. California">
-        </mat-form-field></td>
-        <!-- <td><mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Valor pago</mat-label>
-          <input matInput #postalCode maxlength="8" placeholder="Ex. 94105">
-          <mat-hint align="end"> / 8</mat-hint>
-        </mat-form-field></td> -->
       </tr></table>
+
+      <table class="example-full-width" cellspacing="0"><tr>
+      <td><mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Idade</mat-label>
+        <input formControlName="idade" matInput placeholder="Ex. California" required>
+      </mat-form-field></td></tr></table>
+
+      <table class="example-full-width" cellspacing="0"><tr>
+      <td><mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>E-mail</mat-label>
+        <input formControlName="email" matInput placeholder="exemplo@exemplo.com" required>
+        <mat-error *ngIf="email.invalid"></mat-error>
+      </mat-form-field></td></tr></table>
     </form>
 <div>
     <table [formGroup]="project" mat-table [dataSource]="projects" class="mat-elevation-z8 demo-table">

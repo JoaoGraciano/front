@@ -1,3 +1,4 @@
+import { CadAlunoComponent } from './cadalunos/cadalunos.component';
 import { CursodetalheComponent } from './cursos/curso-detalhe/curso-detalhe.component';
 import { FaleconoscoComponent } from './faleconosco/faleconosco.component';
 import { HomeComponent } from './home/home.component';
@@ -13,8 +14,9 @@ import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
 import { CadastroComponent, LeadComponent } from './lead/lead.component';
-// import { AuthenticationService } from './services/authentication.service';
-
+import { AlunosComponent } from './alunos/alunos.component';
+import { MatriculaComponent } from './matricula/matricula.component';
+import { InfoAlunoComponent } from './alunos/alunos.component';
 
 const routes: Routes = [
   { path: '', component: IndexComponent },
@@ -33,6 +35,10 @@ const routes: Routes = [
   { path: 'cursos', component:CursosComponent},
   { path: 'curso-detalhe', component:CursodetalheComponent},
   { path: 'editvenda', component: EditvendasComponent },
+  { path: 'alunos', component: AlunosComponent},
+  { path: 'matricula', component: MatriculaComponent},
+  { path: 'cadaluno', component: CadAlunoComponent},
+  { path: 'infoaluno', component: InfoAlunoComponent},
 ];
 
 @NgModule({

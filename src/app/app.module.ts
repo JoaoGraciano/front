@@ -37,6 +37,10 @@ import {MaterialExampleModule} from '../material.module';
 import {MatNativeDateModule} from '@angular/material/core';
 import { EditvendasComponent } from './vendas/vendas.component';
 import { MatDialog } from '@angular/material/dialog';
+import { AlunosComponent, InfoAlunoComponent } from './alunos/alunos.component';
+import { MatriculaComponent } from './matricula/matricula.component';
+import { CadAlunoComponent } from './cadalunos/cadalunos.component';
+
 
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
@@ -66,8 +70,10 @@ import { importType } from '@angular/compiler/src/output/output_ast';
     CursosComponent,
     CursodetalheComponent,
     EditvendasComponent,
-
-
+    AlunosComponent,
+    MatriculaComponent,
+    CadAlunoComponent,
+    InfoAlunoComponent,
   ],
   imports: [
     BrowserModule,

@@ -19,7 +19,12 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
 
   signUpUser(user:IUser) {
+    console.log('1111')
     return this.http.post<any>(this.URL + "/register", user);
+  }
+
+  cadAluno(user:IUser) {
+    return this.http.post<any>(this.URL + "/aluno", user);
   }
 
   cadCurse(user:IUser) {
@@ -31,6 +36,7 @@ export class AuthService {
   }
 
   venda(user:IUser) {
+    console.log('1111')
     return this.http.post<any>(this.URL + "/venda", user);
   }
 

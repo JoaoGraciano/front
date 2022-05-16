@@ -61,6 +61,11 @@
     <td mat-cell *matCellDef="let projects"> {{projects.valor_total}} </td>
   </ng-container>
 
+  <ng-container matColumnDef="createdAt">
+    <th mat-header-cell *matHeaderCellDef> Data da venda </th>
+    <td mat-cell *matCellDef="let projects"> {{projects.createdAt | date: "medium"}} </td>
+  </ng-container>
+
   <ng-container matColumnDef="user">
     <th mat-header-cell *matHeaderCellDef> Dados do vendedor </th>
     <td mat-cell *matCellDef="let projects"> {{projects.user.name}} | E-mail: {{projects.user.email}} </td>

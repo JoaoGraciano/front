@@ -19,6 +19,10 @@ export class TaskService {
     return this.http.get<any>(this.URL + "/user");
   }
 
+  getAluno() {
+    return this.http.get<any>(this.URL + "/aluno");
+  }
+
   getUpdate(project: any) {
     return this.http.get<any>(this.URL + "/update");
   }
@@ -53,6 +57,13 @@ export class TaskService {
 
   updateLogin(project: any) {
     const url = `${this.URL}/updateUser/${project._id}`;
+    console.log(project);
+
+    return this.http.put(url, project);
+  }
+
+  updateAluno(project: any) {
+    const url = `${this.URL}/updateAlunos/${project._id}`;
     console.log(project);
 
     return this.http.put(url, project);
