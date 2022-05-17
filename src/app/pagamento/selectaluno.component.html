@@ -1,15 +1,31 @@
-<body>
-  <table mat-table [dataSource]="projects" class="mat-elevation-z8">
+<form class="example-form">
+    <mat-form-field appearance="standard">
+      <mat-label>Search</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+    </mat-form-field>
 
-    <ng-container matColumnDef="nome">
-      <th mat-header-cell *matHeaderCellDef> Nome </th>
-      <td mat-cell *matCellDef="let project"> {{project.curso}} </td>
-    </ng-container>
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="nome">
+        <mat-header-cell mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell mat-cell *matCellDef="let projects"> {{projects.nome}} </mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="cpf">
-      <th mat-header-cell *matHeaderCellDef> CPF </th>
-      <td mat-cell *matCellDef="let project"> {{project.cpf}} </td>
-    </ng-container>
-  </table>
+      <ng-container matColumnDef="cpf">
+        <mat-header-cell mat-header-cell *matHeaderCellDef> CPF </mat-header-cell>
+        <mat-cell mat-cell *matCellDef="let projects"> {{projects.cpf}} </mat-cell>
+      </ng-container>
 
-</body>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <!-- <mat-row matRipple *matRowDef="let row; columns: displayedColumns;"></mat-row> -->
+
+      <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr> -->
+      <tr
+        mat-row
+        (click)="addAndRemoveClassRow(row,!row.enabled)"
+        [class.demo-row-is-clicked]="clickedRows.has(row)"
+        *matRowDef="let row; columns: displayedColumns;"
+      ></tr>
+    </mat-table>
+
+    <button mat-button (click)="openDialog(form, false)">Cadastrar aluno</button>
+</form>

@@ -4,9 +4,9 @@ import { Router } from "@angular/router";
 import { AuthService } from "src/app/services/auth.service";
 
 import { TaskService } from "../services/task.service";
-import {SelectionModel} from '@angular/cdk/collections';
+import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-cadalunocomponent',

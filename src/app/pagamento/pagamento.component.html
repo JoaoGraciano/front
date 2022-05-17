@@ -26,6 +26,7 @@
 <body>
 
     <form [formGroup]="project" class="example-form">
+      <button mat-button (click)="openDialog()">Selecionar aluno</button>
 
       <table class="example-full-width" cellspacing="0" ><tr>
         <td><mat-form-field class="example-full-width" appearance="fill">
@@ -34,7 +35,7 @@
         </mat-form-field></td>
       </tr></table>
 
-      <table class="example-full-width" cellspacing="0"> <tr> <td>
+      <!-- <table class="example-full-width" cellspacing="0"> <tr> <td>
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Cidade</mat-label>
           <input formControlName="cidade" matInput placeholder="Ex. 100 Main St" rows="1"  size="40">
@@ -59,20 +60,10 @@
         <mat-label>E-mail</mat-label>
         <input formControlName="email" matInput placeholder="exemplo@exemplo.com" required>
         <mat-error *ngIf="email.invalid"></mat-error>
-      </mat-form-field></td></tr></table>
+      </mat-form-field></td></tr></table> -->
     </form>
 
-    <!-- <section class="example-section" [formGroup]="project">
-      <p><mat-checkbox formControlName="project">Curso</mat-checkbox></p>
-      <p><mat-checkbox formControlName="nome">Nome</mat-checkbox></p>
-      <p><mat-checkbox formControlName="cidade">Cidade</mat-checkbox></p>
-    </section>
-    <section class="example-section" [formGroup]="project">
-      <h4>You chose:</h4>
-      {{project.value | json}}
-    </section> -->
 
-    <button mat-button (click)="openDialog()">Selecionar aluno</button>
 
 
     <!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
