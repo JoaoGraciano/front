@@ -3,8 +3,8 @@ import { FormGroup, FormBuilder, FormControl, EmailValidator, Validators  } from
 import { Router } from "@angular/router";
 import { AuthService } from "src/app/services/auth.service";
 import { TaskService } from "../services/task.service";
-
-
+import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
 
 export interface PeriodicElement {
   nome: string;
@@ -31,42 +31,41 @@ export class PagamentoComponent implements OnInit {
   dataSource = TaskService;
   submitted = false;
   clickedRows = new Set<PeriodicElement>();
-  valor_total = 0
+  valor_total = 0;
   disableSelect = new FormControl(false);
   troco = 0;
   valorPago = 0;
   form: any;
-  dialog: any;
   isUpdated: any;
   _id: any;
   selectedCourses: PeriodicElement[] = [];
   subtotal = 0;
+  FormGroup: FormGroup;
 
+  constructor(private fBuilder: FormBuilder, private authService: AuthService, private router: Router, private taskService: TaskService, fb: FormBuilder, public dialog: MatDialog) {
 
-
-  constructor(private fBuilder: FormBuilder, private authService: AuthService, private router: Router, private taskService: TaskService) {
+    this.FormGroup = fb.group({
+      curso: false,
+      nome: false,
+      cidade: false,
+    });
 
    this.project = this.fBuilder.group({
       nome: [""],
       cpf:[""],
       cidade: [""],
       idade: [""],
-      cursos: [""],
+      cursos: [],
       email: [""],
       valor_total: [""],
       valorPago: [""],
       troco: [""],
       user: [""],
     });
-    // this.form = new FormGroup({
-    //   valorPago: new FormControl({ value: 0 }),
-    //   troco: new FormControl({ value: 0, disabled: true }),
-    // });
   }
   ngOnInit() {
     this.taskService.getCadastro().subscribe(
       (res) => {
-        // console.log(res);
         this.projects = res.projects;
       },
       (err) => console.log(err)
@@ -75,14 +74,13 @@ export class PagamentoComponent implements OnInit {
   }
   // ----------------------------------------------------------------------------------------
 
+  openDialog() {
+    const dialogRef = this.dialog.open(SelectAlunoComponent);
+
+  }
   addAndRemoveClassRow(row: PeriodicElement, add = true) {
     console.log(row)
     if (add) {
-      // let array = Array.from(this.clickedRows);
-      // var curso = array;
-      const set = new Set (['cursos']);
-      Array.from(set);
-      console.log(set)
       row.enabled = true;
       console.log(this.clickedRows)
       this.valor_total += row.valor;
@@ -93,7 +91,10 @@ export class PagamentoComponent implements OnInit {
       this.clickedRows.delete(row);
       this.valor_total -= row.valor;
     }
+    console.log(Array.from(this.clickedRows) )
     this.project.patchValue({valor_total: this.valor_total})
+    this.project.patchValue({cursos: Array.from(this.clickedRows) })
+
   }
 
   selectCourse($event: any) {
@@ -116,3 +117,26 @@ export class PagamentoComponent implements OnInit {
 }
 
 
+@Component({
+  selector: 'app-selectaluno',
+  templateUrl: './selectaluno.component.html',
+
+})
+export class SelectAlunoComponent implements OnInit {
+
+  displayedColumns: string[] = ['nome', 'cpf'];
+  projects:any = [];
+  dataSource = new MatTableDataSource<any>();
+  
+  constructor(private taskService: TaskService, private router: Router) {}
+
+  ngOnInit() {
+
+    this.taskService.getAluno().subscribe(
+      (res) => {
+        this.projects = res.projects;
+      },
+      (err) => console.log(err)
+    );
+  }
+}

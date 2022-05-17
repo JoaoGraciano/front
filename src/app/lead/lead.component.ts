@@ -83,7 +83,7 @@ export class LeadComponent implements OnInit {
 
   openDialog(project: any, isUpdated = false) {
     const dialogRef = this.dialog.open(CadastroComponent, {
-      width: '250px',
+      width: 'auto',
       data: {...project, isUpdated}
     });
   }

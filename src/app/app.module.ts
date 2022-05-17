@@ -40,8 +40,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AlunosComponent, InfoAlunoComponent } from './alunos/alunos.component';
 import { MatriculaComponent } from './matricula/matricula.component';
 import { CadAlunoComponent } from './cadalunos/cadalunos.component';
-
-
+import { SelectAlunoComponent } from './pagamento/pagamento.component';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -74,6 +73,7 @@ import { importType } from '@angular/compiler/src/output/output_ast';
     MatriculaComponent,
     CadAlunoComponent,
     InfoAlunoComponent,
+    SelectAlunoComponent,
   ],
   imports: [
     BrowserModule,

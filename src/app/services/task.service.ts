@@ -9,6 +9,8 @@ export class TaskService {
   private URL = "http://localhost:8080/projects";
   static data: any;
   static filter: string;
+  static paginator: any;
+  static sort: any;
   constructor(private http: HttpClient) {}
 
   getTasks() {
@@ -93,5 +95,9 @@ export class TaskService {
 
   deleteUser(id: string) {
     return this.http.delete(`${this.URL}/user/${id}`);
+  }
+
+  deleteAluno(id: string) {
+    return this.http.delete(`${this.URL}/aluno/${id}`);
   }
 }

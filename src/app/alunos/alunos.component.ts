@@ -44,7 +44,7 @@ export class AlunosComponent implements OnInit {
   }
 
   deletar(item: any) {
-    this.taskService.deleteUser(item._id).subscribe((res) => {
+    this.taskService.deleteAluno(item._id).subscribe((res) => {
       window.location.reload();
     })
   }
@@ -66,10 +66,13 @@ export class AlunosComponent implements OnInit {
   );
   }
 
-  openInfo(form: any) {
+  openInfo(form: any, isUpdated = false) {
     const dialogRef = this.dialog.open(InfoAlunoComponent, {
       width: 'auto',
-      data: {...form}
+      data: {...form, isUpdated}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
     });
   }
 
@@ -92,11 +95,17 @@ export class AlunosComponent implements OnInit {
 })
 export class InfoAlunoComponent {
 
-  dataSource = new MatTableDataSource<any>();
-  projects:any = [];
-  form: FormGroup;
+  alunos:any = [];
+  dataAluno = new MatTableDataSource<any>();
+  selection = new SelectionModel<CadAlunoComponent>(true, []);
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private fBuilder: FormBuilder, private taskService: TaskService) {
+  form: FormGroup;
+  submitted=false;
+  isUpdated: any;
+
+
+  constructor(private taskService: TaskService, public dialog: MatDialog, public dialogRef: MatDialogRef<InfoAlunoComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private fBuilder: FormBuilder,
+  private authService: AuthService, private router: Router) {
     this.form = this.fBuilder.group({
       _id:[this.data._id],
       nome: [""],
@@ -116,17 +125,31 @@ export class InfoAlunoComponent {
   ngOnInit(): void {
     if (this.data?.isUpdated) {
       this.form.get("nome")?.patchValue(this.data.nome)
+      this.form.get("idade")?.patchValue(this.data.idade)
+      this.form.get("endereco")?.patchValue(this.data.endereco)
+      this.form.get("email")?.patchValue(this.data.email)
+      this.form.get("cidade")?.patchValue(this.data.cidade)
+      this.form.get("telefone")?.patchValue(this.data.telefone)
+      this.form.get("cursos")?.patchValue(this.data.cursos)
+      this.form.get("cpf")?.patchValue(this.data.cpf)
+      this.form.get("estado")?.patchValue(this.data.estado)
+      this.form.get("cep")?.patchValue(this.data.cep)
     } else {
       this.form.reset()
     }
   }
 
-  info(form: any) {
-    this.taskService.updateAluno(this.form.value).subscribe((response) => {
-      window.location.reload();
-      console.log('erro')
-    })
-  }
-
+  createOrUpdate(form: any) {
+    this.submitted = true
+    if (!this.data.isUpdated) {
+        this.authService.cadAluno(this.form.value).subscribe((response) => {
+          window.location.reload();
+      })
+    } else {
+      this.taskService.updateAluno(this.form.value).subscribe((response) => {
+        window.location.reload();
+      })
+}
+}
 
 }

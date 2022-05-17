@@ -48,14 +48,7 @@ export class MatriculaComponent implements OnInit {
 
     );
   }
-
-  vendas(project: any) {
-    console.log(project)
-    this.taskService.getDadosCurso(project);
-
-    this.router.navigate(['/pagamento']);
-  }
-
+  
   deletar(item: any) {
     console.log(item._id)
     this.taskService.deleteProject(item._id).subscribe((res) => {

@@ -64,16 +64,12 @@ export class CadAlunoComponent {
   createOrUpdate(form: any) {
     this.submitted = true
     if (!this.data.isUpdated) {
-      console.log('erro1')
         this.authService.cadAluno(this.form.value).subscribe((response) => {
           window.location.reload();
-          console.log('erro')
-
       })
     } else {
       this.taskService.updateAluno(this.form.value).subscribe((response) => {
         window.location.reload();
-        console.log('erro')
       })
 }
 }

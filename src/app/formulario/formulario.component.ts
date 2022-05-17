@@ -15,7 +15,6 @@ export interface PeriodicElement {
   createdAt: number;
 }
 
-
 @Component({
   selector: 'app-formulario',
   templateUrl: './formulario.component.html',

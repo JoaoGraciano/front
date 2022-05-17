@@ -47,7 +47,8 @@
     <div class="example-element-detail"
          [@detailExpand]="expandedElement == projects ? 'expanded' : 'collapsed'">
       <div class="example-element-description">
-        {{projects.descricao}}
+        {{projects.grau}}
+
       </div>
       <div>
         <button mat-raised-button (click)="deletar(projects)">Deletar</button>

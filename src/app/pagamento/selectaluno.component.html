@@ -1,0 +1,15 @@
+<body>
+  <table mat-table [dataSource]="projects" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef> Nome </th>
+      <td mat-cell *matCellDef="let project"> {{project.curso}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="cpf">
+      <th mat-header-cell *matHeaderCellDef> CPF </th>
+      <td mat-cell *matCellDef="let project"> {{project.cpf}} </td>
+    </ng-container>
+  </table>
+
+</body>

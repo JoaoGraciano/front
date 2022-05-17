@@ -17,6 +17,7 @@ import { CadastroComponent, LeadComponent } from './lead/lead.component';
 import { AlunosComponent } from './alunos/alunos.component';
 import { MatriculaComponent } from './matricula/matricula.component';
 import { InfoAlunoComponent } from './alunos/alunos.component';
+import { SelectAlunoComponent } from './pagamento/pagamento.component';
 
 const routes: Routes = [
   { path: '', component: IndexComponent },
@@ -39,6 +40,7 @@ const routes: Routes = [
   { path: 'matricula', component: MatriculaComponent},
   { path: 'cadaluno', component: CadAlunoComponent},
   { path: 'infoaluno', component: InfoAlunoComponent},
+  { path: 'selectaluno', component: SelectAlunoComponent},
 ];
 
 @NgModule({
