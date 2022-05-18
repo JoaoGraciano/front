@@ -1,14 +1,14 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, EmailValidator, Validators  } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators  } from '@angular/forms';
 import { Router } from "@angular/router";
 import { AuthService } from "src/app/services/auth.service";
 import { TaskService } from "../services/task.service";
 import { MatTableDataSource } from '@angular/material/table';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CadAlunoComponent } from '../cadalunos/cadalunos.component';
 
 export interface PeriodicElement {
-  nome: string;
+  aluno: object;
   valorPago: number;
   curso: Array<any>;
   email: string;
@@ -41,24 +41,15 @@ export class PagamentoComponent implements OnInit{
   _id: any;
   selectedCourses: PeriodicElement[] = [];
   subtotal = 0;
-  FormGroup: FormGroup;
   data: any;
+  nome: any;
+  aluno: any;
 
   constructor(private fBuilder: FormBuilder, private authService: AuthService, private router: Router, private taskService: TaskService, fb: FormBuilder, public dialog: MatDialog) {
 
-    this.FormGroup = fb.group({
-      curso: false,
-      nome: false,
-      cidade: false,
-    });
-
    this.project = this.fBuilder.group({
-      nome: [""],
-      cpf:[""],
-      cidade: [""],
-      idade: [""],
+      aluno:[],
       cursos: [],
-      email: [""],
       valor_total: [""],
       valorPago: [""],
       troco: [""],
@@ -75,28 +66,17 @@ export class PagamentoComponent implements OnInit{
     this.projects.get('user').subscibe(JSON.stringify(localStorage.getItem('user')));
   }
 
-  ngDataOpen(){
-    if (this.data?.isUpdated) {
-      this.form.get("nome")?.patchValue(this.data.nome)
-      this.form.get("idade")?.patchValue(this.data.idade)
-      this.form.get("endereco")?.patchValue(this.data.endereco)
-      this.form.get("email")?.patchValue(this.data.email)
-      this.form.get("cidade")?.patchValue(this.data.cidade)
-      this.form.get("telefone")?.patchValue(this.data.telefone)
-      this.form.get("cursos")?.patchValue(this.data.cursos)
-      this.form.get("cpf")?.patchValue(this.data.cpf)
-      this.form.get("estado")?.patchValue(this.data.estado)
-      this.form.get("cep")?.patchValue(this.data.cep)
-    } else {
-      this.form.reset()
-    }
-  }
   // ----------------------------------------------------------------------------------------
 
   openDialog() {
     const dialogRef = this.dialog.open(SelectAlunoComponent);
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(this.aluno);
+      this.aluno = result;
+    });
   }
+
   addAndRemoveClassRow(row: PeriodicElement, add = true) {
     console.log(row)
     if (add) {
@@ -113,7 +93,6 @@ export class PagamentoComponent implements OnInit{
     console.log(Array.from(this.clickedRows) )
     this.project.patchValue({valor_total: this.valor_total})
     this.project.patchValue({cursos: Array.from(this.clickedRows) })
-
   }
 
   selectCourse($event: any) {
@@ -129,12 +108,14 @@ export class PagamentoComponent implements OnInit{
 
   create() {
     if (this.submitted = true)
+    console.log(this.clickedRows)
+    console.log(this.aluno)
+    console.log(this.project)
     this.authService.venda(this.project.value).subscribe((response) => {
       // window.location.reload();
     })
   }
 }
-
 
 @Component({
   selector: 'app-selectaluno',
@@ -148,8 +129,9 @@ export class SelectAlunoComponent implements OnInit {
   dataSource = new MatTableDataSource<any>();
   form: any;
   clickedRows = new Set<PeriodicElement>();
+  row: any;
 
-  constructor(private taskService: TaskService, private router: Router, @Inject(MAT_DIALOG_DATA) public data: any, public dialog: MatDialog) {}
+  constructor(private taskService: TaskService, private router: Router, @Inject(MAT_DIALOG_DATA) public data: any, public dialog: MatDialog, public dialogRef: MatDialogRef<SelectAlunoComponent>) {}
 
   applyFilter($event: Event){
     console.log($event,'1')
@@ -175,23 +157,16 @@ export class SelectAlunoComponent implements OnInit {
       width: 'auto',
       data: {...form, isUpdated}
     });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
   }
 
-
   addAndRemoveClassRow(row: PeriodicElement, add = true) {
-    console.log(row)
+
     if (add) {
       row.enabled = true;
       this.clickedRows.add(row);
     } else {
-      row.enabled = false;
-      this.clickedRows.delete(row);
+      console.log("aluno não selecionado")
     }
-    console.log(Array.from(this.clickedRows) )
-    this.form.patchValue({cursos: Array.from(this.clickedRows) })
-
-}
+    this.dialogRef.close(Array.from(this.clickedRows)[0]);
+  }
 }

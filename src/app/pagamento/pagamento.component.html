@@ -27,44 +27,13 @@
 
     <form [formGroup]="project" class="example-form">
       <button mat-button (click)="openDialog()">Selecionar aluno</button>
-
-      <table class="example-full-width" cellspacing="0" ><tr>
-        <td><mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Nome</mat-label>
-          <input formControlName="nome" matInput>
-        </mat-form-field></td>
-      </tr></table>
-
-      <!-- <table class="example-full-width" cellspacing="0"> <tr> <td>
+      <ul>
         <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Cidade</mat-label>
-          <input formControlName="cidade" matInput placeholder="Ex. 100 Main St" rows="1"  size="40">
-        </mat-form-field></td></tr>
-      </table>
-
-      <table class="example-full-width" cellspacing="0"><tr>
-        <td><mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>CPF</mat-label>
-          <input formControlName="cpf" matInput placeholder="Ex. San Francisco" required>
-        </mat-form-field></td>
-      </tr></table>
-
-      <table class="example-full-width" cellspacing="0"><tr>
-      <td><mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Idade</mat-label>
-        <input formControlName="idade" matInput placeholder="Ex. California" required>
-      </mat-form-field></td></tr></table>
-
-      <table class="example-full-width" cellspacing="0"><tr>
-      <td><mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>E-mail</mat-label>
-        <input formControlName="email" matInput placeholder="exemplo@exemplo.com" required>
-        <mat-error *ngIf="email.invalid"></mat-error>
-      </mat-form-field></td></tr></table> -->
+          <mat-label>Total</mat-label>
+          <input  matInput value="{{aluno}}">
+        </mat-form-field>
+      </ul>
     </form>
-
-
-
 
     <!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
