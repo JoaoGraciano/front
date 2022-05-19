@@ -27,15 +27,11 @@
 
     <form [formGroup]="project" class="example-form">
       <button mat-button (click)="openDialog()">Selecionar aluno</button>
-      <ul>
-        <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Total</mat-label>
-          <input  matInput value="{{aluno}}">
-        </mat-form-field>
-      </ul>
+      <p>Aluno: {{this.project.get("aluno")?.value?.nome}}</p>
+      <p>CPF: {{this.project.get("aluno")?.value?.cpf}}</p>
     </form>
 
-    <!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+    <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
 <div>
     <table [formGroup]="project" mat-table [dataSource]="projects" class="mat-elevation-z8 demo-table">
@@ -61,15 +57,15 @@
 
     <ul [formGroup]="project">
 
-      <mat-form-field class="example-full-width" appearance="fill">
+      <mat-form-field class="example-full-width" appearance="outline">
         <mat-label>Total</mat-label>
         <input  matInput value="{{valor_total | currency: 'BRL'}}">
       </mat-form-field>
-      <mat-form-field class="example-full-width" appearance="fill">
+      <mat-form-field class="example-full-width" appearance="outline">
         <mat-label id="valorPago">Valor pago</mat-label>
         <input (keyup)="selectCourse($event)" formControlName="valorPago" value="{{valorPago| currency: 'BRL'}}" matInput placeholder="Ex. R$1000.00">
       </mat-form-field>
-      <mat-form-field  appearance="fill" class="example-full-width">
+      <mat-form-field  appearance="outline" class="example-full-width">
         <mat-label >Troco </mat-label>
         <input matInput value="{{troco | currency: 'BRL'}}" formControlName="troco" type="text">
       </mat-form-field>

@@ -16,6 +16,7 @@ export interface PeriodicElement {
   enabled: boolean;
   clickedrows: string;
   valor_total: number;
+  nome: string;
 }
 
 @Component({
@@ -48,12 +49,13 @@ export class PagamentoComponent implements OnInit{
   constructor(private fBuilder: FormBuilder, private authService: AuthService, private router: Router, private taskService: TaskService, fb: FormBuilder, public dialog: MatDialog) {
 
    this.project = this.fBuilder.group({
-      aluno:[],
+      aluno:null,
       cursos: [],
       valor_total: [""],
       valorPago: [""],
       troco: [""],
       user: [""],
+      nome: [""],
     });
   }
   ngOnInit() {
@@ -62,18 +64,19 @@ export class PagamentoComponent implements OnInit{
         this.projects = res.projects;
       },
       (err) => console.log(err)
-    );
-    this.projects.get('user').subscibe(JSON.stringify(localStorage.getItem('user')));
+  );
+    this.project.get('user')?.patchValue(JSON.parse(localStorage.getItem('user')!));
   }
 
-  // ----------------------------------------------------------------------------------------
+  // ------------------------------------------------------------------------------------------------------------------------------
 
   openDialog() {
     const dialogRef = this.dialog.open(SelectAlunoComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(this.aluno);
       this.aluno = result;
+      this.project.get("aluno")?.patchValue(result)
+      console.log(this.aluno);
     });
   }
 
@@ -111,9 +114,27 @@ export class PagamentoComponent implements OnInit{
     console.log(this.clickedRows)
     console.log(this.aluno)
     console.log(this.project)
+
     this.authService.venda(this.project.value).subscribe((response) => {
-      // window.location.reload();
+      window.location.reload();
     })
+
+    // var objeto = {
+    //   aluno:{},
+    //   cursos: [],
+    //   venda: []
+    // }
+    // buscou seu usuario, baseado no token dele
+    // objeto.usuario = usuaio_do_banco
+    // salva o objeto
+    // this.authService.venda({
+    //   cursos: Array.from(this.clickedRows!),
+    //   aluno: this.project.get("aluno")?.value,
+    //   user: this.project.get("user")?.value,
+    //   venda: this.project.get("valorPago,valor_total, troco")?.value,
+    // }!).subscribe((response) => {
+    //   console.log(response)
+    // })
   }
 }
 
@@ -157,16 +178,5 @@ export class SelectAlunoComponent implements OnInit {
       width: 'auto',
       data: {...form, isUpdated}
     });
-  }
-
-  addAndRemoveClassRow(row: PeriodicElement, add = true) {
-
-    if (add) {
-      row.enabled = true;
-      this.clickedRows.add(row);
-    } else {
-      console.log("aluno não selecionado")
-    }
-    this.dialogRef.close(Array.from(this.clickedRows)[0]);
   }
 }

@@ -21,7 +21,7 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr> -->
       <tr
         mat-row
-        (click)="addAndRemoveClassRow(row,!row.enabled)"
+        (click)="dialogRef.close(row)"
         [class.demo-row-is-clicked]="clickedRows.has(row)"
         *matRowDef="let row; columns: displayedColumns;"
       ></tr>
