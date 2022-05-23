@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from "../services/auth.service";
-import { TaskService } from "../services/task.service";
+import { Component, OnInit, Input } from '@angular/core';
+import { TaskService } from '../services/task.service';
 import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { InfoVendasComponent } from './infovendas/infovendas.component';
+import { MatDialog } from '@angular/material/dialog';
 
 export interface PeriodicElement {
-  nome: string;
   cidade: number;
   cpf: number;
   idade: string;
@@ -20,47 +20,63 @@ export interface PeriodicElement {
 @Component({
   selector: 'app-formulario',
   templateUrl: './formulario.component.html',
-  styleUrls: ['./formulario.component.scss']
-
+  styleUrls: ['./formulario.component.scss'],
 })
 export class FormularioComponent implements OnInit {
-
-  displayedColumns: string[] = ['nome', 'cidade', 'cpf', 'idade', 'curso', 'valor', 'user','createdAt'];
-  projects:any = [];
+  displayedColumns: string[] = [
+    'nome',
+    'cidade',
+    'cpf',
+    'idade',
+    'curso',
+    'detalhes',
+    'user',
+    'createdAt',
+  ];
+  projects: any = [];
   dataSource = new MatTableDataSource<any>();
   project: FormGroup;
 
-  constructor(private taskService: TaskService, private router: Router, private fBuilder: FormBuilder) {
-
+  constructor(
+    private taskService: TaskService,
+    private router: Router,
+    private fBuilder: FormBuilder,
+    public dialog: MatDialog
+  ) {
     this.project = this.fBuilder.group({
-      aluno:null,
+      aluno: null,
       cursos: [],
-      valor_total: [""],
-      valorPago: [""],
-      troco: [""],
-      user: [""],
-      nome: [""],
+      valor_total: [''],
+      valorPago: [''],
+      troco: [''],
+      user: [''],
     });
   }
 
   ngOnInit() {
-
     this.taskService.getVenda().subscribe(
       (res) => {
-        console.log(res,'1');
-        console.log(this.dataSource,'2')
         this.dataSource.data = res.projects;
         this.projects = res.projects;
-        console.log(this.projects,'3');
       },
       (err) => console.log(err)
     );
+    console.log(this.dataSource);
   }
 
-  applyFilter($event: Event){
-    console.log($event,'1')
+  openInfo(sale: any) {
+    console.log(sale);
+    // return;
+    const dialogRef = this.dialog.open(InfoVendasComponent, {
+      width: 'auto',
+      data: sale,
+    });
+  }
+
+  applyFilter($event: Event) {
+    console.log($event, '1');
     const filterValue = ($event.target as HTMLInputElement).value;
-    console.log(filterValue,'2');
+    console.log(filterValue, '2');
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }

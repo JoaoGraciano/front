@@ -27,6 +27,7 @@
 
     <form [formGroup]="project" class="example-form">
       <button mat-button (click)="openDialog()">Selecionar aluno</button>
+      <p>{{this.project.get("aluno")?.value?._id}}</p>
       <p>Aluno: {{this.project.get("aluno")?.value?.nome}}</p>
       <p>CPF: {{this.project.get("aluno")?.value?.cpf}}</p>
     </form>

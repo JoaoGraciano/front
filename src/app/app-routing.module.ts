@@ -1,3 +1,4 @@
+import { InfoVendasComponent } from './formulario/infovendas/infovendas.component';
 import { CadAlunoComponent } from './cadalunos/cadalunos.component';
 import { CursodetalheComponent } from './cursos/curso-detalhe/curso-detalhe.component';
 import { FaleconoscoComponent } from './faleconosco/faleconosco.component';
@@ -18,6 +19,7 @@ import { AlunosComponent } from './alunos/alunos.component';
 import { MatriculaComponent } from './matricula/matricula.component';
 import { InfoAlunoComponent } from './alunos/alunos.component';
 import { SelectAlunoComponent } from './pagamento/pagamento.component';
+
 
 const routes: Routes = [
   { path: '', component: IndexComponent },
@@ -41,6 +43,7 @@ const routes: Routes = [
   { path: 'cadaluno', component: CadAlunoComponent},
   { path: 'infoaluno', component: InfoAlunoComponent},
   { path: 'selectaluno', component: SelectAlunoComponent},
+  { path: 'infoVendas', component: InfoVendasComponent},
 ];
 
 @NgModule({

@@ -85,6 +85,13 @@ export class TaskService {
     return this.http.put(url, project);
   }
 
+  updateVenda(project: any) {
+    const url = `${this.URL}/venda/${project._id}`;
+    console.log(project);
+
+    return this.http.put(url, project);
+  }
+
   deleteProject(id: string) {
     return this.http.delete(`${this.URL}/${id}`);
   }

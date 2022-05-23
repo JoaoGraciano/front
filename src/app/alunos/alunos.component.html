@@ -49,7 +49,7 @@
       <ng-container matColumnDef="detalhes">
         <th mat-header-cell *matHeaderCellDef> + Info </th>
         <td mat-cell *matCellDef="let projects">
-          <button mat-raised-button (click)="openInfo(form)">+ Info</button></td>
+          <button mat-raised-button (click)="openInfo(projects,true)">+ Info</button></td>
       </ng-container>
 
       <ng-container matColumnDef="editar">

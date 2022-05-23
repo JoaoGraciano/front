@@ -4,7 +4,7 @@
       <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
     </mat-form-field>
 
-    <mat-table [dataSource]="dataSource" class="mat-elevation-z8"  >
+    <mat-table [dataSource]="dataSource" class="dialog "  >
       <ng-container matColumnDef="nome">
         <mat-header-cell mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
         <mat-cell mat-cell *matCellDef="let projects"> {{projects.nome}} </mat-cell>
@@ -15,16 +15,16 @@
         <mat-cell mat-cell *matCellDef="let projects"> {{projects.cpf}} </mat-cell>
       </ng-container>
 
-      <!-- <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row matRipple *matRowDef="let row; columns: displayedColumns;"></mat-row> -->
+      <!-- <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row> -->
+      <!-- <mat-row matRipple *matRowDef="let row; columns: displayedColumns;"></mat-row> -->
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr> -->
-      <tr
+      <mat-header-row mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row> -->
+      <mat-header-row
         mat-row
         (click)="dialogRef.close(row)"
         [class.demo-row-is-clicked]="clickedRows.has(row)"
         *matRowDef="let row; columns: displayedColumns;"
-      ></tr>
+      ></mat-header-row>
     </mat-table>
 
     <button mat-button (click)="openDialog(form, false)">Cadastrar aluno</button>

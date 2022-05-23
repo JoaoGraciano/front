@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject, Input } from '@angular/core';
-import { FormGroup, FormBuilder, FormsModule } from '@angular/forms';
+import { FormGroup, FormBuilder, FormsModule, FormControl } from '@angular/forms';
 import { Router } from "@angular/router";
 import { AuthService } from "src/app/services/auth.service";
 
@@ -95,6 +95,8 @@ export class AlunosComponent implements OnInit {
 })
 export class InfoAlunoComponent {
 
+  inputFormControl = new FormControl({value: null, disabled: true});
+
   alunos:any = [];
   dataAluno = new MatTableDataSource<any>();
   selection = new SelectionModel<CadAlunoComponent>(true, []);
@@ -120,7 +122,6 @@ export class InfoAlunoComponent {
       cursos: [""],
     });
   }
-
 
   ngOnInit(): void {
     if (this.data?.isUpdated) {
@@ -149,7 +150,6 @@ export class InfoAlunoComponent {
       this.taskService.updateAluno(this.form.value).subscribe((response) => {
         window.location.reload();
       })
-}
-}
-
+    }
+  }
 }

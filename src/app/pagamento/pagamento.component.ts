@@ -11,12 +11,10 @@ export interface PeriodicElement {
   aluno: object;
   valorPago: number;
   curso: Array<any>;
-  email: string;
   valor: number;
   enabled: boolean;
   clickedrows: string;
   valor_total: number;
-  nome: string;
 }
 
 @Component({
@@ -43,19 +41,19 @@ export class PagamentoComponent implements OnInit{
   selectedCourses: PeriodicElement[] = [];
   subtotal = 0;
   data: any;
-  nome: any;
   aluno: any;
+  nome: any;
 
   constructor(private fBuilder: FormBuilder, private authService: AuthService, private router: Router, private taskService: TaskService, fb: FormBuilder, public dialog: MatDialog) {
 
    this.project = this.fBuilder.group({
+      _id:[],
       aluno:null,
       cursos: [],
       valor_total: [""],
       valorPago: [""],
       troco: [""],
       user: [""],
-      nome: [""],
     });
   }
   ngOnInit() {
@@ -72,11 +70,11 @@ export class PagamentoComponent implements OnInit{
 
   openDialog() {
     const dialogRef = this.dialog.open(SelectAlunoComponent);
-
+    console.trace(PagamentoComponent);
     dialogRef.afterClosed().subscribe(result => {
       this.aluno = result;
       this.project.get("aluno")?.patchValue(result)
-      console.log(this.aluno);
+      // console.log(this.aluno);
     });
   }
 
@@ -113,8 +111,7 @@ export class PagamentoComponent implements OnInit{
     if (this.submitted = true)
     console.log(this.clickedRows)
     console.log(this.aluno)
-    console.log(this.project)
-
+    return console.log(this.project)
     this.authService.venda(this.project.value).subscribe((response) => {
       window.location.reload();
     })
@@ -122,7 +119,6 @@ export class PagamentoComponent implements OnInit{
     // var objeto = {
     //   aluno:{},
     //   cursos: [],
-    //   venda: []
     // }
     // buscou seu usuario, baseado no token dele
     // objeto.usuario = usuaio_do_banco

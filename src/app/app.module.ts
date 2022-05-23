@@ -1,3 +1,4 @@
+import { InfoVendasComponent } from './formulario/infovendas/infovendas.component';
 import { SelectionModel } from '@angular/cdk/collections';
 import { FaleconoscoComponent } from './faleconosco/faleconosco.component';
 import { NgModule } from '@angular/core';
@@ -74,6 +75,7 @@ import { importType } from '@angular/compiler/src/output/output_ast';
     CadAlunoComponent,
     InfoAlunoComponent,
     SelectAlunoComponent,
+    InfoVendasComponent,
   ],
   imports: [
     BrowserModule,
