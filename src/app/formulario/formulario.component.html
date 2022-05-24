@@ -31,14 +31,9 @@
 
 <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
 
-  <!-- <ng-container matColumnDef="nome" | searchFilter:searchValue>
+  <ng-container matColumnDef="nome" | searchFilter:searchValue>
     <th mat-header-cell *matHeaderCellDef> Nome </th>
     <td mat-cell *matCellDef="let projects">{{projects.aluno?.nome}}</td>
-  </ng-container> -->
-
-  <ng-container matColumnDef="nome">
-    <th mat-header-cell *matHeaderCellDef> Nome </th>
-    <td mat-cell *matCellDef="let projects"> {{projects.aluno._id}} </td>
   </ng-container>
 
   <ng-container matColumnDef="cidade">
@@ -51,17 +46,17 @@
     <td mat-cell *matCellDef="let projects"> {{projects.aluno?.cpf}} </td>
   </ng-container>
 
-  <ng-container matColumnDef="idade">
+  <!-- <ng-container matColumnDef="idade">
     <th mat-header-cell *matHeaderCellDef> Idade </th>
     <td mat-cell *matCellDef="let projects"> {{projects.aluno?.idade}} </td>
-  </ng-container>
+  </ng-container> -->
 
-  <ng-container matColumnDef="curso">
+  <!-- <ng-container matColumnDef="curso">
     <th mat-header-cell *matHeaderCellDef> Curso </th>
     <td mat-cell *matCellDef="let projects">
-      <p *ngFor="let curso of projects.cursos">{{curso.curso}} {{curso.duracao}}</p>
+      <p *ngFor="let curso of projects.cursos">{{curso.curso}}</p>
     </td>
-  </ng-container>
+  </ng-container> -->
 
   <ng-container matColumnDef="valor">
     <th mat-header-cell *matHeaderCellDef> Valor </th>

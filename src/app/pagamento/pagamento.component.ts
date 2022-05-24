@@ -70,11 +70,10 @@ export class PagamentoComponent implements OnInit{
 
   openDialog() {
     const dialogRef = this.dialog.open(SelectAlunoComponent);
-    console.trace(PagamentoComponent);
     dialogRef.afterClosed().subscribe(result => {
       this.aluno = result;
       this.project.get("aluno")?.patchValue(result)
-      // console.log(this.aluno);
+      console.log(this.project);
     });
   }
 
@@ -111,7 +110,7 @@ export class PagamentoComponent implements OnInit{
     if (this.submitted = true)
     console.log(this.clickedRows)
     console.log(this.aluno)
-    return console.log(this.project)
+    // return console.log(this.project)
     this.authService.venda(this.project.value).subscribe((response) => {
       window.location.reload();
     })

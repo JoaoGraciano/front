@@ -27,8 +27,6 @@ export class FormularioComponent implements OnInit {
     'nome',
     'cidade',
     'cpf',
-    'idade',
-    'curso',
     'detalhes',
     'user',
     'createdAt',

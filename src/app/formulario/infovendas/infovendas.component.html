@@ -3,21 +3,40 @@
   <mat-divider></mat-divider>
 </mat-list> -->
 
-<mat-list>
-  <mat-list-item>{{ data.aluno?.cep }}</mat-list-item>
-  <mat-list-item>{{ data.aluno?.cidade }}</mat-list-item>
-  <mat-list-item>{{ data.aluno?.cpf }}</mat-list-item>
-  <mat-list-item>{{ data.aluno?.createdAt }}</mat-list-item>
-  <mat-list-item>{{ data.aluno?.cursos }}</mat-list-item>
-  <mat-list-item>{{ data.aluno?.email }}</mat-list-item>
-  <mat-list-item>{{ data.aluno?.endereco }}</mat-list-item>
-  <mat-list-item>{{ data.aluno?.estado }}</mat-list-item>
-  <mat-list-item>{{ data.aluno?.idade }}</mat-list-item>
-  <mat-list-item>{{ data.aluno?.nome }}</mat-list-item>
-  <mat-list-item>{{ data.aluno?.telefone }}</mat-list-item>
-  <mat-list *ngFor="let curso of data.cursos">
-    <mat-list-item>{{curso.curso}}</mat-list-item>
-    <mat-list-item>{{curso.duracao}}</mat-list-item>
-    <mat-list-item>{{curso.grau}}</mat-list-item>
-  </mat-list>
-</mat-list>
+<mat-tab-group mat-align-tabs="start" style="list-style: none;">
+  <mat-tab label="Dados pessoais">
+    <mat-divider></mat-divider>
+    <li><p>Nome: {{ data.aluno?.nome }}</p></li>
+    <mat-divider></mat-divider>
+    <li><p>Idade: {{ data.aluno?.idade }}</p></li>
+    <mat-divider></mat-divider>
+    <li><p>CPF: {{ data.aluno?.cpf }}</p></li>
+    <mat-divider></mat-divider>
+    <li><p>CEP: {{ data.aluno?.cep }}</p></li>
+    <mat-divider></mat-divider>
+    <li><p>Endereço: {{ data.aluno?.endereco }}</p></li>
+    <mat-divider></mat-divider>
+    <li><p>Cidade: {{ data.aluno?.cidade }}</p></li>
+    <mat-divider></mat-divider>
+    <li><p>Estado: {{ data.aluno?.estado }}</p></li>
+    <mat-divider></mat-divider>
+    <li><p>Telefone: {{ data.aluno?.telefone }}</p></li>
+    <mat-divider></mat-divider>
+    <li><p>E-mail: {{ data.aluno?.email }}</p></li>
+    <mat-divider></mat-divider>
+  </mat-tab>
+  <mat-tab label="Dados do curso">
+    <ul *ngFor="let curso of data.cursos" style="list-style: none;">
+      <mat-divider></mat-divider>
+      <li>Curso: {{curso.curso}}</li>
+      <li>Duração: {{curso.duracao}}</li>
+      <li>Grau: {{curso.grau}}</li>
+      <li>Valor: {{curso.valor | currency: 'BRL'}}</li>
+      <mat-divider></mat-divider>
+    </ul>
+  </mat-tab>
+  <mat-tab label="Detalhes da venda" style="list-style: none;">
+    
+    <li>{{ data.aluno?.createdAt }}</li>
+  </mat-tab>
+</mat-tab-group>
