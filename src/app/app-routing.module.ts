@@ -1,3 +1,4 @@
+import { HeaderComponent } from './header/header.component';
 import { InfoVendasComponent } from './formulario/infovendas/infovendas.component';
 import { CadAlunoComponent } from './cadalunos/cadalunos.component';
 import { CursodetalheComponent } from './cursos/curso-detalhe/curso-detalhe.component';
@@ -44,6 +45,7 @@ const routes: Routes = [
   { path: 'infoaluno', component: InfoAlunoComponent},
   { path: 'selectaluno', component: SelectAlunoComponent},
   { path: 'infoVendas', component: InfoVendasComponent},
+  { path: 'header', component: HeaderComponent},
 ];
 
 @NgModule({

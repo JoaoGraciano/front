@@ -36,7 +36,10 @@
     </ul>
   </mat-tab>
   <mat-tab label="Detalhes da venda" style="list-style: none;">
-    
-    <li>{{ data.aluno?.createdAt }}</li>
+    <li>Nome: {{projects.user?.name}}</li>
+    <li>E-mail: {{projects.user?.email}}</li>
+    <li>Data da venda:{{ data.aluno?.createdAt}}</li>
   </mat-tab>
 </mat-tab-group>
+<button mat-raised-button>Baixar comprovante</button>
+

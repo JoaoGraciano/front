@@ -1,9 +1,9 @@
+import { HeaderComponent } from './header/header.component';
 import { InfoVendasComponent } from './formulario/infovendas/infovendas.component';
 import { SelectionModel } from '@angular/cdk/collections';
 import { FaleconoscoComponent } from './faleconosco/faleconosco.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IndexComponent } from './index/index.component';
@@ -34,8 +34,8 @@ import { CadastroComponent } from './lead/lead.component';
 import { cadastrologin } from './cadlogin/cadlogin.component';
 import { CursosComponent } from './cursos/cursos.component';
 import { CursodetalheComponent } from './cursos/curso-detalhe/curso-detalhe.component';
-import {MaterialExampleModule} from '../material.module';
-import {MatNativeDateModule} from '@angular/material/core';
+import { MaterialExampleModule } from '../material.module';
+import { MatNativeDateModule } from '@angular/material/core';
 import { EditvendasComponent } from './vendas/vendas.component';
 import { MatDialog } from '@angular/material/dialog';
 import { AlunosComponent, InfoAlunoComponent } from './alunos/alunos.component';
@@ -76,6 +76,7 @@ import { importType } from '@angular/compiler/src/output/output_ast';
     InfoAlunoComponent,
     SelectAlunoComponent,
     InfoVendasComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

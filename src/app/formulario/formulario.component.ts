@@ -6,16 +6,16 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { InfoVendasComponent } from './infovendas/infovendas.component';
 import { MatDialog } from '@angular/material/dialog';
 
-export interface PeriodicElement {
-  cidade: number;
-  cpf: number;
-  idade: string;
-  curso: string;
-  aluno: Array<any>;
-  valor: number;
-  user: object;
-  createdAt: number;
-}
+// export interface PeriodicElement {
+//   cidade: number;
+//   cpf: number;
+//   idade: string;
+//   curso: string;
+//   aluno: Array<any>;
+//   valor: number;
+//   user: object;
+//   createdAt: number;
+// }
 
 @Component({
   selector: 'app-formulario',

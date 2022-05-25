@@ -100,6 +100,10 @@ export class InfoAlunoComponent {
   alunos:any = [];
   dataAluno = new MatTableDataSource<any>();
   selection = new SelectionModel<CadAlunoComponent>(true, []);
+  dataSource = new MatTableDataSource<any>();
+  curso:any = [];
+
+
 
   form: FormGroup;
   submitted=false;

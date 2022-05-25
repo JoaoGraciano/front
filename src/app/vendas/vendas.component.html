@@ -1,29 +1,4 @@
-<body>
-  <header class="header">
-      <div class="faixa">
-          <h1>ACESSO ADMINISTRATIVO</h1>
-      </div>
-  </header>
-  <nav>
-    <button class="menu" mat-button><a href="/home">Home</a></button>
-    <button class="menu" mat-button [matMenuTriggerFor]="menu">Administrativo</button>
-    <mat-menu #menu="matMenu">
-       <button mat-menu-item><a href="/formulario">Relatórios</a></button>
-       <button mat-menu-item><a href="/cadlogin">Cadastro de login</a></button>
-       <button mat-menu-item><a href="/addcurso">Adicionar cursos</a></button>
-    </mat-menu>
-    <button class="menu" mat-button [matMenuTriggerFor]="vendedor">Vendedor</button>
-    <mat-menu #vendedor="matMenu">
-      <a href="/lead"> <button mat-menu-item>Lead</button></a>
-       <button  mat-menu-item><a href="/vendas">Venda de cursos</a></button>
-    </mat-menu>
-    <button class="menu" mat-button><a href="/sair">Sair</a></button>
-</nav>
-  <header class="header">
-      <div class="underline">
-      </div>
-  </header>
-<body>
+<app-header></app-header>
 
   <mat-form-field appearance="standard">
     <mat-label>Search</mat-label>
@@ -73,4 +48,3 @@
 </table>
 <button mat-raised-button (click)="vendas(projects)">Vender</button>
 
-</body>
