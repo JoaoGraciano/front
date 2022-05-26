@@ -1,6 +1,6 @@
 import { HeaderComponent } from './header/header.component';
-import { InfoVendasComponent } from './formulario/infovendas/infovendas.component';
-import { SelectionModel } from '@angular/cdk/collections';
+// import { InfoVendasComponent } from './formulario/infovendas/infovendas.component';
+// import { SelectionModel } from '@angular/cdk/collections';
 import { FaleconoscoComponent } from './faleconosco/faleconosco.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -25,7 +25,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
-import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -45,7 +45,7 @@ import { SelectAlunoComponent } from './pagamento/pagamento.component';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { importType } from '@angular/compiler/src/output/output_ast';
+import { ComprovanteComponent } from './formulario/comprovante/comprovante.component';
 
 // import {TableSelectionExample} from './table-selection-example';
 
@@ -75,8 +75,9 @@ import { importType } from '@angular/compiler/src/output/output_ast';
     CadAlunoComponent,
     InfoAlunoComponent,
     SelectAlunoComponent,
-    InfoVendasComponent,
+    // InfoVendasComponent,
     HeaderComponent,
+    ComprovanteComponent,
   ],
   imports: [
     BrowserModule,
@@ -112,7 +113,9 @@ import { importType } from '@angular/compiler/src/output/output_ast';
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi: true
-    }
+    },
+    { provide: MAT_DIALOG_DATA, useValue: {} },
+    { provide: MatDialogRef, useValue: {} }
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

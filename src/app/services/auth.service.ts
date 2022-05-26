@@ -27,6 +27,10 @@ export class AuthService {
     return this.http.post<any>(this.URL + "/aluno", user);
   }
 
+  baixar(user:IUser) {
+    return this.http.post<any>(this.URL + "/baixar", user);
+  }
+
   cadCurse(user:IUser) {
     return this.http.post<any>(this.URL + "/cadastro", user);
   }

@@ -5,17 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { InfoVendasComponent } from './infovendas/infovendas.component';
 import { MatDialog } from '@angular/material/dialog';
-
-// export interface PeriodicElement {
-//   cidade: number;
-//   cpf: number;
-//   idade: string;
-//   curso: string;
-//   aluno: Array<any>;
-//   valor: number;
-//   user: object;
-//   createdAt: number;
-// }
+import { ComprovanteComponent } from './comprovante/comprovante.component';
 
 @Component({
   selector: 'app-formulario',
@@ -63,12 +53,14 @@ export class FormularioComponent implements OnInit {
   }
 
   openInfo(sale: any) {
-    console.log(sale);
-    // return;
-    const dialogRef = this.dialog.open(InfoVendasComponent, {
-      width: 'auto',
-      data: sale,
-    });
+    console.log(sale,'1');
+    this.taskService.getVenda();
+    this.router.navigate(['/comprovante', sale]);
+
+    // const comprovante = this.projects.open(ComprovanteComponent, {
+    //   width: 'auto',
+    //   data: sale,
+    // });
   }
 
   applyFilter($event: Event) {

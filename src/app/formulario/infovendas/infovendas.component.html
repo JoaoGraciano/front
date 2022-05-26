@@ -1,9 +1,4 @@
-<!-- <mat-list *ngFor="let projects of projects">
-  <mat-list-item>{{projects.aluno?.nome}}</mat-list-item>
-  <mat-divider></mat-divider>
-</mat-list> -->
-
-<mat-tab-group mat-align-tabs="start" style="list-style: none;">
+<!-- <mat-tab-group mat-align-tabs="start" style="list-style: none;">
   <mat-tab label="Dados pessoais">
     <mat-divider></mat-divider>
     <li><p>Nome: {{ data.aluno?.nome }}</p></li>
@@ -35,11 +30,16 @@
       <mat-divider></mat-divider>
     </ul>
   </mat-tab>
-  <mat-tab label="Detalhes da venda" style="list-style: none;">
-    <li>Nome: {{projects.user?.name}}</li>
-    <li>E-mail: {{projects.user?.email}}</li>
-    <li>Data da venda:{{ data.aluno?.createdAt}}</li>
+  <mat-tab label="Detalhes da venda">
+    <ul style="list-style: none;">
+      <li>Nome do vendedor: {{data.user?.name}}</li>
+      <li>E-mail: {{data.user?.email}}</li>
+      <li>Valor total: {{data.valor_total | currency: 'BRL'}}</li>
+      <li>Valor pago: {{data.valorPago | currency: 'BRL'}}</li>
+      <li>Troco: {{data.troco | currency: 'BRL'}}</li>
+      <li>Data da venda:{{ data.aluno?.createdAt}}</li>
+    </ul>
   </mat-tab>
 </mat-tab-group>
 <button mat-raised-button>Baixar comprovante</button>
-
+ -->
