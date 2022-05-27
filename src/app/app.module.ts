@@ -1,6 +1,4 @@
 import { HeaderComponent } from './header/header.component';
-// import { InfoVendasComponent } from './formulario/infovendas/infovendas.component';
-// import { SelectionModel } from '@angular/cdk/collections';
 import { FaleconoscoComponent } from './faleconosco/faleconosco.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -75,7 +73,6 @@ import { ComprovanteComponent } from './formulario/comprovante/comprovante.compo
     CadAlunoComponent,
     InfoAlunoComponent,
     SelectAlunoComponent,
-    // InfoVendasComponent,
     HeaderComponent,
     ComprovanteComponent,
   ],

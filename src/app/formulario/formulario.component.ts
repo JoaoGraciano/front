@@ -3,7 +3,6 @@ import { TaskService } from '../services/task.service';
 import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { InfoVendasComponent } from './infovendas/infovendas.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ComprovanteComponent } from './comprovante/comprovante.component';
 
@@ -54,13 +53,14 @@ export class FormularioComponent implements OnInit {
 
   openInfo(sale: any) {
     console.log(sale,'1');
-    this.taskService.getVenda();
-    this.router.navigate(['/comprovante', sale]);
+    // return
+    // this.taskService.getVenda();
+    // this.router.navigate(['/comprovante']);
 
-    // const comprovante = this.projects.open(ComprovanteComponent, {
-    //   width: 'auto',
-    //   data: sale,
-    // });
+    const comprovante = this.dialog.open(ComprovanteComponent, {
+      width: 'auto',
+      data: sale,
+    });
   }
 
   applyFilter($event: Event) {

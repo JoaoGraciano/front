@@ -1,6 +1,5 @@
 import { ComprovanteComponent } from './formulario/comprovante/comprovante.component';
 import { HeaderComponent } from './header/header.component';
-// import { InfoVendasComponent } from './formulario/infovendas/infovendas.component';
 import { CadAlunoComponent } from './cadalunos/cadalunos.component';
 import { CursodetalheComponent } from './cursos/curso-detalhe/curso-detalhe.component';
 import { FaleconoscoComponent } from './faleconosco/faleconosco.component';
@@ -45,7 +44,6 @@ const routes: Routes = [
   { path: 'cadaluno', component: CadAlunoComponent},
   { path: 'infoaluno', component: InfoAlunoComponent},
   { path: 'selectaluno', component: SelectAlunoComponent},
-  // { path: 'infoVendas', component: InfoVendasComponent},
   { path: 'header', component: HeaderComponent},
   { path: 'comprovante', component: ComprovanteComponent },
 ];

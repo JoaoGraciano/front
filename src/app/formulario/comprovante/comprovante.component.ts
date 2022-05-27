@@ -1,10 +1,12 @@
+import { Router } from '@angular/router';
 import { TaskService } from './../../services/task.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';;
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { DataSource } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
-
+import  html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-comprovante',
@@ -17,6 +19,7 @@ export class ComprovanteComponent implements OnInit {
   projects: any = [];
   form: any;
   selected: any;
+  Router: any;
 
   constructor(public taskService: TaskService, @Inject(MAT_DIALOG_DATA) public data: any, private fBuilder: FormBuilder) {
     this.form = this.fBuilder.group({
@@ -31,7 +34,6 @@ export class ComprovanteComponent implements OnInit {
   }
 
   ngOnInit(): void {
-        // console.log(this.data)
         this.taskService.getVenda().subscribe(
           (res) => {
             this.dataSource.data = res.projects;
@@ -39,8 +41,33 @@ export class ComprovanteComponent implements OnInit {
           },
           (err) => console.log(err)
         );
-        console.log(this.dataSource,'1')
-        console.log(this.projects,'2')
-        console.log(this.data,'3')
+
   }
+
+  convertToPdf() {
+    console.log('1')
+    const element = document.getElementById('comprovante');
+    console.log('1')
+    if (element) {
+      console.log('1')
+      html2canvas(element).then(canvas => {
+        console.log('1')
+        let pdf = new jsPDF('p', 'pt', [canvas.width, canvas.height]);
+        console.log('1')
+        var width = pdf.internal.pageSize.width;
+        console.log('1')
+        var height = canvas.height * (width / canvas.width);
+        console.log('1')
+        pdf.addImage(canvas, 'PNG', 0, 0, width, height);
+        // pdf.save('test.pdf');
+        console.log('1')
+        var options = {
+          filename: 'comprovante-de-venda.pdf',
+        }
+        console.log('1')
+        pdf.output('dataurlnewwindow');
+      });
+    }
+  }
+
 }
