@@ -52,11 +52,6 @@ export class FormularioComponent implements OnInit {
   }
 
   openInfo(sale: any) {
-    console.log(sale,'1');
-    // return
-    // this.taskService.getVenda();
-    // this.router.navigate(['/comprovante']);
-
     const comprovante = this.dialog.open(ComprovanteComponent, {
       width: 'auto',
       data: sale,

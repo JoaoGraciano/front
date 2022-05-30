@@ -1,9 +1,7 @@
-import { Router } from '@angular/router';
 import { TaskService } from './../../services/task.service';
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';;
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { DataSource } from '@angular/cdk/collections';
+import { FormBuilder } from '@angular/forms';;
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import  html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
@@ -41,33 +39,25 @@ export class ComprovanteComponent implements OnInit {
           },
           (err) => console.log(err)
         );
-
+          console.log(this.data)
   }
 
   convertToPdf() {
-    console.log('1')
-    const element = document.getElementById('comprovante');
-    console.log('1')
+    const element = document.getElementById('pdf');
+    console.log(element,'1')
     if (element) {
-      console.log('1')
       html2canvas(element).then(canvas => {
-        console.log('1')
         let pdf = new jsPDF('p', 'pt', [canvas.width, canvas.height]);
-        console.log('1')
         var width = pdf.internal.pageSize.width;
-        console.log('1')
         var height = canvas.height * (width / canvas.width);
-        console.log('1')
         pdf.addImage(canvas, 'PNG', 0, 0, width, height);
-        // pdf.save('test.pdf');
-        console.log('1')
         var options = {
           filename: 'comprovante-de-venda.pdf',
         }
-        console.log('1')
         pdf.output('dataurlnewwindow');
       });
+    } else {
+      console.log('Deu ruim')
     }
   }
-
 }
