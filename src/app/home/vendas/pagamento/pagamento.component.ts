@@ -2,10 +2,10 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators  } from '@angular/forms';
 import { Router } from "@angular/router";
 import { AuthService } from "src/app/services/auth.service";
-import { TaskService } from "../services/task.service";
+import { TaskService } from "../../../services/task.service";
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { CadAlunoComponent } from '../cadalunos/cadalunos.component';
+import { CadAlunoComponent } from '../../alunos/cadalunos/cadalunos.component';
 
 export interface PeriodicElement {
   aluno: object;

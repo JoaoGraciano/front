@@ -1,6 +1,6 @@
 import { CursodetalheComponent } from './curso-detalhe/curso-detalhe.component';
 import { Component, OnInit, Inject } from '@angular/core';
-import { TaskService } from "../services/task.service";
+import { TaskService } from "../../services/task.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { MatTableDataSource } from '@angular/material/table';

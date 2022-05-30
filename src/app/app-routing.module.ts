@@ -1,25 +1,27 @@
-import { ComprovanteComponent } from './formulario/comprovante/comprovante.component';
+import { ComprovanteComponent } from './home/formulario/comprovante/comprovante.component';
 import { HeaderComponent } from './header/header.component';
-import { CadAlunoComponent } from './cadalunos/cadalunos.component';
-import { CursodetalheComponent } from './cursos/curso-detalhe/curso-detalhe.component';
-import { FaleconoscoComponent } from './faleconosco/faleconosco.component';
+import { CadAlunoComponent } from './home/alunos/cadalunos/cadalunos.component';
+import { CursodetalheComponent } from './home/cursos/curso-detalhe/curso-detalhe.component';
+import { FaleconoscoComponent } from './index/faleconosco/faleconosco.component';
 import { HomeComponent } from './home/home.component';
-import { CursosComponent } from './cursos/cursos.component';
-import { FormularioComponent } from './formulario/formulario.component';
-import { PagamentoComponent } from './pagamento/pagamento.component';
-import { VendasComponent, EditvendasComponent } from './vendas/vendas.component';
-import { AddcursoComponent } from './addcurso/addcurso.component';
-import { cadastrologin, CadloginComponent } from './cadlogin/cadlogin.component';
+import { CursosComponent } from './home/cursos/cursos.component';
+import { FormularioComponent } from './home/formulario/formulario.component';
+import { PagamentoComponent } from './home/vendas/pagamento/pagamento.component';
+import { VendasComponent, EditvendasComponent } from './home/vendas/vendas.component';
+import { AddcursoComponent } from './home/cursos/addcurso/addcurso.component';
+import { CadloginComponent } from './login/cadlogin/cadlogin.component';
 import { IndexComponent } from './index/index.component';
 import { LoginComponent } from './login/login.component';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
-import { CadastroComponent, LeadComponent } from './lead/lead.component';
-import { AlunosComponent } from './alunos/alunos.component';
-import { MatriculaComponent } from './matricula/matricula.component';
-import { InfoAlunoComponent } from './alunos/alunos.component';
-import { SelectAlunoComponent } from './pagamento/pagamento.component';
+import { LeadComponent } from './home/lead/lead.component';
+import { CadastroComponent } from './home/lead/cadastrolead/cadastro.component';
+import { AlunosComponent } from './home/alunos/alunos.component';
+import { MatriculaComponent } from './home/matricula/matricula.component';
+import { InfoAlunoComponent } from './home/alunos/Info-Alunos/info-aluno.component';
+import { SelectAlunoComponent } from './home/vendas/pagamento/pagamento.component';
+import { cadastrologin } from './login/cadlogin/cadastroLogin/cadastrologin.component';
 
 
 const routes: Routes = [

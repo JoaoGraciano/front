@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { TaskService } from "../services/task.service";
+import { TaskService } from "../../services/task.service";
 import { Router } from "@angular/router";
 import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
@@ -48,7 +48,7 @@ export class MatriculaComponent implements OnInit {
 
     );
   }
-  
+
   deletar(item: any) {
     console.log(item._id)
     this.taskService.deleteProject(item._id).subscribe((res) => {

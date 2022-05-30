@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { TaskService } from "../services/task.service";
+import { TaskService } from "../../services/task.service";
 import { Router } from "@angular/router";
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { MatTableDataSource } from '@angular/material/table';

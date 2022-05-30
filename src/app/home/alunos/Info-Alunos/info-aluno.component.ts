@@ -1,29 +1,38 @@
 import { Component, OnInit, Inject, Input } from '@angular/core';
-import { FormGroup, FormBuilder, FormsModule } from '@angular/forms';
+import { FormGroup, FormBuilder, FormsModule, FormControl } from '@angular/forms';
 import { Router } from "@angular/router";
 import { AuthService } from "src/app/services/auth.service";
 
-import { TaskService } from '../services/task.service';
-import { SelectionModel } from '@angular/cdk/collections';
+import { TaskService } from 'src/app/services/task.service';
+import {SelectionModel} from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { CadAlunoComponent } from '../cadalunos/cadalunos.component';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+
 
 @Component({
-  selector: 'app-cadalunocomponent',
-  templateUrl: './cadalunos.component.html',
-  styleUrls: ['./cadalunos.component.scss']
+  selector: 'app-infoalunocomponent',
+  templateUrl: 'info-aluno.component.html',
 })
-export class CadAlunoComponent {
+export class InfoAlunoComponent {
 
-  projects:any = [];
-  dataSource = new MatTableDataSource<any>();
+  inputFormControl = new FormControl({value: null, disabled: true});
+
+  alunos:any = [];
+  dataAluno = new MatTableDataSource<any>();
   selection = new SelectionModel<CadAlunoComponent>(true, []);
+  dataSource = new MatTableDataSource<any>();
+  curso:any = [];
+
+
 
   form: FormGroup;
   submitted=false;
   isUpdated: any;
 
-  constructor(private taskService: TaskService, public dialog: MatDialog, public dialogRef: MatDialogRef<CadAlunoComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private fBuilder: FormBuilder,
+
+  constructor(private taskService: TaskService, public dialog: MatDialog, public dialogRef: MatDialogRef<InfoAlunoComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private fBuilder: FormBuilder,
   private authService: AuthService, private router: Router) {
     this.form = this.fBuilder.group({
       _id:[this.data._id],
@@ -57,10 +66,6 @@ export class CadAlunoComponent {
     }
   }
 
-  onNoClick(): void {
-    // this.dialogRef.close();
-  }
-
   createOrUpdate(form: any) {
     this.submitted = true
     if (!this.data.isUpdated) {
@@ -71,6 +76,6 @@ export class CadAlunoComponent {
       this.taskService.updateAluno(this.form.value).subscribe((response) => {
         window.location.reload();
       })
-}
-}
+    }
+  }
 }

@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { PeriodicElement } from '../app/formulario/formulario.component';
+import { PeriodicElement } from './home/formulario/formulario.component';
 
 @Pipe({
   name: 'searchfilter'

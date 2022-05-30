@@ -1,4 +1,4 @@
-import { CursosComponent } from './../cursos.component';
+import { CursosComponent } from '../cursos.component';
 import { Component, OnInit, Inject, Input } from '@angular/core';
 import { TaskService } from 'src/app/services/task.service';
 import { Router } from '@angular/router';
