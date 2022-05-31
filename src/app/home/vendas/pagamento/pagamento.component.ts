@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators  } from '@angular/forms';
-import { Router } from "@angular/router";
-import { AuthService } from "src/app/services/auth.service";
-import { TaskService } from "../../../services/task.service";
+import {
+  FormGroup,
+  FormBuilder,
+  FormControl,
+  Validators,
+} from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { TaskService } from '../../../services/task.service';
 import { MatDialog } from '@angular/material/dialog';
 import { SelectAlunoComponent } from './selectaluno/selectaluno.component';
 
@@ -19,13 +24,12 @@ export interface PeriodicElement {
 @Component({
   selector: 'app-pagamento',
   templateUrl: './pagamento.component.html',
-  styleUrls: ['./pagamento.component.scss']
+  styleUrls: ['./pagamento.component.scss'],
 })
-export class PagamentoComponent implements OnInit{
-
+export class PagamentoComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
   displayedColumns: string[] = ['curso', 'valor'];
-  projects:any = [];
+  projects: any = [];
   project: FormGroup;
   dataSource = TaskService;
   submitted = false;
@@ -42,16 +46,22 @@ export class PagamentoComponent implements OnInit{
   data: any;
   aluno: any;
 
-  constructor(private fBuilder: FormBuilder, private authService: AuthService, private router: Router, private taskService: TaskService, fb: FormBuilder, public dialog: MatDialog) {
-
-   this.project = this.fBuilder.group({
-      _id:[],
-      aluno:null,
+  constructor(
+    private fBuilder: FormBuilder,
+    private authService: AuthService,
+    private router: Router,
+    private taskService: TaskService,
+    fb: FormBuilder,
+    public dialog: MatDialog
+  ) {
+    this.project = this.fBuilder.group({
+      _id: [],
+      aluno: null,
       cursos: [],
-      valor_total: [""],
-      valorPago: [""],
-      troco: [""],
-      user: [""],
+      valor_total: [''],
+      valorPago: [''],
+      troco: [''],
+      user: [''],
     });
   }
   ngOnInit() {
@@ -60,17 +70,19 @@ export class PagamentoComponent implements OnInit{
         this.projects = res.projects;
       },
       (err) => console.log(err)
-  );
-    this.project.get('user')?.patchValue(JSON.parse(localStorage.getItem('user')!));
+    );
+    this.project
+      .get('user')
+      ?.patchValue(JSON.parse(localStorage.getItem('user')!));
   }
 
   // -------------------------------------------------------------------------------------------
 
   openDialog() {
     const dialogRef = this.dialog.open(SelectAlunoComponent);
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       this.aluno = result;
-      this.project.get("aluno")?.patchValue(result)
+      this.project.get('aluno')?.patchValue(result);
     });
   }
 
@@ -85,12 +97,12 @@ export class PagamentoComponent implements OnInit{
       this.clickedRows.delete(row);
       this.valor_total -= row.valor;
     }
-    this.project.patchValue({valor_total: this.valor_total})
-    this.project.patchValue({cursos: Array.from(this.clickedRows) })
+    this.project.patchValue({ valor_total: this.valor_total });
+    this.project.patchValue({ cursos: Array.from(this.clickedRows) });
   }
 
   selectCourse($event: any) {
-    const valorPago = ($event.target as HTMLInputElement).value
+    const valorPago = ($event.target as HTMLInputElement).value;
     this.selectedCourses = [...this.clickedRows];
 
     this.troco = parseInt(valorPago) - this.valor_total;
@@ -102,8 +114,6 @@ export class PagamentoComponent implements OnInit{
   create() {
     this.authService.venda(this.project.value).subscribe((response) => {
       window.location.reload();
-    })
+    });
   }
-
 }
-

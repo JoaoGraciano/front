@@ -1,14 +1,97 @@
 <body>
   <app-header></app-header>
-  
+
   <body>
-    <form [formGroup]="project" (submit)="create()" action="submit">
-        <h1>CADASTRO DE CURSO</h1>
-          <input type="txt" formControlName="curso" placeholder="NOME DO CURSO" name="nomeCurso" required="">
-          <input type="txt" formControlName="grau" placeholder="GRÁU ACADEMICO" name="txtGrau" required="">
-          <input type="txt" formControlName="duracao" placeholder="DURAÇÃO DO CURSO" name="txtGrau" required="">
-          <input type="num" formControlName="valor" name="valorCurso" id="valor" placeholder="VAlOR DO CURSO"><br>
-          <textarea type="text" formControlName="descricao" name="text" rows="5"  size="30" id="text"  placeholder="DESCRIÇÃO DO CURSO"></textarea> <br>
-           <button type="submit" class="btn btn-submit mt5 spacing-4" value="ENVIAR">CADASTRAR</button>
+    <form
+      class="example-form"
+      [formGroup]="project"
+      (submit)="create()"
+      action="submit"
+    >
+      <mat-form-field class="example-full-width" appearance="fill"           appearance="outline"
+      >
+        <mat-label>Nome do curso</mat-label>
+        <input
+          matInput
+          type="txt"
+          formControlName="curso"
+          placeholder="NOME DO CURSO"
+          name="nomeCurso"
+          placeholder="Nome do curso"
+          value="Curso"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill"           appearance="outline"
+      >
+        <mat-label>Grau</mat-label>
+        <input
+          matInput
+          type="txt"
+          formControlName="grau"
+          placeholder="GRÁU ACADEMICO"
+          name="txtGrau"
+          placeholder="Grau"
+          value="Grau"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill"           appearance="outline"
+      >
+        <mat-label >Duração</mat-label>
+        <input
+          matInput
+          type="txt"
+          formControlName="duracao"
+          placeholder="DURAÇÃO DO CURSO"
+          name="txtGrau"
+          placeholder="Duração"
+          value="Duração"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill"           appearance="outline"
+      >
+        <mat-label>Valor do curso</mat-label>
+        <input
+          matInput
+          type="num"
+          formControlName="valor"
+          name="valorCurso"
+          id="valor"
+          placeholder="Valor do curso"
+          value="Valor do Curso"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill"           appearance="outline"
+      >
+        <mat-label>Descrição do curso</mat-label>
+        <textarea
+          matInput
+          type="text"
+          formControlName="descricao"
+          name="text"
+          id="text"
+          placeholder="Descrição do curso"
+          rows="5"
+          size="30"
+          required
+        ></textarea>
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        type="submit"
+        class="btn btn-submit mt5 spacing-4"
+        value="ENVIAR"
+      >
+        CADASTRAR
+      </button>
     </form>
+  </body>
 </body>

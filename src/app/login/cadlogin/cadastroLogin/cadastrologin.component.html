@@ -1,27 +1,63 @@
-<form mat-dialog-actions action="submit" [formGroup]="form" (submit)="createOrUpdate(form)">
+<form
+  mat-dialog-actions
+  action="submit"
+  [formGroup]="form"
+  (submit)="createOrUpdate(form)"
+>
   <div mat-dialog-content>
-      <p>Cadastro de login</p>
-      <mat-form-field appearance="fill">
-          <mat-label>Email</mat-label>
+    <p>Cadastro de login</p>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
 
-          <input matInput type="E-mail" formControlName="email" placeholder="E-mail" name="txtemail" required="">
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-          <mat-label>Nome</mat-label>
+      <input
+        matInput
+        type="E-mail"
+        formControlName="email"
+        placeholder="E-mail"
+        name="txtemail"
+        required=""
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Nome</mat-label>
 
-          <input matInput type="Nome" formControlName="name" placeholder="Nome" name="txtnome" required="">
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-          <mat-label>Senha</mat-label>
+      <input
+        matInput
+        type="Nome"
+        formControlName="name"
+        placeholder="Nome"
+        name="txtnome"
+        required=""
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Senha</mat-label>
 
-          <input matInput type="password" formControlName="password" name="phone" id="telephone" class="input phone input-validate required error placeholder" placeholder="Número para contato" autocomplete="off">
-      </mat-form-field>
-        <!-- <mat-radio-group formControlName="permissao">
+      <input
+        matInput
+        type="password"
+        formControlName="password"
+        name="phone"
+        id="telephone"
+        class="input phone input-validate required error placeholder"
+        placeholder="Número para contato"
+        autocomplete="off"
+      />
+    </mat-form-field>
+    <!-- <mat-radio-group formControlName="permissao">
         <mat-radio-button value="true">ADMIN</mat-radio-button>
           <mat-radio-button value="false">USER</mat-radio-button>
         </mat-radio-group> -->
 
-      <button mat-button mat-dialog-close (click)="onNoClick()">Cancelar</button>
-      <button mat-button class="submit" type="submit" value="ENVIAR" cdkFocusInitial>Salvar</button>
+    <button mat-button mat-dialog-close (click)="onNoClick()">Cancelar</button>
+    <button
+      mat-button
+      class="submit"
+      type="submit"
+      value="ENVIAR"
+      cdkFocusInitial
+    >
+      Salvar
+    </button>
   </div>
 </form>

@@ -1,50 +1,70 @@
 <app-header></app-header>
 
 <body>
+  <form [formGroup]="project" class="example-form">
+    <button mat-button (click)="openDialog()">Selecionar aluno</button>
+    <p>Aluno: {{ this.project.get("aluno")?.value?.nome }}</p>
+    <p>CPF: {{ this.project.get("aluno")?.value?.cpf }}</p>
+  </form>
 
-    <form [formGroup]="project" class="example-form">
-      <button mat-button (click)="openDialog()">Selecionar aluno</button>
-      <p>Aluno: {{this.project.get("aluno")?.value?.nome}}</p>
-      <p>CPF: {{this.project.get("aluno")?.value?.cpf}}</p>
-    </form>
-
-<div>
-    <table [formGroup]="project" mat-table [dataSource]="projects" class="mat-elevation-z8 demo-table">
-
+  <div>
+    <table
+      [formGroup]="project"
+      mat-table
+      [dataSource]="projects"
+      class="mat-elevation-z8 demo-table"
+    >
       <ng-container matColumnDef="curso">
         <th mat-header-cell *matHeaderCellDef>Curso</th>
-        <td mat-cell *matCellDef="let projects">{{projects.curso}}</td>
+        <td mat-cell *matCellDef="let projects">{{ projects.curso }}</td>
       </ng-container>
 
       <ng-container matColumnDef="valor">
         <th mat-header-cell *matHeaderCellDef>Valor</th>
-        <td mat-cell *matCellDef="let projects">{{projects.valor}}</td>
+        <td mat-cell *matCellDef="let projects">{{ projects.valor }}</td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr
         mat-row
-        (click)="addAndRemoveClassRow(row,!row.enabled)"
+        (click)="addAndRemoveClassRow(row, !row.enabled)"
         [class.demo-row-is-clicked]="clickedRows.has(row)"
-        *matRowDef="let row; columns: displayedColumns;"
+        *matRowDef="let row; columns: displayedColumns"
       ></tr>
     </table>
 
     <ul [formGroup]="project">
-
       <mat-form-field class="example-full-width" appearance="outline">
         <mat-label>Total</mat-label>
-        <input  matInput value="{{valor_total | currency: 'BRL'}}">
+        <input matInput value="{{ valor_total | currency: 'BRL' }}" />
       </mat-form-field>
       <mat-form-field class="example-full-width" appearance="outline">
         <mat-label id="valorPago">Valor pago</mat-label>
-        <input (keyup)="selectCourse($event)" formControlName="valorPago" value="{{valorPago| currency: 'BRL'}}" matInput placeholder="Ex. R$1000.00">
+        <input
+          (keyup)="selectCourse($event)"
+          formControlName="valorPago"
+          value="{{ valorPago | currency: 'BRL' }}"
+          matInput
+          placeholder="Ex. R$1000.00"
+        />
       </mat-form-field>
-      <mat-form-field  appearance="outline" class="example-full-width">
-        <mat-label >Troco </mat-label>
-        <input matInput value="{{troco | currency: 'BRL'}}" formControlName="troco" type="text">
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Troco </mat-label>
+        <input
+          matInput
+          value="{{ troco | currency: 'BRL' }}"
+          formControlName="troco"
+          type="text"
+        />
       </mat-form-field>
-      <button mat-raised-button (click)="create()" class="btn btn-submit mt5 spacing-4" value="ENVIAR">VENDER</button>
+      <button
+        mat-raised-button
+        (click)="create()"
+        class="btn btn-submit mt5 spacing-4"
+        value="ENVIAR"
+      >
+        VENDER
+      </button>
     </ul>
   </div>
 </body>

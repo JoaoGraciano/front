@@ -1,16 +1,18 @@
 import { cadastrologin } from 'src/app/login/cadlogin/cadastroLogin/cadastrologin.component';
 import { Component, OnInit, Inject, Input } from '@angular/core';
 import { FormGroup, FormBuilder, FormsModule } from '@angular/forms';
-import { Router } from "@angular/router";
-import { AuthService } from "src/app/services/auth.service";
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
-import { TaskService } from "../../services/task.service";
-import {SelectionModel} from '@angular/cdk/collections';
+import { TaskService } from '../../services/task.service';
+import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {
+  MatDialog,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+} from '@angular/material/dialog';
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
-
-
 
 export interface CadloginComponent {
   name: string;
@@ -21,25 +23,35 @@ export interface CadloginComponent {
 @Component({
   selector: 'app-cadlogin',
   templateUrl: './cadlogin.component.html',
-  styleUrls: ['./cadlogin.component.scss']
+  styleUrls: ['./cadlogin.component.scss'],
 })
 export class CadloginComponent implements OnInit {
-
-  displayedColumns: string[] = ['name', 'email', 'password', 'editar', 'deletar'];
-  projects:any = [];
+  displayedColumns: string[] = [
+    'name',
+    'email',
+    'password',
+    'editar',
+    'deletar',
+  ];
+  projects: any = [];
   dataSource = new MatTableDataSource<any>();
   selection = new SelectionModel<CadloginComponent>(true, []);
 
   form: FormGroup;
   isUpdated: any;
-  submitted=false;
+  submitted = false;
 
-  constructor(private fBuilder: FormBuilder, private authService: AuthService, private router: Router, public dialog: MatDialog, private taskService: TaskService) {
-
+  constructor(
+    private fBuilder: FormBuilder,
+    private authService: AuthService,
+    private router: Router,
+    public dialog: MatDialog,
+    private taskService: TaskService
+  ) {
     this.form = this.fBuilder.group({
-      name: [""],
-      email: [""],
-      password: [""],
+      name: [''],
+      email: [''],
+      password: [''],
     });
   }
 
@@ -54,10 +66,10 @@ export class CadloginComponent implements OnInit {
   deletar(item: any) {
     this.taskService.deleteUser(item._id).subscribe((res) => {
       window.location.reload();
-    })
+    });
   }
 
-  applyFilter($event: Event){
+  applyFilter($event: Event) {
     //console.log($event,'1')
     const filterValue = ($event.target as HTMLInputElement).value;
     //console.log(filterValue,'2');
@@ -66,26 +78,23 @@ export class CadloginComponent implements OnInit {
 
   Relatorio() {
     this.submitted = true;
-    this.router.navigate(["/formulario"]);
+    this.router.navigate(['/formulario']);
   }
 
   ngOnInit(): void {
     this.taskService.getSignUpUser().subscribe(
-      (res:any) => {
+      (res: any) => {
         this.dataSource.data = res.projects;
         this.projects = res.projects;
-    },
-    (err: any) => console.log(err)
-  );
+      },
+      (err: any) => console.log(err)
+    );
   }
 
   openDialog(project: any, isUpdated = false) {
     const dialogRef = this.dialog.open(cadastrologin, {
       width: '250px',
-      data: {...project, isUpdated}
+      data: { ...project, isUpdated },
     });
   }
-
 }
-
-

@@ -1,45 +1,78 @@
 <body id="pdf">
-  <mat-list style="list-style: none;">
+  <mat-list style="list-style: none">
     <mat-divider></mat-divider>
-    <li><p>Nome: {{ data.aluno?.nome }} | Idade: {{ data.aluno?.idade }} | CPF: {{ data.aluno?.cpf }}</p></li>
+    <li>
+      <p>
+        Nome: {{ data.aluno?.nome }} | Idade: {{ data.aluno?.idade }} | CPF:
+        {{ data.aluno?.cpf }}
+      </p>
+    </li>
     <mat-divider></mat-divider>
-    <li><p>CEP: {{ data.aluno?.cep }} | Endereço: {{ data.aluno?.endereco }} | Cidade: {{ data.aluno?.cidade }} | Estado: {{ data.aluno?.estado }}</p></li>
+    <li>
+      <p>
+        CEP: {{ data.aluno?.cep }} | Endereço: {{ data.aluno?.endereco }} |
+        Cidade: {{ data.aluno?.cidade }} | Estado: {{ data.aluno?.estado }}
+      </p>
+    </li>
     <mat-divider></mat-divider>
-    <li><p>Telefone: {{ data.aluno?.telefone }} | E-mail: {{ data.aluno?.email }}</p></li>
+    <li>
+      <p>
+        Telefone: {{ data.aluno?.telefone }} | E-mail: {{ data.aluno?.email }}
+      </p>
+    </li>
   </mat-list>
 
-    <mat-divider style="border: bold;"></mat-divider>
-    <mat-divider style="border: bold;"></mat-divider>
-    <mat-divider style="border: bold;"></mat-divider>
-    <mat-divider style="border: bold;"></mat-divider>
+  <mat-divider style="border: bold"></mat-divider>
+  <mat-divider style="border: bold"></mat-divider>
+  <mat-divider style="border: bold"></mat-divider>
+  <mat-divider style="border: bold"></mat-divider>
 
-    <mat-list *ngFor="let curso of data.cursos" style="list-style: none;">
-      <li><p>Curso: {{curso.curso}}</p></li>
-      <mat-divider></mat-divider>
-      <li><p>Duração: {{curso.duracao}}</p></li>
-      <mat-divider></mat-divider>
-      <li><p>Grau: {{curso.grau}}</p></li>
-      <mat-divider></mat-divider>
-      <li><p>Valor: {{curso.valor | currency: 'BRL'}}</p></li>
-      <mat-divider></mat-divider>
-    </mat-list>
+  <mat-list *ngFor="let curso of data.cursos" style="list-style: none">
+    <li>
+      <p>Curso: {{ curso.curso }}</p>
+    </li>
+    <mat-divider></mat-divider>
+    <li>
+      <p>Duração: {{ curso.duracao }}</p>
+    </li>
+    <mat-divider></mat-divider>
+    <li>
+      <p>Grau: {{ curso.grau }}</p>
+    </li>
+    <mat-divider></mat-divider>
+    <li>
+      <p>Valor: {{ curso.valor | currency: "BRL" }}</p>
+    </li>
+    <mat-divider></mat-divider>
+  </mat-list>
 
-    <mat-divider style="border: bold;"></mat-divider>
-    <mat-divider style="border: bold;"></mat-divider>
-    <mat-divider style="border: bold;"></mat-divider>
-    <mat-divider style="border: bold;"></mat-divider>
+  <mat-divider style="border: bold"></mat-divider>
+  <mat-divider style="border: bold"></mat-divider>
+  <mat-divider style="border: bold"></mat-divider>
+  <mat-divider style="border: bold"></mat-divider>
 
-    <mat-list style="list-style: none;">
-      <li> <p>Nome do vendedor: {{data.user?.name}} | E-mail: {{data.user?.email}}</p> </li>
-      <mat-divider></mat-divider>
-      <li> <p>Valor total: {{data.valor_total | currency: 'BRL'}}</p> </li>
-      <mat-divider></mat-divider>
-      <li> <p>Valor pago: {{data.valorPago | currency: 'BRL'}}</p> </li>
-      <mat-divider></mat-divider>
-      <li> <p>Troco: {{data.troco | currency: 'BRL'}}</p> </li>
-      <mat-divider></mat-divider>
-      <li> <p>Data da venda:{{ data.aluno?.createdAt}}</p> </li>
-    </mat-list>
+  <mat-list style="list-style: none">
+    <li>
+      <p>
+        Nome do vendedor: {{ data.user?.name }} | E-mail: {{ data.user?.email }}
+      </p>
+    </li>
+    <mat-divider></mat-divider>
+    <li>
+      <p>Valor total: {{ data.valor_total | currency: "BRL" }}</p>
+    </li>
+    <mat-divider></mat-divider>
+    <li>
+      <p>Valor pago: {{ data.valorPago | currency: "BRL" }}</p>
+    </li>
+    <mat-divider></mat-divider>
+    <li>
+      <p>Troco: {{ data.troco | currency: "BRL" }}</p>
+    </li>
+    <mat-divider></mat-divider>
+    <li>
+      <p>Data da venda:{{ data.aluno?.createdAt }}</p>
+    </li>
+  </mat-list>
   <button mat-raised-button (click)="convertToPdf()">Baixar comprovante</button>
-
 </body>

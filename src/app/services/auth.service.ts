@@ -1,50 +1,49 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Router } from "@angular/router";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
-interface IUser{
-  email: string,
-  password: string
+interface IUser {
+  email: string;
+  password: string;
 }
 
-
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class AuthService {
   getTasks() {
     throw new Error('Method not implemented.');
   }
-  private URL = "http://localhost:8080/auth";
+  private URL = 'http://localhost:8080/auth';
   constructor(private http: HttpClient, private router: Router) {}
 
-  signUpUser(user:IUser) {
+  signUpUser(user: IUser) {
     //console.log('1111')
-    return this.http.post<any>(this.URL + "/register", user);
+    return this.http.post<any>(this.URL + '/register', user);
   }
 
-  cadAluno(user:IUser) {
-    return this.http.post<any>(this.URL + "/aluno", user);
+  cadAluno(user: IUser) {
+    return this.http.post<any>(this.URL + '/aluno', user);
   }
 
-  baixar(user:IUser) {
-    return this.http.post<any>(this.URL + "/baixar", user);
+  baixar(user: IUser) {
+    return this.http.post<any>(this.URL + '/baixar', user);
   }
 
-  cadCurse(user:IUser) {
-    return this.http.post<any>(this.URL + "/cadastro", user);
+  cadCurse(user: IUser) {
+    return this.http.post<any>(this.URL + '/cadastro', user);
   }
 
-  cadContato(user:IUser) {
-    return this.http.post<any>(this.URL + "/contato", user);
+  cadContato(user: IUser) {
+    return this.http.post<any>(this.URL + '/contato', user);
   }
 
-  venda(user:IUser) {
-    return this.http.post<any>(this.URL + "/venda", user);
+  venda(user: IUser) {
+    return this.http.post<any>(this.URL + '/venda', user);
   }
 
-  signInUser(user:IUser) {
-    return this.http.post<any>(this.URL + "/authenticate", user);
+  signInUser(user: IUser) {
+    return this.http.post<any>(this.URL + '/authenticate', user);
   }
 
   updatelead(project: any) {
@@ -68,19 +67,19 @@ export class AuthService {
   }
 
   findOneUser() {
-    return this.http.get<any>(this.URL + "/one");
+    return this.http.get<any>(this.URL + '/one');
   }
 
   loggedIn() {
-    return !!localStorage.getItem("token");
+    return !!localStorage.getItem('token');
   }
 
   logout() {
-    localStorage.removeItem("token");
-    this.router.navigate(["/tasks"]);
+    localStorage.removeItem('token');
+    this.router.navigate(['/tasks']);
   }
 
   getToken() {
-    return localStorage.getItem("token");
+    return localStorage.getItem('token');
   }
 }

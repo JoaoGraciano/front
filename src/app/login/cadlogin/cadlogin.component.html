@@ -1,51 +1,63 @@
 <body>
   <app-header></app-header>
 
-      <mat-form-field appearance="standard">
-        <mat-label>Search</mat-label>
-        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
-      </mat-form-field>
+  <mat-form-field appearance="standard">
+    <mat-label>Search</mat-label>
+    <input
+      matInput
+      (keyup)="applyFilter($event)"
+      placeholder="Ex. ium"
+      #input
+    />
+  </mat-form-field>
 
-      <button mat-raised-button (click)="openDialog(form, false)">Cadastrar funcionario</button>
+  <button mat-raised-button (click)="openDialog(form, false)">
+    Cadastrar funcionario
+  </button>
 
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef> Nome </th>
-          <td mat-cell *matCellDef="let projects"> {{projects.name}} </td>
-        </ng-container>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Nome</th>
+      <td mat-cell *matCellDef="let projects">{{ projects.name }}</td>
+    </ng-container>
 
-        <ng-container matColumnDef="email">
-          <th mat-header-cell *matHeaderCellDef> E-mail </th>
-          <td mat-cell *matCellDef="let projects"> {{projects.email}} </td>
-        </ng-container>
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>E-mail</th>
+      <td mat-cell *matCellDef="let projects">{{ projects.email }}</td>
+    </ng-container>
 
-        <ng-container matColumnDef="password">
-          <th mat-header-cell *matHeaderCellDef> Permissão </th>
-          <td mat-cell *matCellDef="let projects"></td>
-        </ng-container>
+    <ng-container matColumnDef="password">
+      <th mat-header-cell *matHeaderCellDef>Permissão</th>
+      <td mat-cell *matCellDef="let projects"></td>
+    </ng-container>
 
-        <ng-container matColumnDef="editar">
-          <th mat-header-cell *matHeaderCellDef> Editar </th>
-          <td mat-cell *matCellDef="let projects">
-            <button mat-raised-button (click)="openDialog(projects, true)">Editar</button>
-          </td>
-        </ng-container>
+    <ng-container matColumnDef="editar">
+      <th mat-header-cell *matHeaderCellDef>Editar</th>
+      <td mat-cell *matCellDef="let projects">
+        <button mat-raised-button (click)="openDialog(projects, true)">
+          Editar
+        </button>
+      </td>
+    </ng-container>
 
-        <ng-container matColumnDef="deletar">
-          <th mat-header-cell *matHeaderCellDef> Deletar </th>
-          <td mat-cell *matCellDef="let projects">
-            <button mat-raised-button (click)="deletar(projects)">Deletar</button>
-          </td>
-        </ng-container>
+    <ng-container matColumnDef="deletar">
+      <th mat-header-cell *matHeaderCellDef>Deletar</th>
+      <td mat-cell *matCellDef="let projects">
+        <button mat-raised-button (click)="deletar(projects)">Deletar</button>
+      </td>
+    </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"
-            (click)="selection.toggle(row)">
-        </tr>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: displayedColumns"
+      (click)="selection.toggle(row)"
+    ></tr>
 
-        <tr class="mat-row">
-          <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-        </tr>
-      </table>
+    <tr class="mat-row">
+      <td class="mat-cell" colspan="4">
+        No data matching the filter "{{ input.value }}"
+      </td>
+    </tr>
+  </table>
 </body>
-

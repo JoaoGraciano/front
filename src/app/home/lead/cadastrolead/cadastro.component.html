@@ -1,26 +1,83 @@
 <p>Cadastro do Lead</p>
-<form mat-dialog-actions action="submit" [formGroup]="project" (submit)="createOrUpdate(project)">
+<form
+  mat-dialog-actions
+  action="submit"
+  [formGroup]="project"
+  (submit)="createOrUpdate(project)"
+>
   <div mat-dialog-content>
-      <td><mat-form-field appearance="fill">
-          <mat-label>Email</mat-label>
-          <input matInput [(ngModel)]="data.email" id="email" type="E-mail" formControlName="email" placeholder="E-mail" name="txtemail" require>
-      </mat-form-field></td>
+    <td>
       <mat-form-field appearance="fill">
-          <mat-label>Nome</mat-label>
-          <input matInput [(ngModel)]="data.nome" id="nome" type="Nome" formControlName="nome" placeholder="Nome" name="txtnome" require>
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          [(ngModel)]="data.email"
+          id="email"
+          type="E-mail"
+          formControlName="email"
+          placeholder="E-mail"
+          name="txtemail"
+          require
+        />
       </mat-form-field>
-      <td><mat-form-field appearance="fill">
-          <mat-label>Telefone</mat-label>
-          <input matInput [(ngModel)]="data.telefone" type="tel" formControlName="telefone" name="phone" id="telephone" class="input phone input-validate required error placeholder" placeholder="Número para contato" autocomplete="off" require>
-      </mat-form-field></td>
+    </td>
+    <mat-form-field appearance="fill">
+      <mat-label>Nome</mat-label>
+      <input
+        matInput
+        [(ngModel)]="data.nome"
+        id="nome"
+        type="Nome"
+        formControlName="nome"
+        placeholder="Nome"
+        name="txtnome"
+        require
+      />
+    </mat-form-field>
+    <td>
       <mat-form-field appearance="fill">
-          <mat-label>Cidade</mat-label>
-          <input matInput [(ngModel)]="data.cidade" type="text" formControlName="cidade" placeholder="Cidade" name="txtnome" require>
+        <mat-label>Telefone</mat-label>
+        <input
+          matInput
+          [(ngModel)]="data.telefone"
+          type="tel"
+          formControlName="telefone"
+          name="phone"
+          id="telephone"
+          class="input phone input-validate required error placeholder"
+          placeholder="Número para contato"
+          autocomplete="off"
+          require
+        />
       </mat-form-field>
+    </td>
+    <mat-form-field appearance="fill">
+      <mat-label>Cidade</mat-label>
+      <input
+        matInput
+        [(ngModel)]="data.cidade"
+        type="text"
+        formControlName="cidade"
+        placeholder="Cidade"
+        name="txtnome"
+        require
+      />
+    </mat-form-field>
 
-      <div mat-dialog-actions>
-          <button mat-button mat-dialog-close (click)="onNoClick()">Cancelar</button>
-          <button mat-button class="submit" type="submit" class="btn btn-submit mt5 spacing-4" value="ENVIAR" cdkFocusInitial>Ok</button>
-      </div>
+    <div mat-dialog-actions>
+      <button mat-button mat-dialog-close (click)="onNoClick()">
+        Cancelar
+      </button>
+      <button
+        mat-button
+        class="submit"
+        type="submit"
+        class="btn btn-submit mt5 spacing-4"
+        value="ENVIAR"
+        cdkFocusInitial
+      >
+        Ok
+      </button>
     </div>
+  </div>
 </form>

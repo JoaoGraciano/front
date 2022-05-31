@@ -1,51 +1,76 @@
 <app-header></app-header>
 
 <body>
-
   <mat-form-field appearance="standard">
     <mat-label>Search</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+    <input
+      matInput
+      (keyup)="applyFilter($event)"
+      placeholder="Ex. ium"
+      #input
+    />
   </mat-form-field>
 
-    <table mat-table
-       [dataSource]="dataSource" multiTemplateDataRows
-       class="mat-elevation-z8" >
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    multiTemplateDataRows
+    class="mat-elevation-z8"
+  >
+    <ng-container
+      matColumnDef="{{ column }}"
+      *ngFor="let column of displayedColumns"
+    >
+      <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+      <td mat-cell *matCellDef="let projects">
+        <div class="example-element-position">{{ projects[column] }}</div>
+      </td>
+    </ng-container>
 
-  <ng-container matColumnDef="{{column}}" *ngFor="let column of displayedColumns" >
-    <th mat-header-cell *matHeaderCellDef> {{column}}  </th>
-    <td mat-cell *matCellDef="let projects">
-        <div class="example-element-position"> {{projects[column]}} </div>
-    </td>
-  </ng-container>
-
-  <ng-container matColumnDef="expandedDetail">
-    <td mat-cell *matCellDef="let projects" [attr.colspan]="displayedColumns.length">
-      <div class="example-element-detail"
-           [@detailExpand]="expandedElement == projects ? 'expanded' : 'collapsed'">
-        <div class="example-element-description">
-          {{projects.descricao}}
+    <ng-container matColumnDef="expandedDetail">
+      <td
+        mat-cell
+        *matCellDef="let projects"
+        [attr.colspan]="displayedColumns.length"
+      >
+        <div
+          class="example-element-detail"
+          [@detailExpand]="
+            expandedElement == projects ? 'expanded' : 'collapsed'
+          "
+        >
+          <div class="example-element-description">
+            {{ projects.descricao }}
+          </div>
         </div>
-      </div>
-    </td>
-  </ng-container>
+      </td>
+    </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let projects; columns: displayedColumns;"
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr
+      mat-row
+      *matRowDef="let projects; columns: displayedColumns"
       class="example-element-row"
       [class.example-expanded-row]="expandedElement === projects"
-      (click)="expandedElement = expandedElement === projects ? null : projects">
-  </tr>
-  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+      (click)="expandedElement = expandedElement === projects ? null : projects"
+    ></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: ['expandedDetail']"
+      class="example-detail-row"
+    ></tr>
 
-  <tr class="mat-row">
-    <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-  </tr>
-</table>
+    <tr class="mat-row">
+      <td class="mat-cell" colspan="4">
+        No data matching the filter "{{ input.value }}"
+      </td>
+    </tr>
+  </table>
 
-<ul>
-  <li *ngFor="let clickedRow of clickedRows">
-    {{clickedRow.curso}}
-    {{clickedRow.valor}}
-  </li>
-</ul>
+  <ul>
+    <li *ngFor="let clickedRow of clickedRows">
+      {{ clickedRow.curso }}
+      {{ clickedRow.valor }}
+    </li>
+  </ul>
 </body>

@@ -1,63 +1,112 @@
 <h2>Cadastro do aluno</h2>
-  <mat-dialog-content class="mat-typography">
-    <form class="example-form" action="submit" [formGroup]="form" (submit)="createOrUpdate(form)">
-      <mat-form-field class="example-full-width" appearance="fill" disabled>
-        <mat-label>Nome completo</mat-label>
-        <input matInput type="text" formControlName="nome">
-      </mat-form-field>
+<mat-dialog-content class="mat-typography">
+  <form
+    class="example-form"
+    action="submit"
+    [formGroup]="form"
+    (submit)="createOrUpdate(form)"
+  >
+    <mat-form-field class="example-full-width" appearance="fill" disabled>
+      <mat-label>Nome completo</mat-label>
+      <input matInput type="text" formControlName="nome" />
+    </mat-form-field>
 
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Idade</mat-label>
+      <input matInput type="number" formControlName="idade" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>CPF</mat-label>
+      <input matInput #cpf maxlength="11" formControlName="cpf" require />
+      <mat-hint align="end">{{ cpf.value.length }} / 11</mat-hint>
+    </mat-form-field>
+
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>E-mail</mat-label>
+            <input matInput formControlName="email" />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Telefone</mat-label>
+            <input matInput formControlName="telefone" />
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+
+    <p>
       <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Idade</mat-label>
-        <input matInput type="number" formControlName="idade" >
+        <mat-label>Endereço</mat-label>
+        <input
+          matInput
+          placeholder="Ex. 100 Main St"
+          formControlName="endereco"
+        />
       </mat-form-field>
+    </p>
 
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Cidade</mat-label>
+            <input
+              matInput
+              placeholder="Ex. San Francisco"
+              formControlName="cidade"
+            />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Estado</mat-label>
+            <input
+              matInput
+              placeholder="Ex. California"
+              formControlName="estado"
+            />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>CEP</mat-label>
+            <input
+              matInput
+              #cep
+              maxlength="8"
+              placeholder="Ex. 94105"
+              formControlName="cep"
+            />
+            <mat-hint align="end">{{ cep.value.length }} / 8</mat-hint>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+
+    <p>
       <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>CPF</mat-label>
-        <input matInput #cpf maxlength="11" formControlName="cpf" require>
-        <mat-hint align="end">{{cpf.value.length}} / 11</mat-hint>
+        <mat-label>Cursos</mat-label>
+        <input
+          matInput
+          placeholder="Ex. 100 Main St"
+          formControlName="cursos"
+        />
       </mat-form-field>
-
-      <table class="example-full-width" cellspacing="0"><tr>
-        <td><mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>E-mail</mat-label>
-          <input matInput formControlName="email">
-        </mat-form-field></td>
-        <td><mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Telefone</mat-label>
-          <input matInput formControlName="telefone">
-        </mat-form-field></td>
-      </tr></table>
-
-      <p>
-        <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Endereço</mat-label>
-          <input matInput placeholder="Ex. 100 Main St" formControlName="endereco">
-        </mat-form-field>
-      </p>
-
-      <table class="example-full-width" cellspacing="0"><tr>
-        <td><mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Cidade</mat-label>
-          <input matInput placeholder="Ex. San Francisco" formControlName="cidade">
-        </mat-form-field></td>
-        <td><mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Estado</mat-label>
-          <input matInput placeholder="Ex. California" formControlName="estado">
-        </mat-form-field></td>
-        <td><mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>CEP</mat-label>
-          <input matInput #cep maxlength="8" placeholder="Ex. 94105" formControlName="cep">
-          <mat-hint align="end">{{cep.value.length}} / 8</mat-hint>
-        </mat-form-field></td>
-      </tr></table>
-
-      <p>
-        <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Cursos</mat-label>
-          <input matInput placeholder="Ex. 100 Main St" formControlName="cursos">
-        </mat-form-field>
-      </p>
-      <button mat-button mat-dialog-close>Cancel</button>
-      <button mat-button [mat-dialog-close]="true" cdkFocusInitial class="submit" type="submit">Salvar</button>
-    </form>
-  </mat-dialog-content>
+    </p>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button
+      mat-button
+      [mat-dialog-close]="true"
+      cdkFocusInitial
+      class="submit"
+      type="submit"
+    >
+      Salvar
+    </button>
+  </form>
+</mat-dialog-content>

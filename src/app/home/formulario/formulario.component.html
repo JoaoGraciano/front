@@ -1,54 +1,65 @@
 <app-header></app-header>
 
-  <mat-form-field appearance="standard">
-    <mat-label>Search</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
-  </mat-form-field>
+<mat-form-field appearance="standard">
+  <mat-label>Search</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input />
+</mat-form-field>
 
-  <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
-
+<table
+  mat-table
+  [dataSource]="dataSource"
+  multiTemplateDataRows
+  class="mat-elevation-z8"
+>
   <ng-container matColumnDef="nome" | searchFilter:searchValue>
-    <th mat-header-cell *matHeaderCellDef> Nome </th>
-    <td mat-cell *matCellDef="let projects">{{projects.aluno?.nome}}</td>
+    <th mat-header-cell *matHeaderCellDef>Nome</th>
+    <td mat-cell *matCellDef="let projects">{{ projects.aluno?.nome }}</td>
   </ng-container>
 
   <ng-container matColumnDef="cidade">
-    <th mat-header-cell *matHeaderCellDef> Cidade </th>
-    <td mat-cell *matCellDef="let projects"> {{projects.aluno?.cidade}} </td>
+    <th mat-header-cell *matHeaderCellDef>Cidade</th>
+    <td mat-cell *matCellDef="let projects">{{ projects.aluno?.cidade }}</td>
   </ng-container>
 
   <ng-container matColumnDef="cpf">
-    <th mat-header-cell *matHeaderCellDef> CPF </th>
-    <td mat-cell *matCellDef="let projects"> {{projects.aluno?.cpf}} </td>
+    <th mat-header-cell *matHeaderCellDef>CPF</th>
+    <td mat-cell *matCellDef="let projects">{{ projects.aluno?.cpf }}</td>
   </ng-container>
 
   <ng-container matColumnDef="valor">
-    <th mat-header-cell *matHeaderCellDef> Valor </th>
-    <td mat-cell *matCellDef="let projects"> {{projects.valor_total}} </td>
+    <th mat-header-cell *matHeaderCellDef>Valor</th>
+    <td mat-cell *matCellDef="let projects">{{ projects.valor_total }}</td>
   </ng-container>
 
   <ng-container matColumnDef="createdAt">
-    <th mat-header-cell *matHeaderCellDef> Data da venda </th>
-    <td mat-cell *matCellDef="let projects"> {{projects.createdAt | date: "medium"}} </td>
+    <th mat-header-cell *matHeaderCellDef>Data da venda</th>
+    <td mat-cell *matCellDef="let projects">
+      {{ projects.createdAt | date: "medium" }}
+    </td>
   </ng-container>
 
   <ng-container matColumnDef="user">
-    <th mat-header-cell *matHeaderCellDef> Dados do vendedor </th>
-    <td mat-cell *matCellDef="let projects"> {{projects.user.name}} | E-mail: {{projects.user.email}} </td>
+    <th mat-header-cell *matHeaderCellDef>Dados do vendedor</th>
+    <td mat-cell *matCellDef="let projects">
+      {{ projects.user.name }} | E-mail: {{ projects.user.email }}
+    </td>
   </ng-container>
 
   <ng-container matColumnDef="detalhes">
-    <th mat-header-cell *matHeaderCellDef> Detalhes</th>
+    <th mat-header-cell *matHeaderCellDef>Detalhes</th>
     <td mat-cell *matCellDef="let projects">
-      <button mat-raised-button (click)="openInfo(projects)">Detalhes da venda</button></td>
+      <button mat-raised-button (click)="openInfo(projects)">
+        Detalhes da venda
+      </button>
+    </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 
   <tr class="mat-row">
-    <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    <td class="mat-cell" colspan="4">
+      No data matching the filter "{{ input.value }}"
+    </td>
   </tr>
 </table>
-
-
