@@ -1,13 +1,13 @@
 import { ComprovanteComponent } from './home/formulario/comprovante/comprovante.component';
 import { HeaderComponent } from './header/header.component';
 import { CadAlunoComponent } from './home/alunos/cadalunos/cadalunos.component';
-import { CursodetalheComponent } from './home/cursos/curso-detalhe/curso-detalhe.component';
 import { FaleconoscoComponent } from './index/faleconosco/faleconosco.component';
 import { HomeComponent } from './home/home.component';
 import { CursosComponent } from './home/cursos/cursos.component';
 import { FormularioComponent } from './home/formulario/formulario.component';
 import { PagamentoComponent } from './home/vendas/pagamento/pagamento.component';
-import { VendasComponent, EditvendasComponent } from './home/vendas/vendas.component';
+import { VendasComponent } from './home/vendas/vendas.component';
+import { EditvendasComponent } from './home/vendas/editvendas/editvendas.component';
 import { AddcursoComponent } from './home/cursos/addcurso/addcurso.component';
 import { CadloginComponent } from './login/cadlogin/cadlogin.component';
 import { IndexComponent } from './index/index.component';
@@ -20,7 +20,7 @@ import { CadastroComponent } from './home/lead/cadastrolead/cadastro.component';
 import { AlunosComponent } from './home/alunos/alunos.component';
 import { MatriculaComponent } from './home/matricula/matricula.component';
 import { InfoAlunoComponent } from './home/alunos/Info-Alunos/info-aluno.component';
-import { SelectAlunoComponent } from './home/vendas/pagamento/pagamento.component';
+import { SelectAlunoComponent } from './home/vendas/pagamento/selectaluno/selectaluno.component';
 import { cadastrologin } from './login/cadlogin/cadastroLogin/cadastrologin.component';
 
 
@@ -39,7 +39,6 @@ const routes: Routes = [
   { path: 'cadastro', component:CadastroComponent},
   { path: 'cadastrologin', component:cadastrologin},
   { path: 'cursos', component:CursosComponent},
-  { path: 'curso-detalhe', component:CursodetalheComponent},
   { path: 'editvenda', component: EditvendasComponent },
   { path: 'alunos', component: AlunosComponent},
   { path: 'matricula', component: MatriculaComponent},

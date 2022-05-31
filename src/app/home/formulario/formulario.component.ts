@@ -58,10 +58,9 @@ export class FormularioComponent implements OnInit {
     });
   }
 
-  applyFilter($event: Event) {
-    console.log($event, '1');
+  applyFilter($event: Event){
     const filterValue = ($event.target as HTMLInputElement).value;
-    console.log(filterValue, '2');
     this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.dataSource.filter = filterValue.trim().toUpperCase();
   }
 }

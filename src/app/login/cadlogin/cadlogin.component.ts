@@ -58,9 +58,9 @@ export class CadloginComponent implements OnInit {
   }
 
   applyFilter($event: Event){
-    console.log($event,'1')
+    //console.log($event,'1')
     const filterValue = ($event.target as HTMLInputElement).value;
-    console.log(filterValue,'2');
+    //console.log(filterValue,'2');
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 

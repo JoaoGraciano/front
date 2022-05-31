@@ -59,35 +59,35 @@ export class TaskService {
 
   updateLogin(project: any) {
     const url = `${this.URL}/updateUser/${project._id}`;
-    console.log(project);
+    //console.log(project);
 
     return this.http.put(url, project);
   }
 
   updateAluno(project: any) {
     const url = `${this.URL}/updateAlunos/${project._id}`;
-    console.log(project);
+    //console.log(project);
 
     return this.http.put(url, project);
   }
 
   updatelead(project: any) {
     const url = `${this.URL}/lead/${project._id}`;
-    console.log(project);
+    //console.log(project);
 
     return this.http.put(url, project);
   }
 
   updateCurso(project: any) {
     const url = `${this.URL}/Curso/${project._id}`;
-    console.log(project);
+    //console.log(project);
 
     return this.http.put(url, project);
   }
 
   updateVenda(project: any) {
     const url = `${this.URL}/venda/${project._id}`;
-    console.log(project);
+    //console.log(project);
 
     return this.http.put(url, project);
   }

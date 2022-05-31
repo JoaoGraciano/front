@@ -39,12 +39,12 @@ export class ComprovanteComponent implements OnInit {
           },
           (err) => console.log(err)
         );
-          console.log(this.data)
+          //console.log(this.data)
   }
 
   convertToPdf() {
     const element = document.getElementById('pdf');
-    console.log(element,'1')
+    //console.log(element,'1')
     if (element) {
       html2canvas(element).then(canvas => {
         let pdf = new jsPDF('p', 'pt', [canvas.width, canvas.height]);
@@ -57,7 +57,7 @@ export class ComprovanteComponent implements OnInit {
         pdf.output('dataurlnewwindow');
       });
     } else {
-      console.log('Deu ruim')
+      //console.log('Deu ruim')
     }
   }
 }

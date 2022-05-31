@@ -57,10 +57,6 @@ export class CadAlunoComponent {
     }
   }
 
-  onNoClick(): void {
-    // this.dialogRef.close();
-  }
-
   createOrUpdate(form: any) {
     this.submitted = true
     if (!this.data.isUpdated) {
@@ -71,6 +67,6 @@ export class CadAlunoComponent {
       this.taskService.updateAluno(this.form.value).subscribe((response) => {
         window.location.reload();
       })
-}
-}
+    }
+  }
 }

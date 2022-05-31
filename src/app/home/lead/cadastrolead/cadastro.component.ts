@@ -37,7 +37,7 @@ export class CadastroComponent {
 
   ngOnInit(): void {
 
-    console.log(this.data)
+    //console.log(this.data)
   }
 
   onNoClick(): void {

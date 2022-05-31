@@ -5,6 +5,6 @@ import { User } from '../services/user';
 @Injectable()
 export class UserService {
    createUser(user: User) {
-	   console.log("Setor: " + user.setor);
+	   //console.log("Setor: " + user.setor);
    }
 }

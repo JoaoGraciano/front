@@ -54,8 +54,6 @@ export class LeadComponent implements OnInit {
     })
   }
 
-
-
   home(){
     this.router.navigate(['/home']);
   }

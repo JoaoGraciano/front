@@ -30,20 +30,19 @@ import { CommonModule } from '@angular/common';
 import { LeadComponent } from './home/lead/lead.component';
 import { CadastroComponent } from './home/lead/cadastrolead/cadastro.component';
 import { CursosComponent } from './home/cursos/cursos.component';
-import { CursodetalheComponent } from './home/cursos/curso-detalhe/curso-detalhe.component';
 import { MaterialExampleModule } from '../material.module';
 import { MatNativeDateModule } from '@angular/material/core';
-import { EditvendasComponent } from './home/vendas/vendas.component';
+import { EditvendasComponent } from './home/vendas/editvendas/editvendas.component';
 import { AlunosComponent } from './home/alunos/alunos.component';
 import { InfoAlunoComponent } from './home/alunos/Info-Alunos/info-aluno.component';
 import { MatriculaComponent } from './home/matricula/matricula.component';
 import { CadAlunoComponent } from './home/alunos/cadalunos/cadalunos.component';
-import { SelectAlunoComponent } from './home/vendas/pagamento/pagamento.component';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ComprovanteComponent } from './home/formulario/comprovante/comprovante.component';
 import { cadastrologin } from './login/cadlogin/cadastroLogin/cadastrologin.component';
+import { SelectAlunoComponent } from './home/vendas/pagamento/selectaluno/selectaluno.component';
 
 // import {TableSelectionExample} from './table-selection-example';
 
@@ -66,8 +65,6 @@ import { cadastrologin } from './login/cadlogin/cadastroLogin/cadastrologin.comp
     CadloginComponent,
     cadastrologin,
     CursosComponent,
-    CursodetalheComponent,
-    EditvendasComponent,
     AlunosComponent,
     MatriculaComponent,
     CadAlunoComponent,
@@ -75,6 +72,7 @@ import { cadastrologin } from './login/cadlogin/cadastroLogin/cadastrologin.comp
     SelectAlunoComponent,
     HeaderComponent,
     ComprovanteComponent,
+    EditvendasComponent,
   ],
   imports: [
     BrowserModule,

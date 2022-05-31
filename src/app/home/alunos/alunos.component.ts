@@ -51,9 +51,7 @@ export class AlunosComponent implements OnInit {
   }
 
   applyFilter($event: Event){
-    console.log($event,'1')
     const filterValue = ($event.target as HTMLInputElement).value;
-    console.log(filterValue,'2');
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
@@ -73,7 +71,7 @@ export class AlunosComponent implements OnInit {
       data: {...form, isUpdated}
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      //console.log(`Dialog result: ${result}`);
     });
   }
 
@@ -83,7 +81,7 @@ export class AlunosComponent implements OnInit {
       data: {...form, isUpdated}
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      //console.log(`Dialog result: ${result}`);
     });
   }
 }

@@ -1,21 +1,18 @@
 <body>
   <app-header></app-header>
 
-    <div>
-    <mat-form-field appearance="standard">
+      <mat-form-field appearance="standard">
         <mat-label>Search</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
       </mat-form-field>
 
-        <button mat-raised-button (click)="openDialog(form, false)">Cadastrar funcionario</button>
-      </div>
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <button mat-raised-button (click)="openDialog(form, false)">Cadastrar funcionario</button>
 
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef> Nome </th>
           <td mat-cell *matCellDef="let projects"> {{projects.name}} </td>
         </ng-container>
-
 
         <ng-container matColumnDef="email">
           <th mat-header-cell *matHeaderCellDef> E-mail </th>
@@ -25,13 +22,6 @@
         <ng-container matColumnDef="password">
           <th mat-header-cell *matHeaderCellDef> Permissão </th>
           <td mat-cell *matCellDef="let projects"></td>
-        </ng-container>
-
-        <ng-container matColumnDef="encerrar">
-          <th mat-header-cell *matHeaderCellDef> Encerrar lead </th>
-          <td mat-cell *matCellDef="let projects">
-            <button mat-raised-button onchange="document.getElementById('check').disable = !this.checked;">Encerrar Lead</button>
-          </td>
         </ng-container>
 
         <ng-container matColumnDef="editar">
@@ -56,7 +46,6 @@
         <tr class="mat-row">
           <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
         </tr>
-
       </table>
 </body>
 

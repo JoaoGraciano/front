@@ -25,10 +25,10 @@ export class LoginComponent implements OnInit {
   }
 
   signIn() {
-    console.log(this.user.value);
+    //console.log(this.user.value);
     this.authService.signInUser(this.user.value).subscribe(
       (res) => {
-        console.log(res);
+        //console.log(res);
         localStorage.setItem("token", res.token);
         localStorage.setItem("user", JSON.stringify(res.user));
         this.router.navigate(["/home"]);

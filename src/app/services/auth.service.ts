@@ -19,7 +19,7 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
 
   signUpUser(user:IUser) {
-    console.log('1111')
+    //console.log('1111')
     return this.http.post<any>(this.URL + "/register", user);
   }
 
@@ -40,7 +40,6 @@ export class AuthService {
   }
 
   venda(user:IUser) {
-    console.log('1111')
     return this.http.post<any>(this.URL + "/venda", user);
   }
 
@@ -50,25 +49,19 @@ export class AuthService {
 
   updatelead(project: any) {
     const url = `${this.URL}/${project._id}`;
-
-    console.log(project);
-
     return this.http.put(url, project);
   }
 
   updateCurso(project: any) {
     const url = `${this.URL}/${project._id}`;
-
-    console.log(project);
     delete project._id;
-
     return this.http.put(url, project);
   }
 
   updateUser(project: any) {
     const url = `${this.URL}/${project._id}`;
 
-    console.log(project);
+    //console.log(project);
     delete project._id;
 
     return this.http.put(url, project);
