@@ -33,7 +33,7 @@ export class cadastrologin {
     private router: Router
   ) {
     this.form = this.fBuilder.group({
-      _id: [this.data._id],
+      // _id: [this.data._id],
       name: [''],
       email: [''],
       password: [''],
@@ -58,7 +58,6 @@ export class cadastrologin {
     this.submitted = true;
     if (!this.data.isUpdated) {
       this.authService.signUpUser(this.form.value).subscribe((response) => {
-        window.location.reload();
       });
     } else {
       this.taskService.updateLogin(this.form.value).subscribe((response) => {
