@@ -1,20 +1,12 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { TaskService } from 'src/app/services/task.service';
-import { Router } from '@angular/router';
 import { SelectionModel } from '@angular/cdk/collections';
+import { Component, Inject } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import {
-  MatDialog,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-} from '@angular/material/dialog';
-import {
-  FormGroup,
-  FormBuilder,
-  EmailValidator,
-  Validators,
-} from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { TaskService } from 'src/app/services/task.service';
+
 import { LeadComponent } from '../lead.component';
 
 @Component({

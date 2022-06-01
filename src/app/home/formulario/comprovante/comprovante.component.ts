@@ -1,10 +1,11 @@
-import { TaskService } from '../../../services/task.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+
+import { TaskService } from '../../../services/task.service';
 
 @Component({
   selector: 'app-comprovante',

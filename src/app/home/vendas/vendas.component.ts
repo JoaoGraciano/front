@@ -1,16 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { TaskService } from '../../services/task.service';
-import { Router } from '@angular/router';
-import {
-  animate,
-  state,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
-import { MatTableDataSource } from '@angular/material/table';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { SelectionModel } from '@angular/cdk/collections';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
+
+import { TaskService } from '../../services/task.service';
 import { EditvendasComponent } from './editvendas/editvendas.component';
 
 export interface PeriodicElement {

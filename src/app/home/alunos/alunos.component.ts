@@ -1,23 +1,14 @@
-import { Component, OnInit, Inject, Input } from '@angular/core';
-import {
-  FormGroup,
-  FormBuilder,
-  FormsModule,
-  FormControl,
-} from '@angular/forms';
+import { SelectionModel } from '@angular/cdk/collections';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { MatDialog } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 import { TaskService } from '../../services/task.service';
-import { SelectionModel } from '@angular/cdk/collections';
-import { MatTableDataSource } from '@angular/material/table';
-import {
-  MatDialog,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-} from '@angular/material/dialog';
 import { CadAlunoComponent } from './cadalunos/cadalunos.component';
-import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { InfoAlunoComponent } from './Info-Alunos/info-aluno.component';
 
 @Component({

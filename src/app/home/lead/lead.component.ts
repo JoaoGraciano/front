@@ -1,9 +1,10 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { TaskService } from '../../services/task.service';
-import { Router } from '@angular/router';
 import { SelectionModel } from '@angular/cdk/collections';
-import { MatTableDataSource } from '@angular/material/table';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
+
+import { TaskService } from '../../services/task.service';
 import { CadastroComponent } from './cadastrolead/cadastro.component';
 
 export interface LeadComponent {
@@ -63,7 +64,7 @@ export class LeadComponent implements OnInit {
         window.location.reload();
       });
     } else {
-      
+
     }
 
   }

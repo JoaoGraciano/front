@@ -1,14 +1,11 @@
-import { Component, Inject } from '@angular/core';
-import { TaskService } from 'src/app/services/task.service';
-import { Router } from '@angular/router';
-import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
-import {
-  MatDialog,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-} from '@angular/material/dialog';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { Component, Inject } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
+import { TaskService } from 'src/app/services/task.service';
+
 import { VendasComponent } from '../vendas.component';
 
 @Component({

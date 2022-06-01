@@ -1,9 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { TaskService } from '../../services/task.service';
-import { Router } from '@angular/router';
-import { MatTableDataSource } from '@angular/material/table';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
+
+import { TaskService } from '../../services/task.service';
 import { ComprovanteComponent } from './comprovante/comprovante.component';
 
 @Component({

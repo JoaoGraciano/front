@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import { TaskService } from 'src/app/services/task.service';
-import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-addcurso',

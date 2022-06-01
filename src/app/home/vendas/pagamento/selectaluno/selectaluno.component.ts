@@ -1,13 +1,10 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { Router } from '@angular/router';
-import { TaskService } from 'src/app/services/task.service';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import {
-  MatDialog,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-} from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { CadAlunoComponent } from 'src/app/home/alunos/cadalunos/cadalunos.component';
+import { TaskService } from 'src/app/services/task.service';
+
 import { PeriodicElement } from '../pagamento.component';
 
 @Component({

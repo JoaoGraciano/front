@@ -1,14 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormGroup,
-  FormBuilder,
-  FormControl,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+
 import { TaskService } from '../../../services/task.service';
-import { MatDialog } from '@angular/material/dialog';
 import { SelectAlunoComponent } from './selectaluno/selectaluno.component';
 
 export interface PeriodicElement {
