@@ -5,9 +5,9 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dial
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-
 import { TaskService } from '../../../services/task.service';
 import { CadloginComponent } from '../cadlogin.component';
+import * as Joi from 'joi';
 
 @Component({
   selector: 'app-cadastrologin',
