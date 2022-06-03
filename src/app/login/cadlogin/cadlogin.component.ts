@@ -50,14 +50,6 @@ export class CadloginComponent implements OnInit {
     });
   }
 
-  // create() {
-  //   this.submitted = true;
-  //   if (this.project.status === "INVALID") return;
-  //   this.authService.signUpUser(this.project.value).subscribe((response) => {
-  //     this.router.navigate([""]);
-  //   });
-  // }
-
   deletar(item: any) {
     this.taskService.deleteUser(item._id).subscribe((res) => {
       window.location.reload();
@@ -65,9 +57,7 @@ export class CadloginComponent implements OnInit {
   }
 
   applyFilter($event: Event) {
-    //console.log($event,'1')
     const filterValue = ($event.target as HTMLInputElement).value;
-    //console.log(filterValue,'2');
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 

@@ -54,17 +54,14 @@ export class MatriculaComponent implements OnInit {
   }
 
   deletar(item: any) {
-    //console.log(item._id)
     this.taskService.deleteProject(item._id).subscribe((res) => {
-      //console.log(res)
       this.router.navigate(['/vendas']);
-    });
+    },
+    (err: any) => console.log(err));
   }
 
   applyFilter($event: Event) {
-    //console.log($event,'1')
     const filterValue = ($event.target as HTMLInputElement).value;
-    //console.log(filterValue,'2');
     this.dataSource.filter = filterValue.trim().toLowerCase();
     this.dataSource.filter = filterValue.trim().toUpperCase();
   }

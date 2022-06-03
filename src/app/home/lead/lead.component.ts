@@ -64,33 +64,7 @@ export class LeadComponent implements OnInit {
         window.location.reload();
       });
     } else {
-
     }
-
-  }
-
-  home() {
-    this.router.navigate(['/home']);
-  }
-
-  relatorios() {
-    this.router.navigate(['/formulario']);
-  }
-
-  cadlogin() {
-    this.router.navigate(['/cadlogin']);
-  }
-
-  addcurso() {
-    this.router.navigate(['/addcurso']);
-  }
-
-  lead() {
-    this.router.navigate(['/lead']);
-  }
-
-  vendas() {
-    this.router.navigate(['/vendas']);
   }
 
   openDialog(project: any, isUpdated = false) {

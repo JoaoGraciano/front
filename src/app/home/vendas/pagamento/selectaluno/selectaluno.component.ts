@@ -28,19 +28,15 @@ export class SelectAlunoComponent implements OnInit {
   ) {}
 
   applyFilter($event: Event) {
-    //console.log($event,'1')
     const filterValue = ($event.target as HTMLInputElement).value;
-    //console.log(filterValue,'2');
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   ngOnInit(): void {
     this.taskService.getAluno().subscribe(
       (res) => {
-        //console.log(res);
         this.dataSource.data = res.projects;
         this.projects = res.projects;
-        //console.log(this.projects);
       },
       (err) => console.log(err)
     );

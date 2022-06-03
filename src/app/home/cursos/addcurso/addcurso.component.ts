@@ -31,7 +31,8 @@ export class AddcursoComponent implements OnInit {
     this.submitted = true;
     if (this.project.status === 'INVALID') return;
     this.authService.cadCurse(this.project.value).subscribe((response) => {
-      this.router.navigate(['/vendas']);
-    });
+      this.router.navigate(['/vendas'])
+    },
+    (err: any) => console.log(err));
   }
 }

@@ -79,7 +79,8 @@ export class PagamentoComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       this.aluno = result;
       this.project.get('aluno')?.patchValue(result);
-    });
+    },
+    (err: any) => console.log(err));
   }
 
   addAndRemoveClassRow(row: PeriodicElement, add = true) {

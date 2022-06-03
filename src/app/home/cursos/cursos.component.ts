@@ -54,9 +54,10 @@ export class CursosComponent implements OnInit {
   }
 
   vendas(project: any) {
-    this.taskService.getDadosCurso(project);
-
-    this.router.navigate(['/pagamento']);
+    this.taskService.getDadosCurso(project).subscribe((res) => {
+      this.router.navigate(['/pagamento'])
+    },
+    (err: any) => console.log(err))
   }
 
   deletar(item: any) {

@@ -32,6 +32,7 @@ export class FaleconoscoComponent implements OnInit {
     if (this.project.status === 'INVALID') return;
     this.authService.cadContato(this.project.value).subscribe((response) => {
       this.router.navigate(['/']);
-    });
+    },
+    (err: any) => console.log(err));
   }
 }

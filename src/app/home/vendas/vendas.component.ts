@@ -64,9 +64,11 @@ export class VendasComponent implements OnInit {
   }
 
   vendas(project: any) {
-    this.taskService.getDadosCurso(project);
+    this.taskService.getDadosCurso(project).subscribe((res) => {
+      this.router.navigate(['/pagamento'])
+    },
+    (err: any) => console.log(err));
 
-    this.router.navigate(['/pagamento']);
   }
 
   deletar(item: any) {
@@ -75,8 +77,8 @@ export class VendasComponent implements OnInit {
     {
       this.taskService.deleteProject(item._id).subscribe((res) => {
         this.router.navigate(['/vendas']);
-      });
-    } else {
+      },
+      (err: any) => console.log(err))
     }
   }
 

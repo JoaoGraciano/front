@@ -57,7 +57,9 @@ export class AlunosComponent implements OnInit {
   deletar(item: any) {
     this.taskService.deleteAluno(item._id).subscribe((res) => {
       window.location.reload();
-    });
+    },
+    (err: any) => console.log(err)
+    );
   }
 
   applyFilter($event: Event) {
