@@ -33,7 +33,7 @@ export class cadastrologin {
     private router: Router
   ) {
     this.form = this.fBuilder.group({
-      // _id: [this.data._id],
+      _id: [this.data._id],
       name: [''],
       email: [''],
       password: [''],

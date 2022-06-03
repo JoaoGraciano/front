@@ -42,7 +42,6 @@ export class CadAlunoComponent {
       cidade: [''],
       estado: [''],
       cep: [''],
-      cursos: [''],
     });
   }
 
@@ -54,7 +53,6 @@ export class CadAlunoComponent {
       this.form.get('email')?.patchValue(this.data.email);
       this.form.get('cidade')?.patchValue(this.data.cidade);
       this.form.get('telefone')?.patchValue(this.data.telefone);
-      this.form.get('cursos')?.patchValue(this.data.cursos);
       this.form.get('cpf')?.patchValue(this.data.cpf);
       this.form.get('estado')?.patchValue(this.data.estado);
       this.form.get('cep')?.patchValue(this.data.cep);
