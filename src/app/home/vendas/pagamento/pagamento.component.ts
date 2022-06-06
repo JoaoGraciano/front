@@ -110,7 +110,6 @@ export class PagamentoComponent implements OnInit {
 
   create() {
     this.authService.venda(this.project.value).subscribe((response) => {
-      window.location.reload();
     });
   }
 }

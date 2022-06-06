@@ -64,11 +64,10 @@ export class VendasComponent implements OnInit {
   }
 
   vendas(project: any) {
-    this.taskService.getDadosCurso(project).subscribe((res) => {
-      this.router.navigate(['/pagamento'])
-    },
-    (err: any) => console.log(err));
+    console.log(project)
+    this.taskService.getDadosCurso(project);
 
+    this.router.navigate(['/pagamento']);
   }
 
   deletar(item: any) {

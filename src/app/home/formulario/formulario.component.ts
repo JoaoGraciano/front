@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+
 
 import { TaskService } from '../../services/task.service';
 import { ComprovanteComponent } from './comprovante/comprovante.component';
@@ -20,6 +22,8 @@ export class FormularioComponent implements OnInit {
     'detalhes',
     'user',
     'createdAt',
+    'editar',
+    'deletar',
   ];
   projects: any = [];
   dataSource = new MatTableDataSource<any>();
@@ -39,6 +43,12 @@ export class FormularioComponent implements OnInit {
       troco: [''],
       user: [''],
     });
+  }
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
   }
 
   ngOnInit() {
@@ -60,8 +70,20 @@ export class FormularioComponent implements OnInit {
   }
 
   applyFilter($event: Event) {
-    console.log(this.dataSource);
     const filterValue = ($event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.dataSource.filter = filterValue.trim().toUpperCase();
+    console.log(this.dataSource)
+  }
+
+  deletar(item: any) {
+    let text = `Deseja deletar essa venda?`
+    if (confirm(text) == true)
+    {
+      this.taskService.deleteVenda(item._id).subscribe((res) => {
+        window.location.reload();
+      });
+    } else {
+    }
   }
 }

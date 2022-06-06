@@ -107,4 +107,8 @@ export class TaskService {
   deleteAluno(id: string) {
     return this.http.delete(`${this.URL}/aluno/${id}`);
   }
+
+  deleteVenda(id: string) {
+    return this.http.delete(`${this.URL}/venda/${id}`);
+  }
 }
