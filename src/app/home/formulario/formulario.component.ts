@@ -1,9 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+
+import { Component, Input, OnInit, EventEmitter, ViewChild, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
+import { Router, ROUTES, Routes } from '@angular/router';
+import { array } from 'joi';
 
 
 import { TaskService } from '../../services/task.service';
@@ -27,7 +29,9 @@ export class FormularioComponent implements OnInit {
   ];
   projects: any = [];
   dataSource = new MatTableDataSource<any>();
-  project: FormGroup;
+  form: FormGroup;
+
+  project: Array<any> = [];
 
   constructor(
     private taskService: TaskService,
@@ -35,7 +39,7 @@ export class FormularioComponent implements OnInit {
     private fBuilder: FormBuilder,
     public dialog: MatDialog
   ) {
-    this.project = this.fBuilder.group({
+    this.form = this.fBuilder.group({
       aluno: null,
       cursos: [],
       valor_total: [''],
@@ -74,6 +78,11 @@ export class FormularioComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
     this.dataSource.filter = filterValue.trim().toUpperCase();
     console.log(this.dataSource)
+  }
+
+  update(project: any) {
+
+    console.log(project,'22')
   }
 
   deletar(item: any) {

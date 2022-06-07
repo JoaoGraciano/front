@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { Router, RouterStateSnapshot } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-
 import { TaskService } from '../../../services/task.service';
 import { SelectAlunoComponent } from './selectaluno/selectaluno.component';
 
@@ -34,13 +33,14 @@ export class PagamentoComponent implements OnInit {
   disableSelect = new FormControl(false);
   troco = 0;
   valorPago = 0;
-  form: any;
   isUpdated: any;
   _id: any;
   selectedCourses: PeriodicElement[] = [];
   subtotal = 0;
   data: any;
   aluno: any;
+  EditVenda: any;
+
 
   constructor(
     private fBuilder: FormBuilder,
@@ -60,6 +60,7 @@ export class PagamentoComponent implements OnInit {
       user: [''],
     });
   }
+
   ngOnInit() {
     this.taskService.getCadastro().subscribe(
       (res) => {
@@ -70,6 +71,12 @@ export class PagamentoComponent implements OnInit {
     this.project
       .get('user')
       ?.patchValue(JSON.parse(localStorage.getItem('user')!));
+      console.log(this.EditVenda,'2222')
+  }
+
+  reciveProject($event: FormGroup){
+    this.project = $event
+    console.log($event)
   }
 
   // -------------------------------------------------------------------------------------------

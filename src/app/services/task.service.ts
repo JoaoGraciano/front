@@ -5,6 +5,9 @@ import { HttpClient } from "@angular/common/http";
   providedIn: "root",
 })
 export class TaskService {
+  navigate(arg0: string[]) {
+    throw new Error('Method not implemented.');
+  }
 
   private URL = "http://localhost:8080/projects";
   static data: any;

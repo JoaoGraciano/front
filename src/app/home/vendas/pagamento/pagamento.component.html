@@ -1,5 +1,7 @@
 <app-header></app-header>
 
+<app-fomulario (projectEvent)="reciveProject"></app-fomulario>
+
 <body>
   <form [formGroup]="project" class="example-form">
     <button mat-button (click)="openDialog()">Selecionar aluno</button>
@@ -13,7 +15,7 @@
       mat-table
       [dataSource]="projects"
       class="mat-elevation-z8 demo-table">
-      
+
       <ng-container matColumnDef="curso">
         <th mat-header-cell *matHeaderCellDef>Curso</th>
         <td mat-cell *matCellDef="let projects">{{ projects.curso }}</td>
