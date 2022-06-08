@@ -30,6 +30,7 @@ const routes: Routes = [
   { path: 'addcurso', component: AddcursoComponent, canActivate: [AuthGuard] },
   { path: 'vendas', component: VendasComponent, canActivate: [AuthGuard] },
   { path: 'pagamento', component: PagamentoComponent, canActivate: [AuthGuard] },
+  { path: 'pagamento/:_id', component: PagamentoComponent, canActivate: [AuthGuard] },
   { path: 'formulario', component: FormularioComponent, canActivate: [AuthGuard] },
   { path: 'cursos', component: CursosComponent, canActivate: [AuthGuard] },
   { path: 'home', component: HomeComponent },

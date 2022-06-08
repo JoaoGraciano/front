@@ -42,7 +42,7 @@
     <ng-container matColumnDef="user">
       <th mat-header-cell *matHeaderCellDef>Dados do vendedor</th>
       <td mat-cell *matCellDef="let projects">
-        {{ projects.user.name }} | E-mail: {{ projects.user.email }}
+        {{ projects.user.name }}
       </td>
     </ng-container>
 
@@ -58,7 +58,7 @@
     <ng-container matColumnDef="editar">
       <th mat-header-cell *matHeaderCellDef>Editar</th>
       <td mat-cell *matCellDef="let projects">
-        <button mat-raised-button (click)="update(project)">
+        <button mat-raised-button (click)="update(projects, true)">
           Editar
         </button></td>
     </ng-container>

@@ -1,8 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { Router, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+
 import { TaskService } from '../../../services/task.service';
 import { SelectAlunoComponent } from './selectaluno/selectaluno.component';
 
@@ -39,7 +41,7 @@ export class PagamentoComponent implements OnInit {
   subtotal = 0;
   data: any;
   aluno: any;
-  EditVenda: any;
+  editProject: any;
 
 
   constructor(
@@ -48,7 +50,8 @@ export class PagamentoComponent implements OnInit {
     private router: Router,
     private taskService: TaskService,
     fb: FormBuilder,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private route: ActivatedRoute,
   ) {
     this.project = this.fBuilder.group({
       _id: [],
@@ -64,6 +67,13 @@ export class PagamentoComponent implements OnInit {
   ngOnInit() {
     this.taskService.getCadastro().subscribe(
       (res) => {
+
+        this.projects.forEach((cursos: { id: any; selected: boolean; })=>{
+          if(this.editProject.find((item2: { id: any; })=>{return cursos.id == item2.id})){
+              cursos.selected = true
+          }
+      })
+      console.log(this.editProject)
         this.projects = res.projects;
       },
       (err) => console.log(err)
@@ -71,15 +81,10 @@ export class PagamentoComponent implements OnInit {
     this.project
       .get('user')
       ?.patchValue(JSON.parse(localStorage.getItem('user')!));
-      console.log(this.EditVenda,'2222')
+      console.log(this.project,'2222')
   }
 
-  reciveProject($event: FormGroup){
-    this.project = $event
-    console.log($event)
-  }
-
-  // -------------------------------------------------------------------------------------------
+  //--------------------------------------------------------------------------------------------
 
   openDialog() {
     const dialogRef = this.dialog.open(SelectAlunoComponent);

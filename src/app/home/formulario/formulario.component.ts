@@ -1,15 +1,13 @@
-
-import { Component, Input, OnInit, EventEmitter, ViewChild, Output } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router, ROUTES, Routes } from '@angular/router';
-import { array } from 'joi';
-
+import { Router } from '@angular/router';
 
 import { TaskService } from '../../services/task.service';
 import { ComprovanteComponent } from './comprovante/comprovante.component';
+
 
 @Component({
   selector: 'app-formulario',
@@ -30,6 +28,7 @@ export class FormularioComponent implements OnInit {
   projects: any = [];
   dataSource = new MatTableDataSource<any>();
   form: FormGroup;
+  _id: number | undefined;
 
   project: Array<any> = [];
 
@@ -40,6 +39,7 @@ export class FormularioComponent implements OnInit {
     public dialog: MatDialog
   ) {
     this.form = this.fBuilder.group({
+      _id: [],
       aluno: null,
       cursos: [],
       valor_total: [''],
@@ -80,9 +80,12 @@ export class FormularioComponent implements OnInit {
     console.log(this.dataSource)
   }
 
-  update(project: any) {
-
+  update(project: any, isUpdated = false) {
     console.log(project,'22')
+    console.log(isUpdated)
+    const editProject = this.projects.values().next().value;
+    console.log(editProject)
+    this.router.navigate(['/pagamento/', ])
   }
 
   deletar(item: any) {
