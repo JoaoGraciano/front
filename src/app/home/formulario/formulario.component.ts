@@ -31,12 +31,13 @@ export class FormularioComponent implements OnInit {
   _id: number | undefined;
 
   project: Array<any> = [];
+  route: any;
 
   constructor(
     private taskService: TaskService,
     private router: Router,
     private fBuilder: FormBuilder,
-    public dialog: MatDialog
+    public dialog: MatDialog,
   ) {
     this.form = this.fBuilder.group({
       _id: [],
@@ -80,13 +81,23 @@ export class FormularioComponent implements OnInit {
     console.log(this.dataSource)
   }
 
-  update(project: any, isUpdated = false) {
-    console.log(project,'22')
-    console.log(isUpdated)
-    const editProject = this.projects.values().next().value;
-    console.log(editProject)
-    this.router.navigate(['/pagamento/', ])
-  }
+
+  editar(item: any) {
+    this.form.patchValue(item);
+    this._id = item._id;
+    console.log(this.form.value);
+    this.router.navigate(['/pagamento'], {
+      queryParams: {
+        _id: this._id,
+        aluno: this.form.value.aluno,
+        cursos: this.form.value.cursos,
+        valor_total: this.form.value.valor_total,
+        valorPago: this.form.value.valorPago,
+        troco: this.form.value.troco,
+        user: this.form.value.user,
+      },
+    });
+    }
 
   deletar(item: any) {
     let text = `Deseja deletar essa venda?`

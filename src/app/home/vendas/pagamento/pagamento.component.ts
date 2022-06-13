@@ -67,13 +67,6 @@ export class PagamentoComponent implements OnInit {
   ngOnInit() {
     this.taskService.getCadastro().subscribe(
       (res) => {
-
-        this.projects.forEach((cursos: { id: any; selected: boolean; })=>{
-          if(this.editProject.find((item2: { id: any; })=>{return cursos.id == item2.id})){
-              cursos.selected = true
-          }
-      })
-      console.log(this.editProject)
         this.projects = res.projects;
       },
       (err) => console.log(err)
@@ -81,8 +74,22 @@ export class PagamentoComponent implements OnInit {
     this.project
       .get('user')
       ?.patchValue(JSON.parse(localStorage.getItem('user')!));
-      console.log(this.project,'2222')
-  }
+
+      this.route.queryParams.subscribe((params) => {
+        this.data = params;
+        console.log(this.data)
+        this.project.patchValue({
+          _id: this.data._id,
+          aluno: this.data.aluno.selected,
+          cursos: this.data.cursos.selected,
+          valor_total: this.data.valor_total,
+          valorPago: this.data.valorPago,
+          troco: this.data.troco,
+          user: this.data.user,
+        });
+      }, (err) => console.log(err));
+
+    }
 
   //--------------------------------------------------------------------------------------------
 
