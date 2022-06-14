@@ -1,5 +1,6 @@
+import { json } from 'express';
 import { MatTableDataSource } from '@angular/material/table';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -7,8 +8,11 @@ import { AuthService } from 'src/app/services/auth.service';
 
 import { TaskService } from '../../../services/task.service';
 import { SelectAlunoComponent } from './selectaluno/selectaluno.component';
+import { CurrencyPipe } from '@angular/common';
+import { MatPaginator } from '@angular/material/paginator';
 
 export interface PeriodicElement {
+  find: any;
   aluno: object;
   valorPago: number;
   curso: Array<any>;
@@ -42,6 +46,7 @@ export class PagamentoComponent implements OnInit {
   data: any;
   aluno: any;
   editProject: any;
+  paginator: any;
 
 
   constructor(
@@ -76,20 +81,30 @@ export class PagamentoComponent implements OnInit {
       ?.patchValue(JSON.parse(localStorage.getItem('user')!));
 
       this.route.queryParams.subscribe((params) => {
-        this.data = params;
-        console.log(this.data)
+        this.data = params,
+        console.log(params)
         this.project.patchValue({
           _id: this.data._id,
-          aluno: this.data.aluno.selected,
-          cursos: this.data.cursos.selected,
+          aluno: this.data.aluno,
+          cursos: this.data.cursos,
           valor_total: this.data.valor_total,
           valorPago: this.data.valorPago,
           troco: this.data.troco,
           user: this.data.user,
         });
+        this.selectedCourses = this.data.cursos;
+        this.selectedCourses.forEach((element) => {
+          this.addAndRemoveClassRow(element, true);
+        }
+        );
       }, (err) => console.log(err));
+  }
 
-    }
+
+  editvenda() {
+
+  }
+
 
   //--------------------------------------------------------------------------------------------
 

@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { object } from 'joi';
 
 import { TaskService } from '../../services/task.service';
 import { ComprovanteComponent } from './comprovante/comprovante.component';
@@ -89,12 +90,12 @@ export class FormularioComponent implements OnInit {
     this.router.navigate(['/pagamento'], {
       queryParams: {
         _id: this._id,
-        aluno: this.form.value.aluno,
-        cursos: this.form.value.cursos,
+        aluno: JSON.stringify(this.form.value.aluno),
+        cursos: JSON.stringify(this.form.value.cursos),
         valor_total: this.form.value.valor_total,
         valorPago: this.form.value.valorPago,
         troco: this.form.value.troco,
-        user: this.form.value.user,
+        user: JSON.stringify(this.form.value.user),
       },
     });
     }

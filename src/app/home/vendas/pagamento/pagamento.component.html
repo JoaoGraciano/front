@@ -36,7 +36,7 @@
     <ul [formGroup]="project">
       <mat-form-field class="example-full-width" appearance="outline">
         <mat-label>Total</mat-label>
-        <input matInput value="{{ valor_total | currency: 'BRL' }}" />
+        <input matInput formControlName="valor_total" value="{{ valor_total | currency: 'BRL' }}" />
       </mat-form-field>
       <mat-form-field class="example-full-width" appearance="outline">
         <mat-label id="valorPago">Valor pago</mat-label>
